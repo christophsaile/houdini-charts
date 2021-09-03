@@ -1,0 +1,7 @@
+.loaded {
+  display: none;
+}
+
+.loaded .true {
+  display: block;
+}
