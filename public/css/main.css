@@ -2,6 +2,6 @@
   display: none;
 }
 
-.loaded .true {
+.loaded.true {
   display: block;
 }
