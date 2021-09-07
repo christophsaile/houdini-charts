@@ -1,3 +1,10 @@
+// worklets
+const worklet = new URL('./worklets/worklet.js', import.meta.url);
+
+// currently TypeScript does not support the paintWorklet property
+// @ts-ignore
+CSS.paintWorklet.addModule(worklet.href);
+
 document.addEventListener('DOMContentLoaded', init);
 
 function init(): void {

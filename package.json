@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/christophsaile/houdini-charts#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "prettier": "^2.3.2",
     "ts-loader": "^9.2.5",
