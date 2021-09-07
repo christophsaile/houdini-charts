@@ -25,6 +25,9 @@ const config = {
       patterns: [{ from: 'public' }],
     }),
   ],
+  devServer: {
+    open: true,
+  },
 };
 
 module.exports = config;
