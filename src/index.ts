@@ -1,3 +1,6 @@
+// styles
+import './css/main.css';
+
 // worklets
 const worklet = new URL('./worklets/worklet.js', import.meta.url);
 
@@ -5,6 +8,7 @@ const worklet = new URL('./worklets/worklet.js', import.meta.url);
 // @ts-ignore
 CSS.paintWorklet.addModule(worklet.href);
 
+// eventListners
 document.addEventListener('DOMContentLoaded', init);
 
 function init(): void {

@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const config = {
   entry: './src/index.ts',
@@ -11,6 +13,10 @@ const config = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
       {
         test: /\.ts(x)?$/,
         loader: 'ts-loader',
@@ -25,10 +31,14 @@ const config = {
     new CopyPlugin({
       patterns: [{ from: 'public' }],
     }),
+    new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
   ],
   devServer: {
     open: true,
+  },
+  optimization: {
+    minimizer: [`...`, new CssMinimizerPlugin()],
   },
 };
 

@@ -10,13 +10,13 @@ Entählt alle Daten die nicht von Webpack gebundelt werden.
 Aktuell sind das die folgenden Dateien:
 
 - .html
-- .css
 
 ### src
 
 Entählt alle Daten die von Webpack gebundelt werden.
 Aktuell sind das die folgenden Dateien:
 
+- .css
 - .ts
 - .js
 
