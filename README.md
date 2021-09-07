@@ -4,6 +4,10 @@
 
 ## Projekt Struktur
 
+### mock
+
+Enthält Dateien um die Anwendung mit Testdaten zu füllen.
+
 ### public
 
 Entählt alle Daten die nicht von Webpack gebundelt werden.
