@@ -1,0 +1,21 @@
+#lineChart {
+  display: flex;
+  width: 80vw;
+  margin: auto;
+}
+
+.lineChart__wrapper {
+  width: 100%;
+}
+
+.lineChart__grid {
+  display: grid;
+}
+
+.lineChart__labels {
+  display: flex;
+}
+
+.lineChart__label {
+  width: 100%;
+}

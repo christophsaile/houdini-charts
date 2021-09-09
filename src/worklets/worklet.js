@@ -1,4 +1,3 @@
-// @ts-ignore
 if (typeof registerPaint !== 'undefined') {
   class ScallopedBorder {
     static get inputProperties() {
@@ -6,9 +5,9 @@ if (typeof registerPaint !== 'undefined') {
     }
 
     paint(ctx, size, properties) {
-      console.log('ctx', ctx);
-      console.log('size', size);
-      console.log('properties', properties);
+      // console.log('ctx', ctx);
+      // console.log('size', size);
+      // console.log('properties', properties);
 
       const radius = parseInt(properties.get('--extra-scallopRadius')) || 10;
       const scallopWeight = parseInt(properties.get('--extra-scallopWeight')) || 2;

@@ -9,6 +9,7 @@
       "moduleResolution": "node",
       "target": "es2017",
       "allowJs": true,
+      "resolveJsonModule": true
   },
   "include": [
       "./src/**/*"
