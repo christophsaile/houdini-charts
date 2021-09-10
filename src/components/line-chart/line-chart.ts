@@ -37,20 +37,32 @@ class LineChart {
   private renderChart = () => {
     const { labels, datasets } = this.data.data;
 
-    // return `
-    //   <section class='lineChart__grid'>
-    //     ${labels
-    //       .map(
-    //         (text, index) => `
-    //           <div class='lineChart__column'>${index}</div>
-    //         `
-    //       )
-    //       .join('')}
-    //     ${this.renderLabers()}
-    //   </section>
-    // `;
+    return `
+      ${this.renderData()}
+      ${this.renderLabels()}
+    `;
+  };
 
-    return this.renderLabels();
+  private renderData = () => {
+    const { datasets } = this.data.data;
+
+    return `
+      <section class='lineChart__data'>
+        ${datasets
+          .map((set) => {
+            return `<section id='${set.name}' class='lineChart__dataset'>${this.renderDataset(
+              set.values
+            )}</section>`;
+          })
+          .join('')}
+      </section>
+    `;
+  };
+
+  private renderDataset = (values: number[]) => {
+    return `
+      ${values.map((value) => `<span class='lineChart__datapoint'>${value}</span>`).join('')}
+    `;
   };
 
   private renderLabels = () => {
