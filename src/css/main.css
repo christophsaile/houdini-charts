@@ -15,6 +15,7 @@ p {
   --extra-scallopRadius: 5; /* default: 10 */
   --extra-scallopColor: #00eeff; /* default: black */
   --extra-scallopWeight: 1; /* default: 2 */
+  --extra-test: '[1, 2, 3, 4, 5, 6, 7]';
 
   /* Must add padding to show border properly*/
   padding: 0.75rem;

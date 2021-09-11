@@ -4,19 +4,9 @@ export interface Data {
   data: {
     labels: string[];
     datasets: Datasets[];
+    scale: Scale;
   };
   options?: {
-    startAtZero?: boolean;
-    scale?: {
-      x?: {
-        min: number;
-        max: number;
-      };
-      y?: {
-        min: number;
-        max: number;
-      };
-    };
     labelAxis?: {
       x?: string;
       y?: string;
@@ -26,5 +16,16 @@ export interface Data {
 
 export interface Datasets {
   name: string;
-  values: number[];
+  values: Datavalue[];
+}
+
+export interface Datavalue {
+  x: number;
+  y: number;
+}
+
+export interface Scale {
+  auto: boolean;
+  min: number;
+  max: number;
 }
