@@ -30,9 +30,9 @@ class LineChart {
     const defaultTemplate = `
       <div class='lineChart__wrapper'>
         ${this.data.title && this.renderTitle()}
-        ${this.data.options?.labelAxis?.y && this.renderTitleY()}
+        ${this.data.options?.titleAxis?.y && this.renderTitleY()}
         ${this.renderChart()}
-        ${this.data.options?.labelAxis?.x && this.renderTitelX()}
+        ${this.data.options?.titleAxis?.x && this.renderTitelX()}
       </div>
     `;
     this.getRenderLocation().innerHTML = defaultTemplate;
@@ -43,19 +43,36 @@ class LineChart {
   };
 
   private renderTitleY = () => {
-    return `<h3 class='lineChart__title-y'>${this.data.options?.labelAxis?.y}</h3>`;
+    return `<h3 class='lineChart__title-y'>${this.data.options?.titleAxis?.y}</h3>`;
   };
 
   private renderTitelX = () => {
-    return `<h3 class='lineChart__title-x'>${this.data.options?.labelAxis?.x}</h3>`;
+    return `<h3 class='lineChart__title-x'>${this.data.options?.titleAxis?.x}</h3>`;
   };
 
   private renderChart = () => {
     return `
-    <section class='lineChart__chart'>
-      ${this.renderData()}
-      ${this.renderLabels()}
-    </section>
+      <section class='lineChart__chart'>
+        ${this.renderChartY()}
+        ${this.renderData()}
+        ${this.renderChartX()}
+      </section>
+    `;
+  };
+
+  private renderChartY = () => {
+    return `
+      <section class='lineChart__chart-y'>
+        ${this.getLabels.map((text) => `<span class='lineChart__label-y'>${text}</span>`).join('')}
+      </section>
+    `;
+  };
+
+  private renderChartX = () => {
+    return `
+      <section class='lineChart__chart-x'>
+        ${this.getLabels.map((text) => `<span class='lineChart__label-x'>${text}</span>`).join('')}
+      </section>
     `;
   };
 
@@ -85,15 +102,10 @@ class LineChart {
   };
 
   private setDatapointPosition = (value: Datavalue) => {
-    return `style='left: ${value.x}px; bottom: ${value.y}px'`;
-  };
+    // const relativeX1Percentage = minX + ((maxX-minX)*(x1Value/100));
+    // const relativeY1Percentage = minY + ((maxY-minY)*(y1Value/100));
 
-  private renderLabels = () => {
-    return `
-      <section class='lineChart__labels'>
-        ${this.getLabels.map((text) => `<span class='lineChart__label'>${text}</span>`).join('')}
-      </section>
-    `;
+    return `style='left: ${value.x}px; bottom: ${value.y}px'`;
   };
 }
 

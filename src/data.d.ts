@@ -7,7 +7,7 @@ export interface Data {
     scale: Scale;
   };
   options?: {
-    labelAxis?: {
+    titleAxis?: {
       x?: string;
       y?: string;
     };

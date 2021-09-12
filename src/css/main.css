@@ -3,6 +3,10 @@
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .loaded {
   display: none;
 }

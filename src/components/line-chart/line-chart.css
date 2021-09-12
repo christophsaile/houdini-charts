@@ -35,11 +35,44 @@
 .lineChart__chart {
   grid-column: 2;
   grid-row: 2;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+.lineChart__chart-y,
+.lineChart__chart-x {
   display: flex;
+}
+
+.lineChart__chart-y {
+  grid-column: 1;
+  grid-row: 1;
   flex-direction: column;
 }
 
+.lineChart__chart-x {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.lineChart__label-x,
+.lineChart__label-y {
+  display: flex;
+  flex-basis: 100%;
+}
+
+.lineChart__label-y {
+  align-content: center;
+}
+
+.lineChart__label-x {
+  justify-content: center;
+}
+
 .lineChart__data {
+  grid-column: 2;
+  grid-row: 1;
   position: relative;
   height: 100%;
 }
@@ -55,12 +88,4 @@
   width: 10px;
   height: 10px;
   background-color: black;
-}
-
-.lineChart__labels {
-  display: flex;
-}
-
-.lineChart__label {
-  width: 100%;
 }

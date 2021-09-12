@@ -36,7 +36,7 @@
     }
   },
   "options": {
-    "labelAxis": {
+    "titleAxis": {
       "x": "x-Achse",
       "y": "y-Achse"
     }
