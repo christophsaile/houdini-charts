@@ -1,9 +1,13 @@
+import { niceScale } from '../../utils/nice-num';
+import { getMinValue } from '../../utils/get-min-value';
+import { getMaxValue } from '../../utils/get-max-value';
+
 // styles
 import './line-chart.css';
 
 // Interfaces
 import { Data, Datavalue } from '../../data';
-import { isInScaleRange } from '../../utils/isInScaleRange';
+import { flattenDataset } from '../../utils/flatten-dataset';
 
 class LineChart {
   constructor(private readonly data: Data) {}
@@ -12,13 +16,21 @@ class LineChart {
   private getDatasets = this.data.data.datasets;
   private getLabels = this.data.data.labels;
 
+  private autoScale = this.getScaleSettings.auto;
+  private yMin = this.autoScale
+    ? getMinValue(flattenDataset(this.getDatasets, 'y'))
+    : this.getScaleSettings.min!;
+  private yMax = this.autoScale
+    ? getMaxValue(flattenDataset(this.getDatasets, 'y'))
+    : this.getScaleSettings.max!;
+  private niceNumbers = niceScale(this.yMin, this.yMax);
+
   private getRenderLocation = (): HTMLElement => {
     return document.querySelector('#lineChart')!;
   };
 
   public init = () => {
     this.render();
-    console.log(this.data);
   };
 
   private render = () => {
@@ -61,10 +73,16 @@ class LineChart {
   };
 
   private renderChartY = () => {
+    const { tickSpacing, niceMinimum, niceMaximum } = this.niceNumbers;
+    console.log(tickSpacing, niceMinimum, niceMaximum);
+    let template: string = '';
+
+    for (let i = niceMinimum; i <= niceMaximum; i = i + tickSpacing) {
+      template += `<span class='lineChart__label-y'>${i}</span>`;
+    }
+
     return `
-      <section class='lineChart__chart-y'>
-        ${this.getLabels.map((text) => `<span class='lineChart__label-y'>${text}</span>`).join('')}
-      </section>
+      <section class='lineChart__chart-y'>${template}</section>
     `;
   };
 

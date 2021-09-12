@@ -26,6 +26,6 @@ export interface Datavalue {
 
 export interface Scale {
   auto: boolean;
-  min: number;
-  max: number;
+  min?: number;
+  max?: number;
 }

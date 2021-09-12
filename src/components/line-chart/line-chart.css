@@ -23,7 +23,7 @@
   grid-row: 2;
   justify-self: center;
   align-self: center;
-  writing-mode: vertical-rl;
+  writing-mode: sideways-lr;
 }
 
 .lineChart__title-x {
@@ -48,12 +48,14 @@
 .lineChart__chart-y {
   grid-column: 1;
   grid-row: 1;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  padding: 0 var(--spacing-small);
 }
 
 .lineChart__chart-x {
   grid-column: 2;
   grid-row: 2;
+  padding: var(--spacing-small) 0;
 }
 
 .lineChart__label-x,
@@ -63,7 +65,7 @@
 }
 
 .lineChart__label-y {
-  align-content: center;
+  align-items: center;
 }
 
 .lineChart__label-x {
