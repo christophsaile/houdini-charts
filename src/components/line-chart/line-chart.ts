@@ -53,7 +53,7 @@ class LineChart {
   };
 
   private renderTitle = () => {
-    return `<h2 class='lineChart__title'>${this.data.title}</h2>`;
+    return `<h2 class='lineChart__title loaded'>${this.data.title}</h2>`;
   };
 
   private renderTitleY = () => {
@@ -102,7 +102,8 @@ class LineChart {
         ${this.getDatasets
           .map((set) => {
             return `<section id='${set.name}' class='lineChart__dataset'>${this.renderDataset(
-              set.values
+              set.values,
+              set.color
             )}</section>`;
           })
           .join('')}
@@ -110,18 +111,16 @@ class LineChart {
     `;
   };
 
-  private renderDataset = (values: Datavalue[]) => {
+  private renderDataset = (values: Datavalue[], color?: string) => {
+    console.log(values);
     return `
       ${values
-        .map(
-          (value) =>
-            `<span class='lineChart__datapoint' ${this.setDatapointPosition(value)}></span>`
-        )
+        .map((value) => `<span class='lineChart__datapoint' ${this.setStyle(value, color)}></span>`)
         .join('')}
     `;
   };
 
-  private setDatapointPosition = (value: Datavalue) => {
+  private setStyle = (value: Datavalue, color?: string) => {
     const { niceMinimum, niceMaximum } = this.niceNumbers;
     const rangeX = this.maxX - this.minX;
     const rangeY = niceMaximum - niceMinimum;
@@ -129,7 +128,7 @@ class LineChart {
     const percentageX = Math.round((value.x / rangeX) * 100);
     const percentageY = Math.round((value.y / rangeY) * 100) * 0.95; // *0.945 is used to fix the scale
 
-    return `style='left: ${percentageX}%; bottom: ${percentageY}%'`;
+    return `style='background-color: ${color}; left: ${percentageX}%; bottom: ${percentageY}%'`;
   };
 }
 

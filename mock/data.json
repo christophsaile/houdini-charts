@@ -1,5 +1,5 @@
 {
-  "title": "New Diagramm",
+  "title": "Houdini Charts",
   "chartType": "Line",
   "data": {
     "labels": ["Mon", "Tue", "Wed", "Thu", "Fri"],
@@ -16,7 +16,8 @@
           { "x": 0, "y": 3 },
           { "x": 0, "y": 3.5 },
           { "x": 0, "y": 4 }
-        ]
+        ],
+        "color": "#C1FFD7"
       },
       {
         "name": "dataset2",
@@ -26,7 +27,8 @@
           { "x": 2, "y": 0 },
           { "x": 3, "y": 0 },
           { "x": 4, "y": 0 }
-        ]
+        ],
+        "color": "#CAB8FF"
       }
     ],
     "scale": {

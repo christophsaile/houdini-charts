@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', init);
 const LINECHART = new LineChart(data);
 
 function init(): void {
-  contentLoaded();
   LINECHART.init();
+  contentLoaded();
 }
 
 function contentLoaded(): void {
   const getElem: HTMLElement | null = document.querySelector('.loaded');
-  if (getElem) getElem.classList.add('true');
+  if (getElem) getElem.classList.add('loaded--true');
 }

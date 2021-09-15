@@ -1,8 +1,13 @@
 :root {
   --spacing-small: 10px;
+  --color-primary: #cab8ff;
+  --color-secondary: #c1ffd7;
+  --color-tertiary: #b5deff;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -11,22 +16,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.loaded {
-  display: none;
+.fullpage {
+  width: 100%;
+  height: 100vh;
 }
 
-.loaded.true {
-  display: block;
+.fullpage--center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
-p {
+.loaded--true {
   --extra-scallopRadius: 5; /* default: 10 */
-  --extra-scallopColor: #00eeff; /* default: black */
+  --extra-scallopColor: var(--color-primary); /* default: black */
   --extra-scallopWeight: 1; /* default: 2 */
   --extra-test: '[1, 2, 3, 4, 5, 6, 7]';
 
   /* Must add padding to show border properly*/
-  padding: 0.75rem;
-
+  padding: 10px 15px;
   background: paint(extra-scallopedBorder);
 }

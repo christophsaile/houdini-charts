@@ -17,6 +17,7 @@ export interface Data {
 export interface Datasets {
   name: string;
   values: Datavalue[];
+  color?: string;
 }
 
 export interface Datavalue {
