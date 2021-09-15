@@ -85,9 +85,13 @@ class LineChart {
   private renderChartY = () => {
     const { tickSpacing, niceMinimum, niceMaximum } = this.niceNumbers;
     let template: string = '';
+    // let j = 0;
 
     for (let i = niceMinimum; i <= niceMaximum; i = i + tickSpacing) {
+      // const percantage = (j / this.numberOfSegmentsY()) * 100;
+      // style='bottom: ${percantage}%
       template += `<span class='lineChart__label-y'>${i}</span>`;
+      // j = j + 1;
     }
 
     return `
@@ -151,10 +155,14 @@ class LineChart {
     const rangeX = this.maxX - this.minX;
     const rangeY = niceMaximum - niceMinimum;
 
-    const percentageX = Math.round((value.x / rangeX) * 100);
-    const percentageY = Math.round((value.y / rangeY) * 100) * 0.95; // *0.945 is used to fix the scale (kind of ...)
+    // const centerDotsX = 100 / this.numberOfSegmentsX / 2; // Add value to perctangeX
+    const percentageX = (value.x / rangeX) * 100;
+    const percentageY = (value.y / rangeY) * 100;
 
-    return `background-color: ${color}; left: ${percentageX}%; bottom: ${percentageY}%`;
+    const xTwoDigits = Math.round(percentageX * 100) / 100;
+    const yTwoDigits = Math.round(percentageY * 100) / 100;
+
+    return `background-color: ${color}; left: calc(${xTwoDigits}% - 5px); bottom: calc(${yTwoDigits}% - 5px)`;
   };
 }
 
