@@ -1,8 +1,9 @@
 :root {
   --spacing-small: 10px;
-  --color-primary: #cab8ff;
-  --color-secondary: #c1ffd7;
-  --color-tertiary: #b5deff;
+  --color-purple: #cab8ff;
+  --color-green: #c1ffd7;
+  --color-blue: #b5deff;
+  --color-yellow: #fcffa6;
 }
 
 * {
@@ -29,7 +30,7 @@ body {
 
 .loaded--true {
   --extra-scallopRadius: 5; /* default: 10 */
-  --extra-scallopColor: var(--color-primary); /* default: black */
+  --extra-scallopColor: var(--color-blue); /* default: black */
   --extra-scallopWeight: 1; /* default: 2 */
   --extra-test: '[1, 2, 3, 4, 5, 6, 7]';
 
