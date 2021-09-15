@@ -11,7 +11,7 @@ import * as data from '../mock/data.json';
 const worklet = new URL('./worklets/worklet.js', import.meta.url);
 // currently TypeScript does not support the paintWorklet property
 // @ts-ignore
-//CSS.paintWorklet.addModule(worklet.href);
+CSS.paintWorklet.addModule(worklet.href);
 
 // eventListners
 document.addEventListener('DOMContentLoaded', init);

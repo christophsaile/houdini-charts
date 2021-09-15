@@ -17,13 +17,15 @@ class LineChart {
   private getLabels = this.data.data.labels;
 
   private autoScale = this.getScaleSettings.auto;
-  private yMin = this.autoScale
+  private minY = this.autoScale
     ? getMinValue(flattenDataset(this.getDatasets, 'y'))
     : this.getScaleSettings.min!;
-  private yMax = this.autoScale
+  private maxY = this.autoScale
     ? getMaxValue(flattenDataset(this.getDatasets, 'y'))
     : this.getScaleSettings.max!;
-  private niceNumbers = niceScale(this.yMin, this.yMax);
+  private minX = 0;
+  private maxX = this.getLabels.length;
+  private niceNumbers = niceScale(this.minY, this.maxY);
 
   private getRenderLocation = (): HTMLElement => {
     return document.querySelector('#lineChart')!;
@@ -120,10 +122,14 @@ class LineChart {
   };
 
   private setDatapointPosition = (value: Datavalue) => {
-    // const relativeX1Percentage = minX + ((maxX-minX)*(x1Value/100));
-    // const relativeY1Percentage = minY + ((maxY-minY)*(y1Value/100));
+    const { niceMinimum, niceMaximum } = this.niceNumbers;
+    const rangeX = this.maxX - this.minX;
+    const rangeY = niceMaximum - niceMinimum;
 
-    return `style='left: ${value.x}px; bottom: ${value.y}px'`;
+    const percentageX = Math.round((value.x / rangeX) * 100);
+    const percentageY = Math.round((value.y / rangeY) * 100) * 0.95; // *0.945 is used to fix the scale
+
+    return `style='left: ${percentageX}%; bottom: ${percentageY}%'`;
   };
 }
 
