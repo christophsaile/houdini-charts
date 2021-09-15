@@ -17,7 +17,7 @@
           { "x": 0, "y": 3.5 },
           { "x": 0, "y": 4 }
         ],
-        "color": "#C1FFD7"
+        "color": "#cab8ff"
       },
       {
         "name": "dataset2",
@@ -28,7 +28,18 @@
           { "x": 3, "y": 0 },
           { "x": 4, "y": 0 }
         ],
-        "color": "#CAB8FF"
+        "color": "#c1ffd7"
+      },
+      {
+        "name": "dataset3",
+        "values": [
+          { "x": 0, "y": 0 },
+          { "x": 1, "y": 1 },
+          { "x": 2, "y": 2 },
+          { "x": 3, "y": 3 },
+          { "x": 4, "y": 4 }
+        ],
+        "color": "#b5deff"
       }
     ],
     "scale": {
