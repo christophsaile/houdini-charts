@@ -11,6 +11,7 @@ export interface Data {
       x?: string;
       y?: string;
     };
+    gridColor?: string;
   };
 }
 

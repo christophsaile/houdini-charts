@@ -15,6 +15,7 @@ class LineChart {
   private getScaleSettings = this.data.data.scale;
   private getDatasets = this.data.data.datasets;
   private getLabels = this.data.data.labels;
+  private getOptions = this.data.options;
 
   private autoScale = this.getScaleSettings.auto;
   private minY = this.autoScale
@@ -26,6 +27,13 @@ class LineChart {
   private minX = 0;
   private maxX = this.getLabels.length;
   private niceNumbers = niceScale(this.minY, this.maxY);
+  private numberOfSegmentsY = () => {
+    const { tickSpacing, niceMinimum, niceMaximum } = this.niceNumbers;
+    return (niceMaximum - niceMinimum) / tickSpacing;
+  };
+  private numberOfSegmentsX = this.maxX;
+
+  private gridColor = this.getOptions?.gridColor ? this.getOptions.gridColor : '#ccc';
 
   private getRenderLocation = (): HTMLElement => {
     return document.querySelector('#lineChart')!;
@@ -45,8 +53,8 @@ class LineChart {
       <div class='lineChart__wrapper'>
         ${this.data.title && this.renderTitle()}
         ${this.data.options?.titleAxis?.y && this.renderTitleY()}
-        ${this.renderChart()}
         ${this.data.options?.titleAxis?.x && this.renderTitelX()}
+        ${this.renderChart()}
       </div>
     `;
     this.getRenderLocation().innerHTML = defaultTemplate;
@@ -67,16 +75,15 @@ class LineChart {
   private renderChart = () => {
     return `
       <section class='lineChart__chart'>
-        ${this.renderChartY()}
-        ${this.renderData()}
-        ${this.renderChartX()}
+      ${this.renderChartY()}
+      ${this.renderChartX()}
+      ${this.renderData()}
       </section>
     `;
   };
 
   private renderChartY = () => {
     const { tickSpacing, niceMinimum, niceMaximum } = this.niceNumbers;
-    console.log(tickSpacing, niceMinimum, niceMaximum);
     let template: string = '';
 
     for (let i = niceMinimum; i <= niceMaximum; i = i + tickSpacing) {
@@ -98,37 +105,56 @@ class LineChart {
 
   private renderData = () => {
     return `
-      <section class='lineChart__data'>
+      <section class='lineChart__data' style='${this.setDataStyle()}'>
         ${this.getDatasets
           .map((set) => {
-            return `<section id='${set.name}' class='lineChart__dataset'>${this.renderDataset(
+            return `<section id='${
+              set.name
+            }' class='lineChart__dataset' style='${this.setDatasetStyle(
               set.values,
               set.color
-            )}</section>`;
+            )}'>${this.renderDataset(set.values, set.color)}</section>`;
           })
           .join('')}
       </section>
     `;
   };
 
+  private setDataStyle = () => {
+    return `background: paint(grid); --grid-segementsX:${
+      this.numberOfSegmentsX
+    }; --grid-segementsY:${this.numberOfSegmentsY()}; --grid-color: ${this.gridColor}`;
+  };
+
+  private setDatasetStyle = (values: Datavalue[], color?: string) => {
+    return `--path-data:${JSON.stringify(
+      values
+    )}; --path-color:${color}; background: paint(linearPath)`;
+  };
+
   private renderDataset = (values: Datavalue[], color?: string) => {
-    console.log(values);
     return `
       ${values
-        .map((value) => `<span class='lineChart__datapoint' ${this.setStyle(value, color)}></span>`)
+        .map(
+          (value) =>
+            `<span class='lineChart__datapoint' style='${this.setDatapointStyle(
+              value,
+              color
+            )}'></span>`
+        )
         .join('')}
     `;
   };
 
-  private setStyle = (value: Datavalue, color?: string) => {
+  private setDatapointStyle = (value: Datavalue, color?: string) => {
     const { niceMinimum, niceMaximum } = this.niceNumbers;
     const rangeX = this.maxX - this.minX;
     const rangeY = niceMaximum - niceMinimum;
 
     const percentageX = Math.round((value.x / rangeX) * 100);
-    const percentageY = Math.round((value.y / rangeY) * 100) * 0.95; // *0.945 is used to fix the scale
+    const percentageY = Math.round((value.y / rangeY) * 100) * 0.95; // *0.945 is used to fix the scale (kind of ...)
 
-    return `style='background-color: ${color}; left: ${percentageX}%; bottom: ${percentageY}%'`;
+    return `background-color: ${color}; left: ${percentageX}%; bottom: ${percentageY}%`;
   };
 }
 

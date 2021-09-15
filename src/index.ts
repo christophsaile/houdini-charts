@@ -8,10 +8,17 @@ import LineChart from './components/line-chart/line-chart';
 import * as data from '../mock/data.json';
 
 // worklets
-const worklet = new URL('./worklets/worklet.js', import.meta.url);
+const bubbleBorderWorklet = new URL('./worklets/bubble-border.js', import.meta.url);
+const gridWorklet = new URL('./worklets/grid.js', import.meta.url);
+const linearPathWorklet = new URL('./worklets/linear-path.js', import.meta.url);
 // currently TypeScript does not support the paintWorklet property
+
 // @ts-ignore
-CSS.paintWorklet.addModule(worklet.href);
+CSS.paintWorklet.addModule(bubbleBorderWorklet.href);
+// @ts-ignore
+CSS.paintWorklet.addModule(gridWorklet.href);
+// @ts-ignore
+CSS.paintWorklet.addModule(linearPathWorklet.href);
 
 // eventListners
 document.addEventListener('DOMContentLoaded', init);

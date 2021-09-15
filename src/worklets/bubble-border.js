@@ -10,13 +10,6 @@ if (typeof registerPaint !== 'undefined') {
     }
 
     paint(ctx, size, properties) {
-      // console.log('ctx', ctx);
-      // console.log('size', size);
-      // console.log('properties', properties);
-
-      const test = String(properties.get('--extra-test'));
-      console.log(JSON.parse(test));
-
       const radius = parseInt(properties.get('--extra-scallopRadius')) || 10;
       const scallopWeight = parseInt(properties.get('--extra-scallopWeight')) || 2;
       const color = String(properties.get('--extra-scallopColor')) || 'black';
