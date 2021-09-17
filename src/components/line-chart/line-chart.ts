@@ -18,20 +18,27 @@ class LineChart {
   private getOptions = this.data.options;
 
   private autoScale = this.getScaleSettings.auto;
-  private minY = this.autoScale
-    ? getMinValue(flattenDataset(this.getDatasets, 'y'))
-    : this.getScaleSettings.min!;
-  private maxY = this.autoScale
-    ? getMaxValue(flattenDataset(this.getDatasets, 'y'))
-    : this.getScaleSettings.max!;
-  private minX = 0;
-  private maxX = this.getLabels.length;
-  private niceNumbers = niceScale(this.minY, this.maxY);
-  private numberOfSegmentsY = () => {
-    const { tickSpacing, niceMinimum, niceMaximum } = this.niceNumbers;
-    return (niceMaximum - niceMinimum) / tickSpacing;
+  private min = {
+    x: 0,
+    y: this.autoScale
+      ? getMinValue(flattenDataset(this.getDatasets, 'y'))
+      : this.getScaleSettings.min!,
   };
-  private numberOfSegmentsX = this.maxX;
+  private max = {
+    x: this.getLabels.length,
+    y: this.autoScale
+      ? getMaxValue(flattenDataset(this.getDatasets, 'y'))
+      : this.getScaleSettings.max!,
+  };
+  private niceNumbers = niceScale(this.min.y, this.max.y);
+  private range = {
+    x: this.max.x - this.min.x,
+    y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
+  };
+  private segments = {
+    x: this.max.x,
+    y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
+  };
 
   private gridColor = this.getOptions?.gridColor ? this.getOptions.gridColor : '#ccc';
 
@@ -125,9 +132,7 @@ class LineChart {
   };
 
   private setDataStyle = () => {
-    return `background: paint(grid); --grid-segementsX:${
-      this.numberOfSegmentsX
-    }; --grid-segementsY:${this.numberOfSegmentsY()}; --grid-color: ${this.gridColor}`;
+    return `background: paint(grid); --grid-segementsX:${this.segments.x}; --grid-segementsY:${this.segments.y}; --grid-color: ${this.gridColor}`;
   };
 
   private setDatasetStyle = (values: Datavalue[], color?: string) => {
@@ -151,13 +156,9 @@ class LineChart {
   };
 
   private setDatapointStyle = (value: Datavalue, color?: string) => {
-    const { niceMinimum, niceMaximum } = this.niceNumbers;
-    const rangeX = this.maxX - this.minX;
-    const rangeY = niceMaximum - niceMinimum;
-
     // const centerDotsX = 100 / this.numberOfSegmentsX / 2; // Add value to perctangeX
-    const percentageX = (value.x / rangeX) * 100;
-    const percentageY = (value.y / rangeY) * 100;
+    const percentageX = (value.x / this.range.x) * 100;
+    const percentageY = (value.y / this.range.y) * 100;
 
     const xTwoDigits = Math.round(percentageX * 100) / 100;
     const yTwoDigits = Math.round(percentageY * 100) / 100;
