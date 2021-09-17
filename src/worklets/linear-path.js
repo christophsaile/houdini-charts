@@ -1,34 +1,32 @@
 if (typeof registerPaint !== 'undefined') {
   class LinearPath {
     static get inputProperties() {
-      return ['--path-data', '--path-color'];
+      return ['--path-points', '--path-range', '--path-color'];
     }
 
     paint(ctx, size, properties) {
-      const data = JSON.parse(String(properties.get('--path-data')));
+      const points = JSON.parse(String(properties.get('--path-points')));
+      const range = JSON.parse(String(properties.get('--path-range')));
       const color = String(properties.get('--path-color')) || '#000';
 
       const height = size.height;
       const width = size.width;
+      const centerX = 100 / range.x / 2 / 100;
 
       ctx.lineWidth = 2;
       ctx.strokeStyle = color;
 
-      const dataToPixel = (value, height) => {
-        const range = height;
-        return value / range;
-      };
-
-      console.log(dataToPixel(data[4].y, height, width));
-
       ctx.beginPath();
-      ctx.moveTo(100, 100);
-      ctx.lineTo(200, 400);
-      ctx.lineTo(300, 800);
-      ctx.stroke();
 
-      console.log(data);
-      console.log(width, height, color);
+      for (let i = 0; i < points.length; i++) {
+        const x = points[i].x;
+        const y = points[i].y;
+        const newX = width * (x / range.x + centerX);
+        const newY = height - height * (y / range.y);
+        ctx.lineTo(newX, newY);
+      }
+
+      ctx.stroke();
     }
   }
   registerPaint('linearPath', LinearPath);

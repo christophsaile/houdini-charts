@@ -39,6 +39,7 @@ class LineChart {
     x: this.max.x,
     y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
   };
+  private centerX = 100 / this.segments.x / 2;
 
   private gridColor = this.getOptions?.gridColor ? this.getOptions.gridColor : '#ccc';
 
@@ -116,12 +117,10 @@ class LineChart {
 
   private renderData = () => {
     return `
-      <section class='lineChart__data' style='${this.setDataStyle()}'>
+      <section class='lineChart__data' style='${this.setGridStyle()}'>
         ${this.getDatasets
           .map((set) => {
-            return `<section id='${
-              set.name
-            }' class='lineChart__dataset' style='${this.setDatasetStyle(
+            return `<section id='${set.name}' class='lineChart__dataset' style='${this.setPathStyle(
               set.values,
               set.color
             )}'>${this.renderDataset(set.values, set.color)}</section>`;
@@ -131,14 +130,14 @@ class LineChart {
     `;
   };
 
-  private setDataStyle = () => {
+  private setGridStyle = () => {
     return `background: paint(grid); --grid-segementsX:${this.segments.x}; --grid-segementsY:${this.segments.y}; --grid-color: ${this.gridColor}`;
   };
 
-  private setDatasetStyle = (values: Datavalue[], color?: string) => {
-    return `--path-data:${JSON.stringify(
+  private setPathStyle = (values: Datavalue[], color?: string) => {
+    return `background: paint(linearPath); --path-points:${JSON.stringify(
       values
-    )}; --path-color:${color}; background: paint(linearPath)`;
+    )}; --path-range:${JSON.stringify(this.range)}; --path-color:${color};`;
   };
 
   private renderDataset = (values: Datavalue[], color?: string) => {
@@ -156,8 +155,7 @@ class LineChart {
   };
 
   private setDatapointStyle = (value: Datavalue, color?: string) => {
-    // const centerDotsX = 100 / this.numberOfSegmentsX / 2; // Add value to perctangeX
-    const percentageX = (value.x / this.range.x) * 100;
+    const percentageX = (value.x / this.range.x) * 100 + this.centerX;
     const percentageY = (value.y / this.range.y) * 100;
 
     const xTwoDigits = Math.round(percentageX * 100) / 100;
