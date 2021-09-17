@@ -6,16 +6,16 @@ import { getMaxValue } from '../../utils/get-max-value';
 import './line-chart.css';
 
 // Interfaces
-import { Data, Datavalue } from '../../data';
+import { Config, Datavalue } from '../../data';
 import { flattenDataset } from '../../utils/flatten-dataset';
 
 class LineChart {
-  constructor(private readonly data: Data) {}
+  constructor(private readonly container: HTMLElement, private readonly config: Config) {}
 
-  private getScaleSettings = this.data.data.scale;
-  private getDatasets = this.data.data.datasets;
-  private getLabels = this.data.data.labels;
-  private getOptions = this.data.options;
+  private getScaleSettings = this.config.data.scale;
+  private getDatasets = this.config.data.datasets;
+  private getLabels = this.config.data.labels;
+  private getOptions = this.config.options;
 
   private autoScale = this.getScaleSettings.auto;
   private min = {
@@ -43,10 +43,6 @@ class LineChart {
 
   private gridColor = this.getOptions?.gridColor ? this.getOptions.gridColor : '#ccc';
 
-  private getRenderLocation = (): HTMLElement => {
-    return document.querySelector('#lineChart')!;
-  };
-
   public init = () => {
     this.render();
   };
@@ -59,25 +55,25 @@ class LineChart {
   private renderDefaultTemplate = () => {
     const defaultTemplate = `
       <div class='lineChart__wrapper'>
-        ${this.data.title && this.renderTitle()}
-        ${this.data.options?.titleAxis?.y && this.renderTitleY()}
-        ${this.data.options?.titleAxis?.x && this.renderTitelX()}
+        ${this.config.title && this.renderTitle()}
+        ${this.config.options?.titleAxis?.y && this.renderTitleY()}
+        ${this.config.options?.titleAxis?.x && this.renderTitelX()}
         ${this.renderChart()}
       </div>
     `;
-    this.getRenderLocation().innerHTML = defaultTemplate;
+    this.container.innerHTML = defaultTemplate;
   };
 
   private renderTitle = () => {
-    return `<h2 class='lineChart__title loaded'>${this.data.title}</h2>`;
+    return `<h2 class='lineChart__title loaded'>${this.config.title}</h2>`;
   };
 
   private renderTitleY = () => {
-    return `<h3 class='lineChart__title-y'>${this.data.options?.titleAxis?.y}</h3>`;
+    return `<h3 class='lineChart__title-y'>${this.config.options?.titleAxis?.y}</h3>`;
   };
 
   private renderTitelX = () => {
-    return `<h3 class='lineChart__title-x'>${this.data.options?.titleAxis?.x}</h3>`;
+    return `<h3 class='lineChart__title-x'>${this.config.options?.titleAxis?.x}</h3>`;
   };
 
   private renderChart = () => {

@@ -5,7 +5,7 @@ import './css/main.css';
 import LineChart from './components/line-chart/line-chart';
 
 // data
-import * as data from '../mock/data.json';
+import * as mockData from '../mock/data.json';
 
 // worklets
 const bubbleBorderWorklet = new URL('./worklets/bubble-border.js', import.meta.url);
@@ -23,15 +23,27 @@ CSS.paintWorklet.addModule(linearPathWorklet.href);
 // eventListners
 document.addEventListener('DOMContentLoaded', init);
 
-// classes
-const LINECHART = new LineChart(data);
+// lineChart
+const data = mockData;
+const config = {
+  title: 'Houdini Charts',
+  chartType: 'Line',
+  data: data,
+  options: {
+    titleAxis: {
+      x: 'Wochentage',
+      y: 'Anzahl',
+    },
+  },
+};
+const LINECHART = new LineChart(document.getElementById('lineChart')!, config);
 
 function init(): void {
   LINECHART.init();
   contentLoaded();
 }
 
-function contentLoaded(): void {
+function contentLoaded() {
   const getElem: HTMLElement | null = document.querySelector('.loaded');
   if (getElem) getElem.classList.add('loaded--true');
 }

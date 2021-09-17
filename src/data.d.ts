@@ -1,4 +1,4 @@
-export interface Data {
+export interface Config {
   title?: string;
   chartType: string;
   data: {
