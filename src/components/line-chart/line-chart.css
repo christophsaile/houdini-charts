@@ -2,13 +2,6 @@
   --datapoint-size: 10px;
 }
 
-#lineChart {
-  display: flex;
-  width: 80vw;
-  height: 70vh;
-  margin: auto;
-}
-
 .lineChart__wrapper {
   display: grid;
   grid-template-columns: auto 1fr;

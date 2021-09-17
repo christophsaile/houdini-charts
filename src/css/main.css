@@ -38,3 +38,10 @@ body {
   padding: 10px 15px;
   background: paint(extra-scallopedBorder);
 }
+
+#lineChart {
+  display: flex;
+  width: 80vw;
+  height: 70vh;
+  margin: auto;
+}
