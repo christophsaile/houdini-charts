@@ -11,7 +11,6 @@ if (typeof registerPaint !== 'undefined') {
 
       const height = size.height;
       const width = size.width;
-      const centerX = 100 / range.x / 2 / 100;
 
       ctx.lineWidth = 2;
       ctx.strokeStyle = color;
@@ -21,7 +20,7 @@ if (typeof registerPaint !== 'undefined') {
       for (let i = 0; i < points.length; i++) {
         const x = points[i].x;
         const y = points[i].y;
-        const newX = width * (x / range.x + centerX);
+        const newX = width * (x / range.x);
         const newY = height - height * (y / range.y);
         ctx.lineTo(newX, newY);
       }

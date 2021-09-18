@@ -56,12 +56,12 @@
 .lineChart__chart-y,
 .lineChart__chart-x {
   display: flex;
+  position: relative;
 }
 
 .lineChart__chart-y {
   grid-column: 1;
   grid-row: 1;
-  position: relative;
   width: var(--spacing-small);
   margin-left: 26px;
 }
@@ -69,21 +69,22 @@
 .lineChart__chart-x {
   grid-column: 2;
   grid-row: 2;
-  padding: var(--spacing-small) 0;
-  text-align: center;
+  height: var(--spacing-small);
+  margin-bottom: 26px;
 }
 
 .lineChart__label-x,
 .lineChart__label-y {
   line-height: 1;
+  position: absolute;
 }
 
 .lineChart__label-x {
-  flex-basis: 100%;
+  top: 100%;
+  text-align: center;
 }
 
 .lineChart__label-y {
-  position: absolute;
   right: 100%;
 }
 

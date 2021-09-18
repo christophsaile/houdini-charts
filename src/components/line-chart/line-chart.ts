@@ -25,7 +25,7 @@ class LineChart {
       : this.getScaleSettings.min!,
   };
   private max = {
-    x: this.getLabels.length,
+    x: this.getLabels.length - 1,
     y: this.autoScale
       ? getMaxValue(flattenDataset(this.getDatasets, 'y'))
       : this.getScaleSettings.max!,
@@ -39,7 +39,6 @@ class LineChart {
     x: this.max.x,
     y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
   };
-  private centerX = 100 / this.segments.x / 2;
 
   private gridColor = this.getOptions?.gridColor ? this.getOptions.gridColor : '#ccc';
 
@@ -103,9 +102,17 @@ class LineChart {
   };
 
   private renderChartX = () => {
+    let template: string = '';
+
+    for (let i = this.min.x; i <= this.max.x; i++) {
+      const segmentWidth = 100 / this.segments.x;
+      const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
+      template += `<span class='lineChart__label-x' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.getLabels[i]}</span>`; // -8px because fontSize = 16px / 2
+    }
+
     return `
       <section class='lineChart__chart-x'>
-        ${this.getLabels.map((text) => `<span class='lineChart__label-x'>${text}</span>`).join('')}
+      ${template}
       </section>
     `;
   };
@@ -150,7 +157,7 @@ class LineChart {
   };
 
   private setDatapointStyle = (value: Datavalue, color?: string) => {
-    const percentageX = (value.x / this.range.x) * 100 + this.centerX;
+    const percentageX = (value.x / this.range.x) * 100;
     const percentageY = (value.y / this.range.y) * 100;
 
     const xTwoDigits = Math.round(percentageX * 100) / 100;
