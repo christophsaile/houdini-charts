@@ -11,6 +11,12 @@ Charts.js ist eine Library welche Diagramme mithilfe eines HTML5 canvas-Elements
 
 ## Kriterienkatalog
 
+**Performance**
+
+**Interaktivität**
+
+**Accessibility**
+
 ## Testdaten
 
 Das Testverfahren wird anhand von zwei verschiedenen Datasets durchgeführt.
