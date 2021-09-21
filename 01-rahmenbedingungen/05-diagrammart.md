@@ -2,3 +2,4 @@
 
 - Linechart
 - Bubblechart
+- Radar

@@ -8,3 +8,5 @@
 - Tooltip per Hover
 - Mehrere Datensätze in einem Diagramm
 - Datensatz unter der Linie ausfüllen
+- Linien zeichnen animieren
+- Diagramm update wenn Daten hinzugefügt werden
