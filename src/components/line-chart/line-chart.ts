@@ -164,27 +164,34 @@ class LineChart {
   };
 
   private addEvents = () => {
-    this.datapointEvents();
+    this.highlightDatapoint();
   };
 
-  private datapointEvents = () => {
-    const getDatapoints = document.querySelectorAll('.lineChart__datapoint');
-    getDatapoints.forEach((elem) => {
-      elem.addEventListener('click', () => this.handleDatapointClick(elem));
+  private highlightDatapoint = () => {
+    const container: HTMLElement = this.container.querySelector('.lineChart__data')!;
+    const datapoints = document.querySelectorAll('.lineChart__datapoint');
+
+    container.addEventListener('click', () => this.handleGridClick(container));
+    datapoints.forEach((elem) => {
+      elem.addEventListener('click', (event) => this.handleDatapointClick(event, container));
     });
   };
 
-  private handleDatapointClick = (elem: Element) => {
-    const getGrid = this.container.querySelector('.lineChart__data');
+  private handleGridClick = (container: HTMLElement) => {
+    // @ts-ignore
+    container.attributeStyleMap.set('--grid-highlight', '{"x": 0, "y": 0}');
+  };
+
+  private handleDatapointClick = (event: Event, container: HTMLElement) => {
     const position = {
       // @ts-ignore
-      x: elem.attributeStyleMap.get('left').values[0].value,
+      x: event.target.attributeStyleMap.get('left').values[0].value,
       // @ts-ignore
-      y: elem.attributeStyleMap.get('bottom').values[0].value,
+      y: event.target.attributeStyleMap.get('bottom').values[0].value,
     };
-
     // @ts-ignore
-    getGrid.attributeStyleMap.set('--grid-highlight', JSON.stringify(position));
+    container.attributeStyleMap.set('--grid-highlight', JSON.stringify(position));
+    event.stopPropagation();
   };
 }
 
