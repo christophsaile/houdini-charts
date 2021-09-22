@@ -11,8 +11,8 @@ import * as mockData from '../mock/data.json';
 const bubbleBorderWorklet = new URL('./worklets/bubble-border.js', import.meta.url);
 const gridWorklet = new URL('./worklets/grid.js', import.meta.url);
 const linearPathWorklet = new URL('./worklets/linear-path.js', import.meta.url);
-// currently TypeScript does not support the paintWorklet property
 
+// currently TypeScript does not support the paintWorklet property
 // @ts-ignore
 CSS.paintWorklet.addModule(bubbleBorderWorklet.href);
 // @ts-ignore

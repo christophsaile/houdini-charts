@@ -12,23 +12,19 @@ import { flattenDataset } from '../../utils/flatten-dataset';
 class LineChart {
   constructor(private readonly container: HTMLElement, private readonly config: Config) {}
 
-  private getScaleSettings = this.config.data.scale;
-  private getDatasets = this.config.data.datasets;
-  private getLabels = this.config.data.labels;
-  private getOptions = this.config.options;
+  private scaleSettings = this.config.data.scale;
+  private datasets = this.config.data.datasets;
+  private labels = this.config.data.labels;
+  private options = this.config.options;
 
-  private autoScale = this.getScaleSettings.auto;
+  private autoScale = this.scaleSettings.auto;
   private min = {
     x: 0,
-    y: this.autoScale
-      ? getMinValue(flattenDataset(this.getDatasets, 'y'))
-      : this.getScaleSettings.min!,
+    y: this.autoScale ? getMinValue(flattenDataset(this.datasets, 'y')) : this.scaleSettings.min!,
   };
   private max = {
-    x: this.getLabels.length - 1,
-    y: this.autoScale
-      ? getMaxValue(flattenDataset(this.getDatasets, 'y'))
-      : this.getScaleSettings.max!,
+    x: this.labels.length - 1,
+    y: this.autoScale ? getMaxValue(flattenDataset(this.datasets, 'y')) : this.scaleSettings.max!,
   };
   private niceNumbers = niceScale(this.min.y, this.max.y);
   private range = {
@@ -40,10 +36,11 @@ class LineChart {
     y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
   };
 
-  private gridColor = this.getOptions?.gridColor ? this.getOptions.gridColor : '#ccc';
+  private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
   public init = () => {
     this.render();
+    this.addEvents();
   };
 
   private render = () => {
@@ -107,7 +104,7 @@ class LineChart {
     for (let i = this.min.x; i <= this.max.x; i++) {
       const segmentWidth = 100 / this.segments.x;
       const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
-      template += `<span class='lineChart__label-x' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.getLabels[i]}</span>`; // -8px because fontSize = 16px / 2
+      template += `<span class='lineChart__label-x' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.labels[i]}</span>`; // -8px because fontSize = 16px / 2
     }
 
     return `
@@ -120,7 +117,7 @@ class LineChart {
   private renderData = () => {
     return `
       <section class='lineChart__data' style='${this.setGridStyle()}'>
-        ${this.getDatasets
+        ${this.datasets
           .map((set) => {
             return `<section id='${set.name}' class='lineChart__dataset' style='${this.setPathStyle(
               set.values,
@@ -164,6 +161,30 @@ class LineChart {
     const yTwoDigits = Math.round(percentageY * 100) / 100;
 
     return `background-color: ${color}; left: calc(${xTwoDigits}% - 5px); bottom: calc(${yTwoDigits}% - 5px)`; // -5px because dotSize = 10 / 2
+  };
+
+  private addEvents = () => {
+    this.datapointEvents();
+  };
+
+  private datapointEvents = () => {
+    const getDatapoints = document.querySelectorAll('.lineChart__datapoint');
+    getDatapoints.forEach((elem) => {
+      elem.addEventListener('click', () => this.handleDatapointClick(elem));
+    });
+  };
+
+  private handleDatapointClick = (elem: Element) => {
+    const getGrid = this.container.querySelector('.lineChart__data');
+    const position = {
+      // @ts-ignore
+      x: elem.attributeStyleMap.get('left').values[0].value,
+      // @ts-ignore
+      y: elem.attributeStyleMap.get('bottom').values[0].value,
+    };
+
+    // @ts-ignore
+    getGrid.attributeStyleMap.set('--grid-highlight', JSON.stringify(position));
   };
 }
 
