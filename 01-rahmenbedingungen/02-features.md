@@ -10,3 +10,4 @@
 - Datensatz unter der Linie ausfüllen
 - Linien zeichnen animieren
 - Diagramm update wenn Daten hinzugefügt werden
+- Ausblenden von Datensätze bei Klick auf Legende
