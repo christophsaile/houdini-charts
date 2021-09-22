@@ -2,6 +2,25 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/30706b50-044a-420f-aec8-9da828fcced3/deploy-status)](https://app.netlify.com/sites/houdini-charts/deploys)
 
+## Getting Started
+
+```
+npm install
+```
+
+### Serve
+
+```
+npm start
+```
+
+### Build
+
+
+```
+npm run build
+```
+
 ## Projekt Struktur
 
 ### mock
