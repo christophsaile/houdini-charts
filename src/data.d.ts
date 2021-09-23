@@ -17,13 +17,8 @@ export interface Config {
 
 export interface Datasets {
   name: string;
-  values: Datavalue[];
+  values: number[];
   color?: string;
-}
-
-export interface Datavalue {
-  x: number;
-  y: number;
 }
 
 export interface Scale {

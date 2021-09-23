@@ -6,7 +6,7 @@ import { getMaxValue } from '../../utils/get-max-value';
 import './line-chart.css';
 
 // Interfaces
-import { Config, Datavalue } from '../../data';
+import { Config } from '../../data';
 import { flattenDataset } from '../../utils/flatten-dataset';
 
 class LineChart {
@@ -20,11 +20,11 @@ class LineChart {
   private autoScale = this.scaleSettings.auto;
   private min = {
     x: 0,
-    y: this.autoScale ? getMinValue(flattenDataset(this.datasets, 'y')) : this.scaleSettings.min!,
+    y: this.autoScale ? getMinValue(flattenDataset(this.datasets)) : this.scaleSettings.min!,
   };
   private max = {
     x: this.labels.length - 1,
-    y: this.autoScale ? getMaxValue(flattenDataset(this.datasets, 'y')) : this.scaleSettings.max!,
+    y: this.autoScale ? getMaxValue(flattenDataset(this.datasets)) : this.scaleSettings.max!,
   };
   private niceNumbers = niceScale(this.min.y, this.max.y);
   private range = {
@@ -53,7 +53,7 @@ class LineChart {
       <div class='lineChart__wrapper'>
         ${this.config.title && this.renderTitle()}
         ${this.config.options?.titleAxis?.y && this.renderTitleY()}
-        ${this.config.options?.titleAxis?.x && this.renderTitelX()}
+        ${this.config.options?.titleAxis?.x && this.renderTitleX()}
         ${this.renderChart()}
       </div>
     `;
@@ -68,7 +68,7 @@ class LineChart {
     return `<h3 class='lineChart__title-y'>${this.config.options?.titleAxis?.y}</h3>`;
   };
 
-  private renderTitelX = () => {
+  private renderTitleX = () => {
     return `<h3 class='lineChart__title-x'>${this.config.options?.titleAxis?.x}</h3>`;
   };
 
@@ -133,19 +133,20 @@ class LineChart {
     return `background: paint(grid-basic); --grid-segementsX:${this.segments.x}; --grid-segementsY:${this.segments.y}; --grid-color: ${this.gridColor}`;
   };
 
-  private setPathStyle = (values: Datavalue[], color?: string) => {
+  private setPathStyle = (values: number[], color?: string) => {
     return `background: paint(linear-path); --path-points:${JSON.stringify(
       values
     )}; --path-range:${JSON.stringify(this.range)}; --path-color:${color};`;
   };
 
-  private renderDataset = (values: Datavalue[], color?: string) => {
+  private renderDataset = (values: number[], color?: string) => {
     return `
       ${values
         .map(
-          (value) =>
+          (y, x) =>
             `<span class='lineChart__datapoint' style='${this.setDatapointStyle(
-              value,
+              y,
+              x,
               color
             )}'></span>`
         )
@@ -153,9 +154,9 @@ class LineChart {
     `;
   };
 
-  private setDatapointStyle = (value: Datavalue, color?: string) => {
-    const percentageX = (value.x / this.range.x) * 100;
-    const percentageY = (value.y / this.range.y) * 100;
+  private setDatapointStyle = (y: number, x: number, color?: string) => {
+    const percentageX = (x / this.range.x) * 100;
+    const percentageY = (y / this.range.y) * 100;
 
     const xTwoDigits = Math.round(percentageX * 100) / 100;
     const yTwoDigits = Math.round(percentageY * 100) / 100;

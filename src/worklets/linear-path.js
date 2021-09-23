@@ -18,8 +18,8 @@ if (typeof registerPaint !== 'undefined') {
       ctx.beginPath();
 
       for (let i = 0; i < points.length; i++) {
-        const x = points[i].x;
-        const y = points[i].y;
+        const x = i;
+        const y = points[i];
         const newX = width * (x / range.x);
         const newY = height - height * (y / range.y);
         ctx.lineTo(newX, newY);
