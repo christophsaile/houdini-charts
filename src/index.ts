@@ -3,6 +3,7 @@ import './css/main.css';
 
 // components
 import LineChart from './components/line-chart/line-chart';
+import RadarChart from './components/radar-chart/radar-chart';
 
 // data
 import * as mockData from '../mock/data.json';
@@ -28,8 +29,8 @@ document.addEventListener('DOMContentLoaded', init);
 
 // lineChart
 const data = mockData;
-const config = {
-  title: 'Houdini Charts',
+const configLine = {
+  title: 'Line Chart',
   chartType: 'Line',
   data: data,
   options: {
@@ -39,10 +40,19 @@ const config = {
     },
   },
 };
-const LINECHART = new LineChart(document.getElementById('lineChart')!, config);
+
+const configRadar = {
+  title: 'Radar Chart',
+  chartType: 'Radar',
+  data: data,
+};
+
+const LINECHART = new LineChart(document.getElementById('lineChart')!, configLine);
+const RADARCHART = new RadarChart(document.getElementById('radarChart')!, configRadar);
 
 function init(): void {
   LINECHART.init();
+  // RADARCHART.init();
   contentLoaded();
 }
 
