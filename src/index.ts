@@ -1,12 +1,12 @@
 // styles
 import './css/main.css';
 
-// components
+// charts
 import LineChart from './components/line-chart/line-chart';
 import RadarChart from './components/radar-chart/radar-chart';
 
-// data
-import * as mockData from '../mock/data.json';
+// interfaces
+import { Config } from './config';
 
 // worklets
 const bubbleBorderWorklet = new URL('./worklets/bubble-border.js', import.meta.url);
@@ -24,39 +24,27 @@ CSS.paintWorklet.addModule(gridRadarWorklet.href);
 // @ts-ignore
 CSS.paintWorklet.addModule(linearPathWorklet.href);
 
-// eventListners
-document.addEventListener('DOMContentLoaded', init);
+class HoudiniChart {
+  constructor(private readonly container: HTMLElement, private readonly config: Config) {
+    this.init();
+  }
+  public init = () => {
+    // this.contentLoaded();
+    console.log(this.config.chartType.toLowerCase() === 'line');
+    switch (this.config.chartType.toLowerCase()) {
+      case 'line':
+        const LINECHART = new LineChart(this.container, this.config);
+        break;
+      case 'radar':
+        const RADARCHART = new RadarChart(this.container, this.config);
+        break;
+    }
+  };
 
-// lineChart
-const data = mockData;
-const configLine = {
-  title: 'Line Chart',
-  chartType: 'Line',
-  data: data,
-  options: {
-    titleAxis: {
-      x: 'Wochentage',
-      y: 'Anzahl',
-    },
-  },
-};
-
-const configRadar = {
-  title: 'Radar Chart',
-  chartType: 'Radar',
-  data: data,
-};
-
-const LINECHART = new LineChart(document.getElementById('lineChart')!, configLine);
-const RADARCHART = new RadarChart(document.getElementById('radarChart')!, configRadar);
-
-function init(): void {
-  LINECHART.init();
-  // RADARCHART.init();
-  contentLoaded();
+  private contentLoaded = () => {
+    const getElem: HTMLElement | null = document.querySelector('.loaded');
+    if (getElem) getElem.classList.add('loaded--true');
+  };
 }
 
-function contentLoaded() {
-  const getElem: HTMLElement | null = document.querySelector('.loaded');
-  if (getElem) getElem.classList.add('loaded--true');
-}
+export default HoudiniChart;

@@ -20,6 +20,43 @@
         }
       })();
     </script>
-    <script src="bundle.js"></script>
+    <script src="index.js"></script>
+    <script>
+      const data = {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [
+          {
+            name: 'dataset1',
+            values: [0.5, 1.5, 2.5, 3.5, 4],
+            color: '#cab8ff',
+          },
+          {
+            name: 'dataset2',
+            values: [0, 0, 0, 0, 0],
+            color: '#c1ffd7',
+          },
+          {
+            name: 'dataset3',
+            values: [0, 1, 2, 3, 4],
+            color: '#b5deff',
+          },
+          {
+            name: 'dataset4',
+            values: [4, 1, 3, 2, 4],
+            color: '#fcffa6',
+          },
+        ],
+        scale: {
+          auto: true,
+        },
+      };
+      const config = {
+        title: 'Radar Chart',
+        chartType: 'Radar',
+        data: data,
+      };
+
+      const HOUDNINICHART = new HoudiniChart(document.getElementById('radarChart'), config);
+    </script>
   </body>
 </html>

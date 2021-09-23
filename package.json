@@ -2,7 +2,7 @@
   "name": "houdini-charts",
   "version": "1.0.0",
   "description": "interactive charts created with houdini css",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",

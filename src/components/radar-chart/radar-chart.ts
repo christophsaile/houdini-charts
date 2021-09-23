@@ -2,13 +2,15 @@
 import './radar-chart.css';
 
 // Interfaces
-import { Config } from '../../data';
+import { Config } from '../../config';
 import { flattenDataset } from '../../utils/flatten-dataset';
 
 class RadarChart {
-  constructor(private readonly container: HTMLElement, private readonly config: Config) {}
+  constructor(private readonly container: HTMLElement, private readonly config: Config) {
+    this.init();
+  }
 
-  public init = () => {
+  private init = () => {
     this.render();
   };
 

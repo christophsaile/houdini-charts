@@ -6,11 +6,13 @@ import { getMaxValue } from '../../utils/get-max-value';
 import './line-chart.css';
 
 // Interfaces
-import { Config } from '../../data';
+import { Config } from '../../config';
 import { flattenDataset } from '../../utils/flatten-dataset';
 
 class LineChart {
-  constructor(private readonly container: HTMLElement, private readonly config: Config) {}
+  constructor(private readonly container: HTMLElement, private readonly config: Config) {
+    this.init();
+  }
 
   private scaleSettings = this.config.data.scale;
   private datasets = this.config.data.datasets;
@@ -38,7 +40,7 @@ class LineChart {
 
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
-  public init = () => {
+  private init = () => {
     this.render();
     this.addEvents();
   };
@@ -57,6 +59,7 @@ class LineChart {
         ${this.renderChart()}
       </div>
     `;
+
     this.container.innerHTML = defaultTemplate;
   };
 
@@ -116,7 +119,7 @@ class LineChart {
 
   private renderData = () => {
     return `
-      <section class='lineChart__data' style='${this.setGridStyle()}'>
+      <section class='lineChart__datasets' style='${this.setGridStyle()}'>
         ${this.datasets
           .map((set) => {
             return `<section id='${set.name}' class='lineChart__dataset' style='${this.setPathStyle(
@@ -169,7 +172,7 @@ class LineChart {
   };
 
   private highlightDatapoint = () => {
-    const container: HTMLElement = this.container.querySelector('.lineChart__data')!;
+    const container: HTMLElement = this.container.querySelector('.lineChart__datasets')!;
     const datapoints = document.querySelectorAll('.lineChart__datapoint');
 
     container.addEventListener('click', () => this.handleGridClick(container));

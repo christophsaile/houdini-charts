@@ -9,7 +9,10 @@ const config = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'index.js',
+    libraryTarget: 'umd',
+    library: 'HoudiniChart',
+    libraryExport: 'default',
   },
   module: {
     rules: [
