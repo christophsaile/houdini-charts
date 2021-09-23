@@ -29,8 +29,6 @@ class HoudiniChart {
     this.init();
   }
   public init = () => {
-    // this.contentLoaded();
-    console.log(this.config.chartType.toLowerCase() === 'line');
     switch (this.config.chartType.toLowerCase()) {
       case 'line':
         const LINECHART = new LineChart(this.container, this.config);
@@ -39,6 +37,7 @@ class HoudiniChart {
         const RADARCHART = new RadarChart(this.container, this.config);
         break;
     }
+    this.contentLoaded();
   };
 
   private contentLoaded = () => {
