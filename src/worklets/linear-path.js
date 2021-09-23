@@ -28,5 +28,5 @@ if (typeof registerPaint !== 'undefined') {
       ctx.stroke();
     }
   }
-  registerPaint('linearPath', LinearPath);
+  registerPaint('linear-path', LinearPath);
 }

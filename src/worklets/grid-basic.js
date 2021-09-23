@@ -1,5 +1,5 @@
 if (typeof registerPaint !== 'undefined') {
-  class Grid {
+  class GridBasic {
     static get inputProperties() {
       return ['--grid-color', '--grid-segementsY', '--grid-segementsX', '--grid-highlight'];
     }
@@ -63,5 +63,5 @@ if (typeof registerPaint !== 'undefined') {
       }
     }
   }
-  registerPaint('grid', Grid);
+  registerPaint('grid-basic', GridBasic);
 }

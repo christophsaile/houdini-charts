@@ -130,11 +130,11 @@ class LineChart {
   };
 
   private setGridStyle = () => {
-    return `background: paint(grid); --grid-segementsX:${this.segments.x}; --grid-segementsY:${this.segments.y}; --grid-color: ${this.gridColor}`;
+    return `background: paint(grid-basic); --grid-segementsX:${this.segments.x}; --grid-segementsY:${this.segments.y}; --grid-color: ${this.gridColor}`;
   };
 
   private setPathStyle = (values: Datavalue[], color?: string) => {
-    return `background: paint(linearPath); --path-points:${JSON.stringify(
+    return `background: paint(linear-path); --path-points:${JSON.stringify(
       values
     )}; --path-range:${JSON.stringify(this.range)}; --path-color:${color};`;
   };
