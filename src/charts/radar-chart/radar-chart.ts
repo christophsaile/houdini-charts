@@ -1,9 +1,13 @@
+import { flattenDataset } from '../../utils/flatten-dataset';
+
 // styles
 import './radar-chart.css';
 
-// Interfaces
+// interfaces
 import { Config } from '../../config';
-import { flattenDataset } from '../../utils/flatten-dataset';
+
+// classes
+import Header from '../../elements/header/header';
 
 class RadarChart {
   constructor(private readonly container: HTMLElement, private readonly config: Config) {
@@ -22,7 +26,7 @@ class RadarChart {
   private renderDefaultTemplate = () => {
     const defaultTemplate = `
       <div class='lineChart__wrapper'>
-        ${this.config.title && this.renderTitle()}
+        ${Header(this.config)}
         ${this.config.options?.titleAxis?.y && this.renderTitleY()}
         ${this.config.options?.titleAxis?.x && this.renderTitleX()}
         ${this.renderChart()}

@@ -1,13 +1,13 @@
 import { niceScale } from '../../utils/nice-num';
 import { getMinValue } from '../../utils/get-min-value';
 import { getMaxValue } from '../../utils/get-max-value';
+import { flattenDataset } from '../../utils/flatten-dataset';
 
 // styles
 import './line-chart.css';
 
 // Interfaces
 import { Config } from '../../config';
-import { flattenDataset } from '../../utils/flatten-dataset';
 
 class LineChart {
   constructor(private readonly container: HTMLElement, private readonly config: Config) {
