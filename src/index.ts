@@ -2,8 +2,8 @@
 import './css/main.css';
 
 // charts
-import LineChart from './components/line-chart/line-chart';
-import RadarChart from './components/radar-chart/radar-chart';
+import LineChart from './charts/line-chart/line-chart';
+import RadarChart from './charts/radar-chart/radar-chart';
 
 // interfaces
 import { Config } from './config';
