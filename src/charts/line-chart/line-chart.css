@@ -3,7 +3,7 @@
 }
 
 .houdini--line {
-  aspect-ratio: 16 / 9;
+  width: 100%;
 }
 
 .lineChart__wrapper {
@@ -96,7 +96,7 @@
   grid-column: 2;
   grid-row: 1;
   position: relative;
-  height: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .lineChart__dataset {
