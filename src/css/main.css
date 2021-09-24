@@ -58,10 +58,14 @@ nav a:last-child {
   background: paint(extra-scallopedBorder);
 }
 
-#houdiniLine {
-  width: 50%;
+#houdiniLine,
+#houdiniRadar {
+  width: 100%;
 }
 
-#houdiniRadar {
-  width: 50%;
+@media screen and (min-width: 768px) {
+  #houdiniLine,
+  #houdiniRadar {
+    width: 50%;
+  }
 }
