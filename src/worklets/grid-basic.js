@@ -20,13 +20,6 @@ if (typeof registerPaint !== 'undefined') {
         height: height / segmentsY,
       };
 
-      ctx.strokeStyle = 'black';
-
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.lineTo(0, height);
-      ctx.stroke();
-
       ctx.strokeStyle = color;
 
       ctx.beginPath();
@@ -44,12 +37,16 @@ if (typeof registerPaint !== 'undefined') {
       ctx.stroke();
 
       if (gridHighlight) {
+        ctx.strokeStyle = '#000';
+
+        if (gridHighlight.x === 0 && gridHighlight.y === 0) {
+          return;
+        }
+
         const position = {
           x: width * (0.01 * gridHighlight.x),
           y: height - height * (0.01 * gridHighlight.y),
         };
-
-        ctx.strokeStyle = '#000';
 
         ctx.beginPath();
         ctx.moveTo(0, position.y);
