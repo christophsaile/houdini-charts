@@ -16,12 +16,19 @@ npm start
 
 ### Build
 
-
 ```
 npm run build
 ```
 
 ## Projekt Struktur
+
+### 03-chartjs
+
+Beispielhafte Chart.js Anwendung. Wird für die spätere Evaluation verwendet.
+
+### 04-highcharts
+
+Beispielhafte Highcharts Anwendung. Wird für die spätere Evaluation verwendet.
 
 ### mock
 

@@ -14,6 +14,9 @@ class RadarChart {
     this.init();
   }
 
+  private datasets = this.config.data.datasets;
+  private labels = this.config.data.labels;
+
   private init = () => {
     this.render();
   };
@@ -25,22 +28,37 @@ class RadarChart {
 
   private renderDefaultTemplate = () => {
     const defaultTemplate = `
-      <div class='radarChart__wrapper'>
+      <div class='houdini houdini--radar'>
         ${Header(this.config)}
-        ${this.config.options?.titleAxis?.y && this.renderTitleY()}
-        ${this.config.options?.titleAxis?.x && this.renderTitleX()}
         ${this.renderChart()}
       </div>
     `;
     this.container.innerHTML = defaultTemplate;
   };
 
-  private renderTitle = () => {};
+  private renderChart = () => {
+    return `
+      <section class='houdini__chart'>
+        ${this.renderLabels()}
+        ${this.renderScale()}
+      </section>
+    `;
+  };
 
-  private renderTitleY = () => {};
+  private renderLabels = () => {
+    console.log(this.labels.length);
+    return `
+      <div class='houdini__labels'>
+        ${this.labels}
+      </div>
+    `;
+  };
 
-  private renderTitleX = () => {};
-
-  private renderChart = () => {};
+  private renderScale = () => {
+    return `
+      ${JSON.stringify(this.datasets)}
+    `;
+  };
 }
+
 export default RadarChart;

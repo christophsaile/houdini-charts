@@ -52,7 +52,7 @@ class LineChart {
 
   private renderDefaultTemplate = () => {
     const defaultTemplate = `
-      <div class='lineChart__wrapper'>
+      <div class='houdini houdini--line lineChart__wrapper'>
         ${this.config.title && this.renderTitle()}
         ${this.config.options?.titleAxis?.y && this.renderTitleY()}
         ${this.config.options?.titleAxis?.x && this.renderTitleX()}
