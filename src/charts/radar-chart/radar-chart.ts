@@ -25,7 +25,7 @@ class RadarChart {
 
   private renderDefaultTemplate = () => {
     const defaultTemplate = `
-      <div class='lineChart__wrapper'>
+      <div class='radarChart__wrapper'>
         ${Header(this.config)}
         ${this.config.options?.titleAxis?.y && this.renderTitleY()}
         ${this.config.options?.titleAxis?.x && this.renderTitleX()}
