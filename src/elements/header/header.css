@@ -1,0 +1,26 @@
+.houdini__header {
+  padding-bottom: var(--spacing-small);
+}
+
+.houdini__title {
+  text-align: center;
+  padding-bottom: var(--spacing-small);
+}
+
+.houdini__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.houdini__legend-item {
+  display: flex;
+  padding: var(--spacing-small);
+}
+
+.houdini__legend-item span {
+  margin-right: var(--spacing-small);
+  width: 30px;
+  height: 100%;
+}

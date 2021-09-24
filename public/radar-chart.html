@@ -54,6 +54,9 @@
         title: 'Radar Chart',
         chartType: 'Radar',
         data: data,
+        options: {
+          legend: true,
+        },
       };
 
       const HOUDNINICHART = new HoudiniChart(document.getElementById('radarChart'), config);
