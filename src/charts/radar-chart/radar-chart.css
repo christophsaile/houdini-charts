@@ -7,6 +7,19 @@
   position: relative;
 }
 
+.houdini--radar .houdini__yaxis {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+.houdini--radar .houdini__ylabel {
+  position: absolute;
+  line-height: 1;
+}
+
 .houdini--radar .houdini__xaxis {
   position: absolute;
 }

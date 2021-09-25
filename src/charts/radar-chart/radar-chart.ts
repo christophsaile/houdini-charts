@@ -97,10 +97,19 @@ class RadarChart {
   };
 
   private renderYaxis = () => {
+    const { tickSpacing, niceMinimum, niceMaximum } = this.niceNumbers;
+    let template: string = '';
+    let j = 0;
+
+    for (let i = niceMinimum; i <= niceMaximum; i = i + tickSpacing) {
+      const percentage = (j / (this.segments - 1)) * 100;
+      const perTwoDigits = Math.round(percentage * 100) / 100;
+      template += `<span class='houdini__ylabel' style='bottom:${perTwoDigits}%'>${i}</span>`; // -8px because fontSize = 16px / 2
+      j = j + 1;
+    }
+
     return `
-      <section class='houdini__yaxis'>
-        
-      </section>
+    <section class='houdini__yaxis'>${template}</section>
     `;
   };
 

@@ -93,8 +93,9 @@ class LineChart {
     let j = 0;
 
     for (let i = niceMinimum; i <= niceMaximum; i = i + tickSpacing) {
-      const percantage = (j / this.segments.y) * 100;
-      template += `<span class='lineChart__ylabel' style='bottom: calc(${percantage}% - 8px)'>${i}</span>`; // -8px because fontSize = 16px / 2
+      const percentage = (j / this.segments.y) * 100;
+      const perTwoDigits = Math.round(percentage * 100) / 100;
+      template += `<span class='lineChart__ylabel' style='bottom: calc(${perTwoDigits}% - 8px)'>${i}</span>`; // -8px because fontSize = 16px / 2
       j = j + 1;
     }
 
