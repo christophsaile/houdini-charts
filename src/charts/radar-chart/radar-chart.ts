@@ -75,7 +75,7 @@ class RadarChart {
     return `
       <section class='houdini__chart' style='${this.setGridStyle()}'>
         ${this.renderLabels()}
-        ${this.renderScale()}
+        ${this.renderDatasets()}
       </section>
     `;
   };
@@ -94,10 +94,24 @@ class RadarChart {
     `;
   };
 
-  private renderScale = () => {
-    return `
-      ${JSON.stringify(this.datasets)}
-    `;
+  private renderDatasets = () => {
+    return this.datasets
+      .map(
+        (set) =>
+          `<div class='houdini__dataset' style='${this.setPathStyles()}'>${this.renderDatapoints(
+            set.values,
+            set.color
+          )}</div>`
+      )
+      .join('');
+  };
+
+  private setPathStyles = () => {
+    return `background: paint(radar-path);`;
+  };
+
+  private renderDatapoints = (values: number[], color?: string) => {
+    return values.map((value) => `<span class='houdini__datapoint'>${value}</span>`).join('');
   };
 }
 

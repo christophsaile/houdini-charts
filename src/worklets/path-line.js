@@ -1,5 +1,5 @@
 if (typeof registerPaint !== 'undefined') {
-  class LinearPath {
+  class pathLine {
     static get inputProperties() {
       return ['--path-points', '--path-range', '--path-color'];
     }
@@ -28,5 +28,5 @@ if (typeof registerPaint !== 'undefined') {
       ctx.stroke();
     }
   }
-  registerPaint('linear-path', LinearPath);
+  registerPaint('path-line', pathLine);
 }

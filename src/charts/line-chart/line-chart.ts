@@ -122,10 +122,10 @@ class LineChart {
       <section class='lineChart__datasets' style='${this.setGridStyle()}'>
         ${this.datasets
           .map((set) => {
-            return `<section id='${set.name}' class='lineChart__dataset' style='${this.setPathStyle(
+            return `<div id='${set.name}' class='lineChart__dataset' style='${this.setPathStyle(
               set.values,
               set.color
-            )}'>${this.renderDataset(set.values, set.color)}</section>`;
+            )}'>${this.renderDataset(set.values, set.color)}</div>`;
           })
           .join('')}
       </section>
@@ -137,7 +137,7 @@ class LineChart {
   };
 
   private setPathStyle = (values: number[], color?: string) => {
-    return `background: paint(linear-path); --path-points:${JSON.stringify(
+    return `background: paint(path-line); --path-points:${JSON.stringify(
       values
     )}; --path-range:${JSON.stringify(this.range)}; --path-color:${color};`;
   };

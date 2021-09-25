@@ -12,7 +12,8 @@ import { Config } from './config';
 const bubbleBorderWorklet = new URL('./worklets/bubble-border.js', import.meta.url);
 const gridBasicWorklet = new URL('./worklets/grid-basic.js', import.meta.url);
 const gridRadarWorklet = new URL('./worklets/grid-radar.js', import.meta.url);
-const linearPathWorklet = new URL('./worklets/linear-path.js', import.meta.url);
+const pathLineWorklet = new URL('./worklets/path-line.js', import.meta.url);
+const pathRadarWorklet = new URL('./worklets/path-radar.js', import.meta.url);
 
 // currently TypeScript does not support the paintWorklet property
 // @ts-ignore
@@ -22,7 +23,9 @@ CSS.paintWorklet.addModule(gridBasicWorklet.href);
 // @ts-ignore
 CSS.paintWorklet.addModule(gridRadarWorklet.href);
 // @ts-ignore
-CSS.paintWorklet.addModule(linearPathWorklet.href);
+CSS.paintWorklet.addModule(pathLineWorklet.href);
+// @ts-ignore
+CSS.paintWorklet.addModule(pathRadarWorklet.href);
 
 class HoudiniChart {
   constructor(private readonly container: HTMLElement, private readonly config: Config) {
