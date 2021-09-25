@@ -17,7 +17,7 @@ if (typeof registerPaint !== 'undefined') {
       const width = size.width;
       const segments = {
         width: width / segmentsX,
-        height: height / segmentsY,
+        height: Math.round((height / segmentsY) * 100) / 100,
       };
 
       ctx.strokeStyle = color;
@@ -30,7 +30,8 @@ if (typeof registerPaint !== 'undefined') {
       ctx.stroke();
 
       ctx.beginPath();
-      for (let y = 0; y <= height; y += segments.height) {
+      // +1 quickfix for rounding issues
+      for (let y = 0; y <= height + 1; y += segments.height) {
         ctx.moveTo(0, y);
         ctx.lineTo(width, y);
       }
