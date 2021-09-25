@@ -81,9 +81,9 @@ class RadarChart {
   };
 
   private setGridStyle = () => {
-    return `background: paint(grid-radar); --grid-labels:${this.numberOfLabels()}; --grid-segments:${
+    return `background:paint(grid-radar); --grid-labels:${this.numberOfLabels()}; --grid-segments:${
       this.segments
-    }; --grid-color: ${this.gridColor}`;
+    }; --grid-color:${this.gridColor}`;
   };
 
   private renderLabels = () => {
@@ -98,16 +98,20 @@ class RadarChart {
     return this.datasets
       .map(
         (set) =>
-          `<div class='houdini__dataset' style='${this.setPathStyles()}'>${this.renderDatapoints(
+          `<div id='${set.name}' class='houdini__dataset' style='${this.setPathStyles(
             set.values,
             set.color
-          )}</div>`
+          )}'>${this.renderDatapoints(set.values, set.color)}</div>`
       )
       .join('');
   };
 
-  private setPathStyles = () => {
-    return `background: paint(radar-path);`;
+  private setPathStyles = (values: number[], color?: string) => {
+    return `background:paint(path-radar); --path-points:${JSON.stringify(
+      values
+    )}; --path-segments:${this.segments}; --path-labels:${this.numberOfLabels()}; --path-range:${
+      this.range
+    }; --path-color:${color};`;
   };
 
   private renderDatapoints = (values: number[], color?: string) => {

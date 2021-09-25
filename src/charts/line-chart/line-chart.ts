@@ -133,11 +133,11 @@ class LineChart {
   };
 
   private setGridStyle = () => {
-    return `background: paint(grid-basic); --grid-segementsX:${this.segments.x}; --grid-segementsY:${this.segments.y}; --grid-color: ${this.gridColor}`;
+    return `background:paint(grid-basic); --grid-segementsX:${this.segments.x}; --grid-segementsY:${this.segments.y}; --grid-color:${this.gridColor}`;
   };
 
   private setPathStyle = (values: number[], color?: string) => {
-    return `background: paint(path-line); --path-points:${JSON.stringify(
+    return `background:paint(path-line); --path-points:${JSON.stringify(
       values
     )}; --path-range:${JSON.stringify(this.range)}; --path-color:${color};`;
   };
@@ -164,7 +164,7 @@ class LineChart {
     const xTwoDigits = Math.round(percentageX * 100) / 100;
     const yTwoDigits = Math.round(percentageY * 100) / 100;
 
-    return `background-color: ${color}; left: calc(${xTwoDigits}% - 5px); bottom: calc(${yTwoDigits}% - 5px)`; // -5px because dotSize = 10 / 2
+    return `background-color:${color}; left:calc(${xTwoDigits}% - 5px); bottom:calc(${yTwoDigits}% - 5px)`; // -5px because dotSize = 10 / 2
   };
 
   private addEvents = () => {

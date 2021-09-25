@@ -10,3 +10,9 @@
 .houdini--radar .houdini__labels {
   position: absolute;
 }
+
+.houdini--radar .houdini__dataset {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
