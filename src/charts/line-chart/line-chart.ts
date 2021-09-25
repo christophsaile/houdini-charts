@@ -70,50 +70,50 @@ class LineChart {
   };
 
   private renderTitleY = () => {
-    return `<h3 class='lineChart__title-y'>${this.config.options?.titleAxis?.y}</h3>`;
+    return `<h3 class='lineChart__ytitle'>${this.config.options?.titleAxis?.y}</h3>`;
   };
 
   private renderTitleX = () => {
-    return `<h3 class='lineChart__title-x'>${this.config.options?.titleAxis?.x}</h3>`;
+    return `<h3 class='lineChart__xtitle'>${this.config.options?.titleAxis?.x}</h3>`;
   };
 
   private renderChart = () => {
     return `
       <section class='lineChart__chart'>
-      ${this.renderChartY()}
-      ${this.renderChartX()}
+      ${this.renderYaxis()}
+      ${this.renderXAxis()}
       ${this.renderData()}
       </section>
     `;
   };
 
-  private renderChartY = () => {
+  private renderYaxis = () => {
     const { tickSpacing, niceMinimum, niceMaximum } = this.niceNumbers;
     let template: string = '';
     let j = 0;
 
     for (let i = niceMinimum; i <= niceMaximum; i = i + tickSpacing) {
       const percantage = (j / this.segments.y) * 100;
-      template += `<span class='lineChart__label-y' style='bottom: calc(${percantage}% - 8px)'>${i}</span>`; // -8px because fontSize = 16px / 2
+      template += `<span class='lineChart__ylabel' style='bottom: calc(${percantage}% - 8px)'>${i}</span>`; // -8px because fontSize = 16px / 2
       j = j + 1;
     }
 
     return `
-      <section class='lineChart__chart-y'>${template}</section>
+      <section class='lineChart__yaxis'>${template}</section>
     `;
   };
 
-  private renderChartX = () => {
+  private renderXAxis = () => {
     let template: string = '';
 
     for (let i = this.min.x; i <= this.max.x; i++) {
       const segmentWidth = 100 / this.segments.x;
       const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
-      template += `<span class='lineChart__label-x' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.xaxis[i]}</span>`; // -8px because fontSize = 16px / 2
+      template += `<span class='lineChart__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.xaxis[i]}</span>`; // -8px because fontSize = 16px / 2
     }
 
     return `
-      <section class='lineChart__chart-x'>
+      <section class='lineChart__xaxis'>
       ${template}
       </section>
     `;
