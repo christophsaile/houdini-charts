@@ -20,7 +20,7 @@ class RadarChart {
 
   private scaleSettings = this.config.data.scale;
   private datasets = this.config.data.datasets;
-  private labels = this.config.data.labels;
+  private xaxis = this.config.data.xaxis;
   private options = this.config.options;
 
   private autoScale = this.scaleSettings.auto;
@@ -39,14 +39,14 @@ class RadarChart {
     (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing +
     1; // todo: check why + 1 is needed to show top lane
 
-  private numberOfLabels = () => {
+  private numberOfAxis = () => {
     let length;
-    if (this.labels.length < 3) {
+    if (this.xaxis.length < 3) {
       length = 3;
-    } else if (this.labels.length > 10) {
+    } else if (this.xaxis.length > 10) {
       length = 10;
     } else {
-      length = this.labels.length;
+      length = this.xaxis.length;
     }
     return length;
   };
@@ -75,23 +75,32 @@ class RadarChart {
   private renderChart = () => {
     return `
       <section class='houdini__chart' style='${this.setGridStyle()}'>
-        ${this.renderLabels()}
+        ${this.renderXaxis()}
+        ${this.renderYaxis()}
         ${this.renderDatasets()}
       </section>
     `;
   };
 
   private setGridStyle = () => {
-    return `background:paint(grid-radar); --grid-labels:${this.numberOfLabels()}; --grid-segments:${
+    return `background:paint(grid-radar); --grid-xaxis:${this.numberOfAxis()}; --grid-segments:${
       this.segments
     }; --grid-color:${this.gridColor}`;
   };
 
-  private renderLabels = () => {
+  private renderXaxis = () => {
     return `
-      <div class='houdini__labels'>
-        ${this.labels}
+      <div class='houdini__xaxis'>
+        ${this.xaxis}
       </div>
+    `;
+  };
+
+  private renderYaxis = () => {
+    return `
+      <section class='houdini__yaxis'>
+        
+      </section>
     `;
   };
 
@@ -110,7 +119,7 @@ class RadarChart {
   private setPathStyles = (values: number[], color?: string) => {
     return `background:paint(path-radar); --path-points:${JSON.stringify(
       values
-    )}; --path-labels:${this.numberOfLabels()}; --path-range:${JSON.stringify(
+    )}; --path-xaxis:${this.numberOfAxis()}; --path-range:${JSON.stringify(
       this.range
     )}; --path-color:${color};`;
   };

@@ -2,7 +2,7 @@ export interface Config {
   title?: string;
   chartType: string;
   data: {
-    labels: string[];
+    xaxis: string[];
     datasets: Datasets[];
     scale: Scale;
   };

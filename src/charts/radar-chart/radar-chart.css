@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.houdini--radar .houdini__labels {
+.houdini--radar .houdini__xaxis {
   position: absolute;
 }
 

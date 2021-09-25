@@ -1,5 +1,5 @@
 {
-  "labels": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+  "xaxis": ["Mon", "Tue", "Wed", "Thu", "Fri"],
   "datasets": [
     {
       "name": "dataset1",

@@ -1,11 +1,11 @@
 if (typeof registerPaint !== 'undefined') {
   class pathRadar {
     static get inputProperties() {
-      return ['--path-points', '--path-labels', '--path-range', '--path-color'];
+      return ['--path-points', '--path-xaxis', '--path-range', '--path-color'];
     }
     paint(ctx, size, properties) {
       const points = JSON.parse(String(properties.get('--path-points')));
-      const labels = parseInt(properties.get('--path-labels'));
+      const xaxis = parseInt(properties.get('--path-xaxis'));
       const range = JSON.parse(String(properties.get('--path-range')));
       const color = String(properties.get('--path-color')) || '#000';
 
@@ -16,7 +16,7 @@ if (typeof registerPaint !== 'undefined') {
       const centerY = height / 2;
 
       const getPolygonPos = (size, point) => {
-        let angle = (Math.PI * 2) / labels;
+        let angle = (Math.PI * 2) / xaxis;
         let curPos = {};
         curPos.x = size * Math.sin(point * angle) + centerX;
         curPos.y = -size * Math.cos(point * angle) + centerY;
@@ -24,7 +24,7 @@ if (typeof registerPaint !== 'undefined') {
       };
 
       let dotsArray = [];
-      for (let i = 0; i < labels; i++) {
+      for (let i = 0; i < xaxis; i++) {
         const size = centerY * (points[i] / range.y - range.zeroY);
         dotsArray.push(getPolygonPos(size, i));
       }
@@ -38,7 +38,7 @@ if (typeof registerPaint !== 'undefined') {
       ctx.moveTo(dotsArray[0].x, dotsArray[0].y);
 
       // increase counter + 1 because of doubled first value
-      for (let i = 0; i < labels + 1; i++) {
+      for (let i = 0; i < xaxis + 1; i++) {
         ctx.lineTo(dotsArray[i].x, dotsArray[i].y);
       }
 

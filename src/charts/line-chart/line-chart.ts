@@ -17,7 +17,7 @@ class LineChart {
 
   private scaleSettings = this.config.data.scale;
   private datasets = this.config.data.datasets;
-  private labels = this.config.data.labels;
+  private xaxis = this.config.data.xaxis;
   private options = this.config.options;
 
   private autoScale = this.scaleSettings.auto;
@@ -26,7 +26,7 @@ class LineChart {
     y: this.autoScale ? getMinValue(flattenDataset(this.datasets)) : this.scaleSettings.min!,
   };
   private max = {
-    x: this.labels.length - 1,
+    x: this.xaxis.length - 1,
     y: this.autoScale ? getMaxValue(flattenDataset(this.datasets)) : this.scaleSettings.max!,
   };
   private niceNumbers = niceScale(this.min.y, this.max.y);
@@ -109,7 +109,7 @@ class LineChart {
     for (let i = this.min.x; i <= this.max.x; i++) {
       const segmentWidth = 100 / this.segments.x;
       const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
-      template += `<span class='lineChart__label-x' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.labels[i]}</span>`; // -8px because fontSize = 16px / 2
+      template += `<span class='lineChart__label-x' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.xaxis[i]}</span>`; // -8px because fontSize = 16px / 2
     }
 
     return `

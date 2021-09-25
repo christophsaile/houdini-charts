@@ -1,12 +1,12 @@
 if (typeof registerPaint !== 'undefined') {
   class GridRadar {
     static get inputProperties() {
-      return ['--grid-labels', '--grid-segments', '--grid-color'];
+      return ['--grid-xaxis', '--grid-segments', '--grid-color'];
     }
     paint(ctx, size, properties) {
       const color = String(properties.get('--grid-color'));
       const segments = parseInt(properties.get('--grid-segments'));
-      const labels = parseInt(properties.get('--grid-labels'));
+      const xaxis = parseInt(properties.get('--grid-xaxis'));
 
       const height = size.height;
       const width = size.width;
@@ -15,11 +15,11 @@ if (typeof registerPaint !== 'undefined') {
       const centerX = width / 2;
       const centerY = height / 2;
 
-      const getPolygonPos = (size, labels) => {
+      const getPolygonPos = (size, numberOfAxis) => {
         let dotsArray = [];
-        let angle = (Math.PI * 2) / labels;
+        let angle = (Math.PI * 2) / numberOfAxis;
 
-        for (let i = 0; i < labels; i++) {
+        for (let i = 0; i < numberOfAxis; i++) {
           let curPos = {};
           curPos.x = size * Math.sin(i * angle) + centerX;
           curPos.y = -size * Math.cos(i * angle) + centerY;
@@ -45,12 +45,12 @@ if (typeof registerPaint !== 'undefined') {
 
       // Polygon
       for (let i = 0; i < radiusSizes.length; i++) {
-        const polygon = getPolygonPos(radiusSizes[i], labels);
+        const polygon = getPolygonPos(radiusSizes[i], xaxis);
         ctx.beginPath();
         ctx.moveTo(polygon[0].x, polygon[0].y);
 
         // increase counter + 1 because of doubled first value
-        for (let j = 0; j < labels + 1; j++) {
+        for (let j = 0; j < xaxis + 1; j++) {
           ctx.lineTo(polygon[j].x, polygon[j].y);
         }
 
@@ -58,10 +58,10 @@ if (typeof registerPaint !== 'undefined') {
       }
 
       // Axis lines
-      const polygon = getPolygonPos(circleSize, labels);
+      const polygon = getPolygonPos(circleSize, xaxis);
       ctx.beginPath();
 
-      for (let i = 0; i < labels; i++) {
+      for (let i = 0; i < xaxis; i++) {
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(polygon[i].x, polygon[i].y);
       }
