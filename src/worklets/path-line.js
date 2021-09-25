@@ -21,7 +21,7 @@ if (typeof registerPaint !== 'undefined') {
         const x = i;
         const y = points[i];
         const newX = width * (x / range.x);
-        const newY = height - height * (y / range.y);
+        const newY = height - height * (y / range.y - range.zeroY);
         ctx.lineTo(newX, newY);
       }
 

@@ -26,7 +26,7 @@ if (typeof registerPaint !== 'undefined') {
           dotsArray.push(curPos);
         }
 
-        // add frist value double to finish the shape
+        // push first value again to close shape
         dotsArray.push(dotsArray[0]);
 
         return dotsArray;

@@ -2,6 +2,7 @@ import { niceScale } from '../../utils/nice-num';
 import { getMinValue } from '../../utils/get-min-value';
 import { getMaxValue } from '../../utils/get-max-value';
 import { flattenDataset } from '../../utils/flatten-dataset';
+import { setMinToZero } from '../../utils/set-min-to-zero';
 
 // styles
 import './line-chart.css';
@@ -32,6 +33,7 @@ class LineChart {
   private range = {
     x: this.max.x - this.min.x,
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
+    zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
   };
   private segments = {
     x: this.max.x,
@@ -159,7 +161,7 @@ class LineChart {
 
   private setDatapointStyle = (y: number, x: number, color?: string) => {
     const percentageX = (x / this.range.x) * 100;
-    const percentageY = (y / this.range.y) * 100;
+    const percentageY = (y / this.range.y - this.range.zeroY) * 100;
 
     const xTwoDigits = Math.round(percentageX * 100) / 100;
     const yTwoDigits = Math.round(percentageY * 100) / 100;

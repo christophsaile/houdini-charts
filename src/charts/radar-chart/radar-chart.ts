@@ -2,6 +2,7 @@ import { niceScale } from '../../utils/nice-num';
 import { getMinValue } from '../../utils/get-min-value';
 import { getMaxValue } from '../../utils/get-max-value';
 import { flattenDataset } from '../../utils/flatten-dataset';
+import { setMinToZero } from '../../utils/set-min-to-zero';
 
 // styles
 import './radar-chart.css';
@@ -30,9 +31,13 @@ class RadarChart {
     ? getMaxValue(flattenDataset(this.datasets))
     : this.scaleSettings.max!;
   private niceNumbers = niceScale(this.min, this.max);
-  private range = this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum;
+  private range = {
+    y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
+    zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
+  };
   private segments =
-    (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing;
+    (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing +
+    1; // todo: check why + 1 is needed to show top lane
 
   private numberOfLabels = () => {
     let length;
@@ -49,10 +54,6 @@ class RadarChart {
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
   private init = () => {
-    // console.log('min, max', this.min, this.max);
-    // console.log('range', this.range);
-    // console.log('segments', this.segments);
-
     this.render();
   };
 
@@ -109,9 +110,9 @@ class RadarChart {
   private setPathStyles = (values: number[], color?: string) => {
     return `background:paint(path-radar); --path-points:${JSON.stringify(
       values
-    )}; --path-segments:${this.segments}; --path-labels:${this.numberOfLabels()}; --path-range:${
+    )}; --path-labels:${this.numberOfLabels()}; --path-range:${JSON.stringify(
       this.range
-    }; --path-color:${color};`;
+    )}; --path-color:${color};`;
   };
 
   private renderDatapoints = (values: number[], color?: string) => {
