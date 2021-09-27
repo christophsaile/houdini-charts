@@ -24,7 +24,7 @@ export default function Header(config: Config): string {
   return `
     <section class='houdini__header'>
       <h2 class='houdini__title'>${title}</h2>
-      ${legend && renderLegend()}
+      ${legend ? renderLegend() : ''}
     </section>
   `;
 }
