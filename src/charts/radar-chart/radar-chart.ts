@@ -85,7 +85,7 @@ class RadarChart {
   private init = () => {
     this.render();
     this.styles();
-    this.listeners();
+    this.events();
   };
 
   private render = () => {
@@ -211,7 +211,7 @@ class RadarChart {
   };
 
   // todo: add listeners
-  private listeners = () => {
+  private events = () => {
     this.resize();
   };
 

@@ -1,13 +1,13 @@
 if (typeof registerPaint !== 'undefined') {
   class GridBasic {
     static get inputProperties() {
-      return ['--grid-color', '--grid-segementsY', '--grid-segementsX', '--grid-highlight'];
+      return ['--grid-color', '--grid-segmentsY', '--grid-segmentsX', '--grid-highlight'];
     }
 
     paint(ctx, size, properties) {
       const color = String(properties.get('--grid-color'));
-      const segmentsX = parseInt(properties.get('--grid-segementsX'));
-      const segmentsY = parseInt(properties.get('--grid-segementsY'));
+      const segmentsX = parseInt(properties.get('--grid-segmentsX'));
+      const segmentsY = parseInt(properties.get('--grid-segmentsY'));
       const gridHighlight =
         properties.get('--grid-highlight').length != 0
           ? JSON.parse(String(properties.get('--grid-highlight')))

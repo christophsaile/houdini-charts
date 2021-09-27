@@ -7,6 +7,7 @@
   --color-green: #c1ffd7;
   --color-blue: #b5deff;
   --color-yellow: #fcffa6;
+  --datapoint-size: 10px;
 }
 
 * {
@@ -67,8 +68,11 @@ nav a:last-child {
 }
 
 @media screen and (min-width: 768px) {
-  #houdiniLine,
   #houdiniRadar {
     width: 50%;
+  }
+
+  #houdiniLine {
+    width: 80%;
   }
 }
