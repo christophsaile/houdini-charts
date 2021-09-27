@@ -7,6 +7,7 @@ export interface Config {
     scale: Scale;
   };
   options?: {
+    fill?: boolean;
     legend?: boolean;
     titleAxis?: {
       x?: string;

@@ -1,12 +1,13 @@
 if (typeof registerPaint !== 'undefined') {
   class pathRadar {
     static get inputProperties() {
-      return ['--path-points', '--path-xaxis', '--path-range', '--path-color'];
+      return ['--path-points', '--path-xaxis', '--path-range', , '--path-fill', '--path-color'];
     }
     paint(ctx, size, properties) {
       const points = JSON.parse(String(properties.get('--path-points')));
       const xaxis = parseInt(properties.get('--path-xaxis'));
       const range = JSON.parse(String(properties.get('--path-range')));
+      const fill = Boolean(properties.get('--path-fill'));
       const color = String(properties.get('--path-color')) || '#000';
 
       const height = size.height;
@@ -42,6 +43,10 @@ if (typeof registerPaint !== 'undefined') {
         ctx.lineTo(dotsArray[i].x, dotsArray[i].y);
       }
 
+      if (fill) {
+        ctx.fillStyle = `${color}33`; // todo: fix alpha for all colors
+        ctx.fill();
+      }
       ctx.stroke();
     }
   }

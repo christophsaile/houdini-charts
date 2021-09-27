@@ -51,6 +51,7 @@ class RadarChart {
     return length;
   };
 
+  private pathFill = this.options?.fill ? true : false;
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
   private init = () => {
@@ -130,7 +131,7 @@ class RadarChart {
       values
     )}; --path-xaxis:${this.numberOfAxis()}; --path-range:${JSON.stringify(
       this.range
-    )}; --path-color:${color};`;
+    )}; --path-fill:${this.pathFill}; --path-color:${color};`;
   };
 
   private renderDatapoints = (values: number[], color?: string) => {
