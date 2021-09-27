@@ -1,10 +1,10 @@
 .houdini__header {
-  padding-bottom: var(--spacing-small);
+  padding-bottom: var(--spacing-md);
 }
 
 .houdini__title {
   text-align: center;
-  padding-bottom: var(--spacing-small);
+  padding-bottom: var(--spacing-lg);
 }
 
 .houdini__legend {
@@ -12,15 +12,16 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  padding-bottom: var(--spacing-lg);
 }
 
 .houdini__legend-item {
   display: flex;
-  padding: var(--spacing-small);
+  padding: 0 var(--spacing-sm);
 }
 
 .houdini__legend-item span {
-  margin-right: var(--spacing-small);
+  margin-right: var(--spacing-sm);
   width: 30px;
   height: 100%;
 }

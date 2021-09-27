@@ -17,7 +17,7 @@
   grid-column: 2;
   grid-row: 1;
   justify-self: center;
-  margin-bottom: 30px;
+  margin-bottom: var(--spacing-lg);
 }
 
 .lineChart__xtitle,
@@ -39,14 +39,14 @@
   align-self: center;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  padding-left: 20px;
+  padding-left: var(--spacing-md);
 }
 
 .lineChart__xtitle {
   grid-column: 2;
   grid-row: 3;
   justify-self: center;
-  padding-top: 20px;
+  padding-top: var(--spacing-md);
 }
 
 .lineChart__chart {
@@ -66,14 +66,14 @@
 .lineChart__yaxis {
   grid-column: 1;
   grid-row: 1;
-  width: var(--spacing-small);
+  width: var(--spacing-sm);
   margin-left: 26px;
 }
 
 .lineChart__xaxis {
   grid-column: 2;
   grid-row: 2;
-  height: var(--spacing-small);
+  height: var(--spacing-sm);
   margin-bottom: 26px;
 }
 

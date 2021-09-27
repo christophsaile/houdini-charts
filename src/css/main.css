@@ -1,5 +1,8 @@
 :root {
-  --spacing-small: 10px;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 40px;
   --color-purple: #cab8ff;
   --color-green: #c1ffd7;
   --color-blue: #b5deff;
@@ -26,7 +29,7 @@ nav {
 
 nav a {
   font-size: 32px;
-  padding-bottom: var(--spacing-small);
+  padding-bottom: var(--spacing-sm);
   color: black;
   text-decoration: none;
 }
