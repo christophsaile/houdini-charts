@@ -9,6 +9,7 @@ import './line-chart.css';
 
 // Interfaces
 import { Config } from '../../config';
+import { roundTwoDigits } from '../../utils/round-two-digits';
 
 class LineChart {
   constructor(private readonly container: HTMLElement, private readonly config: Config) {
@@ -164,10 +165,10 @@ class LineChart {
     const percentageX = (x / this.range.x) * 100;
     const percentageY = (y / this.range.y - this.range.zeroY) * 100;
 
-    const xTwoDigits = Math.round(percentageX * 100) / 100;
-    const yTwoDigits = Math.round(percentageY * 100) / 100;
-
-    return `background-color:${color}; left:calc(${xTwoDigits}% - 5px); bottom:calc(${yTwoDigits}% - 5px)`; // -5px because dotSize = 10 / 2
+    // -5px because dotSize = 10 / 2
+    return `background-color:${color}; left:calc(${roundTwoDigits(
+      percentageX
+    )}% - 5px); bottom:calc(${roundTwoDigits(percentageY)}% - 5px)`;
   };
 
   private addEvents = () => {
