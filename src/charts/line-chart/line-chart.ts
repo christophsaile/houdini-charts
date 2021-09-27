@@ -11,6 +11,14 @@ import './line-chart.css';
 import { Config } from '../../config';
 import { roundTwoDigits } from '../../utils/round-two-digits';
 
+// Worklets
+const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
+const pathLineWorklet = new URL('../../worklets/path-line.js', import.meta.url);
+// @ts-ignore
+CSS.paintWorklet.addModule(gridBasicWorklet.href);
+// @ts-ignore
+CSS.paintWorklet.addModule(pathLineWorklet.href);
+
 class LineChart {
   constructor(private readonly container: HTMLElement, private readonly config: Config) {
     this.init();

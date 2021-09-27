@@ -67,11 +67,6 @@ if (typeof registerPaint !== 'undefined') {
       }
 
       ctx.stroke();
-
-      // Test Circle
-      ctx.beginPath();
-      ctx.arc(centerX, centerX, circleSize, 0, 2 * Math.PI);
-      ctx.stroke();
     }
   }
   registerPaint('grid-radar', GridRadar);

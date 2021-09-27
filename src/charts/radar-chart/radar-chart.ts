@@ -4,6 +4,7 @@ import { getMaxValue } from '../../utils/get-max-value';
 import { flattenDataset } from '../../utils/flatten-dataset';
 import { setMinToZero } from '../../utils/set-min-to-zero';
 import { debounce } from '../../utils/debounce';
+import { getRadarPoints } from '../../utils/get-radar-points-';
 
 // styles
 import './radar-chart.css';
@@ -14,7 +15,14 @@ import { coordinates } from '../../utils/utils';
 
 // classes
 import Header from '../../elements/header/header';
-import { getRadarPoints } from '../../utils/get-radar-points-';
+
+// worklets
+const gridRadarWorklet = new URL('../../worklets/grid-radar.js', import.meta.url);
+const pathRadarWorklet = new URL('../../worklets/path-radar.js', import.meta.url);
+// @ts-ignore
+CSS.paintWorklet.addModule(gridRadarWorklet.href);
+// @ts-ignore
+CSS.paintWorklet.addModule(pathRadarWorklet.href);
 
 class RadarChart {
   constructor(private readonly container: HTMLElement, private readonly config: Config) {
@@ -52,18 +60,26 @@ class RadarChart {
     }
     return length;
   };
-  private pathFill = this.options?.fill ? true : false;
-  private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
+  private datapointCoordinates: coordinates[][] = [];
   private chartSize: coordinates = {
     x: 0,
     y: 0,
   };
-  private datapointCoordinates: coordinates[][] = [];
+  private pathFill = this.options?.fill ? true : false;
+  private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
+
+  private getChartElem!: HTMLElement;
+
   private getDatapointCoordinates = () => {
     const datapoints = this.datasets.map((set) => {
       return getRadarPoints(set.values, this.chartSize, this.range);
     });
     return datapoints;
+  };
+
+  private setChartSize = () => {
+    this.chartSize.x = this.getChartElem.clientHeight;
+    this.chartSize.y = this.getChartElem.clientWidth;
   };
 
   private init = () => {
@@ -94,8 +110,8 @@ class RadarChart {
   private renderChart = () => {
     const template = `<section class='houdini__chart'></section>`;
     this.container.querySelector('.houdini')!.innerHTML += template;
-    this.chartSize.x = this.container.querySelector('.houdini__chart')!.clientHeight;
-    this.chartSize.y = this.container.querySelector('.houdini__chart')!.clientWidth;
+    this.getChartElem = this.container.querySelector('.houdini__chart')!;
+    this.setChartSize();
   };
 
   // todo: add xaxis
@@ -106,7 +122,7 @@ class RadarChart {
       </div>
     `;
 
-    this.container.querySelector('.houdini__chart')!.innerHTML += template;
+    this.getChartElem.innerHTML += template;
   };
 
   private renderYaxis = () => {
@@ -120,9 +136,7 @@ class RadarChart {
       j = j + 1;
     }
 
-    this.container.querySelector(
-      '.houdini__chart'
-    )!.innerHTML += `<section class='houdini__yaxis'>${template}</section>`;
+    this.getChartElem.innerHTML += `<section class='houdini__yaxis'>${template}</section>`;
   };
 
   private renderDatasets = () => {
@@ -132,7 +146,7 @@ class RadarChart {
       })
       .join('');
 
-    this.container.querySelector('.houdini__chart')!.innerHTML += template;
+    this.getChartElem.innerHTML += template;
   };
 
   private renderDatapoints = () => {
@@ -153,15 +167,14 @@ class RadarChart {
   };
 
   private setGrid = () => {
-    const elem = this.container.querySelector('.houdini__chart');
     // @ts-ignore
-    elem.attributeStyleMap.set('background', 'paint(grid-radar)');
+    this.getChartElem.attributeStyleMap.set('background', 'paint(grid-radar)');
     // @ts-ignore
-    elem.attributeStyleMap.set('--grid-segments', this.segments);
+    this.getChartElem.attributeStyleMap.set('--grid-segments', this.segments);
     // @ts-ignore
-    elem.attributeStyleMap.set('--grid-xaxis', this.numberOfAxis());
+    this.getChartElem.attributeStyleMap.set('--grid-xaxis', this.numberOfAxis());
     // @ts-ignore
-    elem.attributeStyleMap.set('--grid-color', this.gridColor);
+    this.getChartElem.attributeStyleMap.set('--grid-color', this.gridColor);
   };
 
   private setPath = () => {
@@ -184,7 +197,7 @@ class RadarChart {
       const color = this.datasets[index].color;
 
       elem.querySelectorAll('.houdini__datapoint').forEach((datapoint, innerIndex) => {
-        //-5px because dotSize = 10 / 2
+        // -5px because dotSize = 10 / 2
         const x = this.datapointCoordinates[index][innerIndex].x + this.chartSize.x / 2 - 5;
         const y = this.datapointCoordinates[index][innerIndex].y + this.chartSize.y / 2 - 5;
         // @ts-ignore
@@ -206,8 +219,7 @@ class RadarChart {
     window.addEventListener(
       'resize',
       debounce(() => {
-        this.chartSize.x = this.container.querySelector('.houdini__chart')!.clientHeight;
-        this.chartSize.y = this.container.querySelector('.houdini__chart')!.clientWidth;
+        this.setChartSize();
         this.datapointCoordinates = this.getDatapointCoordinates();
         this.setPath();
         this.setDatapoints();
