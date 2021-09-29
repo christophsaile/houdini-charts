@@ -5,7 +5,8 @@ if (typeof registerPaint !== 'undefined') {
     }
     paint(ctx, size, properties) {
       const points = JSON.parse(String(properties.get('--path-points')));
-      const fill = Boolean(properties.get('--path-fill'));
+      const fill =
+        String(properties.get('--path-fill')).toLocaleLowerCase() === 'true' ? true : false;
       const color = String(properties.get('--path-color')) || '#000';
 
       const centerX = size.width / 2;
