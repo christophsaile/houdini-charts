@@ -1,13 +1,15 @@
 :root {
+  --datapoint-size: 10px;
   --spacing-sm: 10px;
   --spacing-md: 20px;
   --spacing-lg: 30px;
   --spacing-xl: 40px;
+  --font-sm: 10px;
+  --font-md: 16px;
   --color-purple: #cab8ff;
   --color-green: #c1ffd7;
   --color-blue: #b5deff;
   --color-yellow: #fcffa6;
-  --datapoint-size: 10px;
 }
 
 * {

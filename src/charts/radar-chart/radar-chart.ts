@@ -60,7 +60,6 @@ class RadarChart {
     }
     return length;
   };
-  private datapointCoordinates: coordinates[][] = [];
   private chartSize: coordinates = {
     x: 0,
     y: 0,
@@ -70,11 +69,18 @@ class RadarChart {
 
   private getChartElem!: HTMLElement;
 
+  private datapointCoordinates: coordinates[][] = [];
   private getDatapointCoordinates = () => {
     const datapoints = this.datasets.map((set) => {
       return getRadarPoints(set.values, this.chartSize, this.range);
     });
     return datapoints;
+  };
+  private labelCoordinates: coordinates[] = [];
+  private getLabelsCoordinates = () => {
+    // +0.8 to get the right offset for the labels
+    const maxDataset = new Array(this.numberOfAxis()).fill(this.niceNumbers.niceMaximum + 0.8);
+    return getRadarPoints(maxDataset, this.chartSize, this.range);
   };
 
   private setChartSize = () => {
@@ -116,13 +122,13 @@ class RadarChart {
 
   // todo: add xaxis
   private renderXaxis = () => {
-    const template = `
-      <div class='houdini__xaxis'>
-        ${this.xaxis}
-      </div>
-    `;
+    const template = this.xaxis
+      .map((label) => {
+        return `<span class='houdini__xlabel'>${label}</span>`;
+      })
+      .join('');
 
-    this.getChartElem.innerHTML += template;
+    this.getChartElem.innerHTML += `<div class='houdini__xaxis'>${template}</div>`;
   };
 
   private renderYaxis = () => {
@@ -136,7 +142,7 @@ class RadarChart {
       j = j + 1;
     }
 
-    this.getChartElem.innerHTML += `<section class='houdini__yaxis'>${template}</section>`;
+    this.getChartElem.innerHTML += `<div class='houdini__yaxis'>${template}</div>`;
   };
 
   private renderDatasets = () => {
@@ -161,10 +167,27 @@ class RadarChart {
 
   private styles = () => {
     this.datapointCoordinates = this.getDatapointCoordinates();
+    this.labelCoordinates = this.getLabelsCoordinates();
+    this.setAxisLabels();
     this.setGrid();
     this.setPath();
     this.setDatapoints();
   };
+
+  private setAxisLabels() {
+    const elems = this.container.querySelectorAll('.houdini__xlabel');
+    const centerX = this.chartSize.x / 2;
+    const centerY = this.chartSize.y / 2;
+
+    elems.forEach((label, index) => {
+      const x = this.labelCoordinates[index].x + centerX - label.clientWidth / 2;
+      const y = this.labelCoordinates[index].y + centerY - label.clientHeight / 2;
+      // @ts-ignore
+      label.attributeStyleMap.set('left', CSS.px(x));
+      // @ts-ignore
+      label.attributeStyleMap.set('bottom', CSS.px(y));
+    });
+  }
 
   private setGrid = () => {
     // @ts-ignore
@@ -221,6 +244,8 @@ class RadarChart {
       debounce(() => {
         this.setChartSize();
         this.datapointCoordinates = this.getDatapointCoordinates();
+        this.labelCoordinates = this.getLabelsCoordinates();
+        this.setAxisLabels();
         this.setPath();
         this.setDatapoints();
       }, 250)

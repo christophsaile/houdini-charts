@@ -18,11 +18,32 @@
 .houdini--radar .houdini__ylabel {
   position: absolute;
   line-height: 1;
+  font-size: var(--font-sm);
   z-index: 2;
+}
+@media screen and (min-width: 768px) {
+  .houdini--radar .houdini__ylabel {
+    font-size: var(--font-md);
+  }
 }
 
 .houdini--radar .houdini__xaxis {
   position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.houdini--radar .houdini__xlabel {
+  position: absolute;
+  line-height: 1;
+  font-size: var(--font-sm);
+  z-index: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .houdini--radar .houdini__xlabel {
+    font-size: var(--font-md);
+  }
 }
 
 .houdini--radar .houdini__dataset {
