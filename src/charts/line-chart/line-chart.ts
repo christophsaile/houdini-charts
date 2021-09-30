@@ -3,16 +3,19 @@ import { getMinValue } from '../../utils/get-min-value';
 import { getMaxValue } from '../../utils/get-max-value';
 import { flattenDataset } from '../../utils/flatten-dataset';
 import { setMinToZero } from '../../utils/set-min-to-zero';
-import { roundTwoDigits } from '../../utils/round-two-digits';
+import { debounce } from '../../utils/debounce';
+import { getLinePoints } from '../../utils/get-line-points';
 
 // styles
 import './line-chart.css';
 
 // interfaces
 import { Config } from '../../config';
+import { coordinates } from '../../utils/utils';
 
 // classes
 import Header from '../../elements/header/header';
+import { Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
 
 // worklets
 const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
@@ -50,6 +53,25 @@ class LineChart {
     x: this.max.x,
     y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
   };
+
+  private getChartElem!: HTMLElement;
+  private chartSize: coordinates = {
+    x: 0,
+    y: 0,
+  };
+  private setChartSize = () => {
+    this.chartSize.x = this.getChartElem.clientWidth;
+    this.chartSize.y = this.getChartElem.clientHeight;
+  };
+
+  private datapointCoordinates: coordinates[][] = [];
+  private getDatapointCoordinates = () => {
+    const datapoints = this.datasets.map((set) => {
+      return getLinePoints(set.values, this.chartSize, this.range);
+    });
+    return datapoints;
+  };
+
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
   private init = () => {
@@ -66,6 +88,7 @@ class LineChart {
     this.renderYaxis();
     this.renderXAxis();
     this.renderDatasets();
+    this.renderTooltip();
   };
 
   private renderWrapper = () => {
@@ -140,22 +163,37 @@ class LineChart {
         ${this.datasets
           .map((set) => {
             return `<div id='${set.name}' class='houdini__dataset'>${this.renderDataset(
-              set.values
+              set.values,
+              set.name
             )}</div>`;
           })
           .join('')}
       </section>
     `;
     this.container.querySelector('.houdini__chart')!.innerHTML += template;
+    this.getChartElem = this.container.querySelector('.houdini__datasets')!;
+    this.setChartSize();
   };
 
-  private renderDataset = (values: number[]) => {
+  private renderDataset = (values: number[], name: string) => {
     return `
-      ${values.map(() => `<span class='houdini__datapoint'></span>`).join('')}
+      ${values
+        .map(
+          (value, index) =>
+            `<span class='houdini__datapoint' dataset='${name}' data-y='${value}' data-x='${this.xaxis[index]}' ></span>`
+        )
+        .join('')}
     `;
   };
 
+  private renderTooltip = () => {
+    // todo: remove paramaters
+    const template = Tooltip('Monday', 'dataset1', 33, '#fcffa6', { x: 200, y: 100 });
+    this.container.querySelector('.houdini__datasets')!.innerHTML += template;
+  };
+
   private styles = () => {
+    this.datapointCoordinates = this.getDatapointCoordinates();
     this.setGrid();
     this.setPath();
     this.setDatapoints();
@@ -179,9 +217,7 @@ class LineChart {
       // @ts-ignore
       elem.attributeStyleMap.set('background', 'paint(path-line)');
       // @ts-ignore
-      elem.attributeStyleMap.set('--path-points', JSON.stringify(this.datasets[index].values));
-      // @ts-ignore
-      elem.attributeStyleMap.set('--path-range', JSON.stringify(this.range));
+      elem.attributeStyleMap.set('--path-points', JSON.stringify(this.datapointCoordinates[index]));
       // @ts-ignore
       elem.attributeStyleMap.set('--path-color', this.datasets[index].color);
     });
@@ -193,31 +229,36 @@ class LineChart {
       const color = this.datasets[index].color;
 
       elem.querySelectorAll('.houdini__datapoint').forEach((datapoint, innerIndex) => {
-        const x = innerIndex;
-        const y = this.datasets[index].values[innerIndex];
-        const percentageX = (x / this.range.x) * 100;
-        const percentageY = (y / this.range.y - this.range.zeroY) * 100;
+        // -5px because dotSize = 10 / 2
+        const x = this.datapointCoordinates[index][innerIndex].x - 5;
+        const y = this.datapointCoordinates[index][innerIndex].y - 5;
 
         // @ts-ignore
         datapoint.attributeStyleMap.set('background-color', color);
-        // -5px because dotSize = 10 / 2
-        (datapoint as HTMLElement).style.left = `calc(${percentageX}% - 5px)`;
-        (datapoint as HTMLElement).style.bottom = `calc(${percentageY}% - 5px)`;
+        // @ts-ignore
+        datapoint.attributeStyleMap.set('left', CSS.px(x));
+        // @ts-ignore
+        datapoint.attributeStyleMap.set('bottom', CSS.px(y));
       });
     });
   };
 
   private events = () => {
     this.highlightDatapoint();
+    this.resize();
   };
 
   private highlightDatapoint = () => {
     const container: HTMLElement = this.container.querySelector('.houdini__datasets')!;
-    const datapoints = document.querySelectorAll('.houdini__datapoint');
+    const datapoints: HTMLElement[] = [].slice.call(
+      document.querySelectorAll('.houdini__datapoint')
+    );
 
     container.addEventListener('click', () => this.handleGridClick(container));
-    datapoints.forEach((elem) => {
-      elem.addEventListener('click', (event) => this.handleDatapointClick(event, container));
+    datapoints.forEach((elem: HTMLElement) => {
+      elem.addEventListener('click', (event: MouseEvent) =>
+        this.handleDatapointClick(event, container)
+      );
     });
   };
 
@@ -226,16 +267,30 @@ class LineChart {
     container.attributeStyleMap.set('--grid-highlight', '{"x": 0, "y": 0}');
   };
 
-  private handleDatapointClick = (event: Event, container: HTMLElement) => {
+  private handleDatapointClick = (event: MouseEvent, container: HTMLElement) => {
     const position = {
       // @ts-ignore
-      x: event.target.attributeStyleMap.get('left').values[0].value,
+      x: event.target.attributeStyleMap.get('left').value,
       // @ts-ignore
-      y: event.target.attributeStyleMap.get('bottom').values[0].value,
+      y: event.target.attributeStyleMap.get('bottom').value,
     };
     // @ts-ignore
     container.attributeStyleMap.set('--grid-highlight', JSON.stringify(position));
+    updateTooltip(event, this.container);
+
     event.stopPropagation();
+  };
+
+  private resize = () => {
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        this.setChartSize();
+        this.datapointCoordinates = this.getDatapointCoordinates();
+        this.setPath();
+        this.setDatapoints();
+      }, 250)
+    );
   };
 }
 

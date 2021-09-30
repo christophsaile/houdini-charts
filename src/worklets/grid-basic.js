@@ -45,8 +45,8 @@ if (typeof registerPaint !== 'undefined') {
         }
 
         const position = {
-          x: width * (0.01 * gridHighlight.x),
-          y: height - height * (0.01 * gridHighlight.y),
+          x: gridHighlight.x + 5,
+          y: height - gridHighlight.y - 5,
         };
 
         ctx.beginPath();
