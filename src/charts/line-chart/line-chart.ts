@@ -265,6 +265,7 @@ class LineChart {
   private handleGridClick = (container: HTMLElement) => {
     // @ts-ignore
     container.attributeStyleMap.set('--grid-highlight', '{"x": 0, "y": 0}');
+    container.lastElementChild!.classList.add('houdini__tooltip--hide');
   };
 
   private handleDatapointClick = (event: MouseEvent, container: HTMLElement) => {
