@@ -253,16 +253,12 @@ class LineChart {
       document.querySelectorAll('.houdini__datapoint')
     );
 
-    this.elemDatasets.addEventListener('click', () => this.hideHighlight());
     datapoints.forEach((elem: HTMLElement) => {
       elem.addEventListener('click', (event: MouseEvent) => this.handleDatapointClick(event));
+      elem.addEventListener('mouseover', (event: MouseEvent) => updateTooltip(event, this.root));
+      elem.addEventListener('mouseout', () => hideTooltip(this.root));
     });
-  };
-
-  private hideHighlight = () => {
-    // @ts-ignore
-    this.elemDatasets.attributeStyleMap.set('--grid-highlight', 0);
-    hideTooltip(this.root);
+    this.elemDatasets.addEventListener('click', () => this.hideHighlight());
   };
 
   private handleDatapointClick = (event: MouseEvent) => {
@@ -273,6 +269,12 @@ class LineChart {
     updateTooltip(event, this.root);
 
     event.stopPropagation();
+  };
+
+  private hideHighlight = () => {
+    // @ts-ignore
+    this.elemDatasets.attributeStyleMap.set('--grid-highlight', 0);
+    hideTooltip(this.root);
   };
 
   private resize = () => {
