@@ -261,19 +261,15 @@ class LineChart {
 
   private hideHighlight = () => {
     // @ts-ignore
-    this.elemDatasets.attributeStyleMap.set('--grid-highlight', '{"x": 0, "y": 0}');
+    this.elemDatasets.attributeStyleMap.set('--grid-highlight', 0);
     hideTooltip(this.root);
   };
 
   private handleDatapointClick = (event: MouseEvent) => {
-    const position = {
-      // @ts-ignore
-      x: event.target.attributeStyleMap.get('left').value,
-      // @ts-ignore
-      y: event.target.attributeStyleMap.get('bottom').value,
-    };
     // @ts-ignore
-    this.elemDatasets.attributeStyleMap.set('--grid-highlight', JSON.stringify(position));
+    const leftValue = event.target.attributeStyleMap.get('left').value;
+    // @ts-ignore
+    this.elemDatasets.attributeStyleMap.set('--grid-highlight', leftValue);
     updateTooltip(event, this.root);
 
     event.stopPropagation();

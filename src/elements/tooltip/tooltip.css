@@ -10,7 +10,7 @@
   border-image-outset: var(--border-width);
   --border-width: 8px;
   font-size: var(--font-sm);
-  background: #000c;
+  background: var(--color-black);
   color: #fff;
   z-index: 1;
 }

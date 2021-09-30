@@ -8,10 +8,7 @@ if (typeof registerPaint !== 'undefined') {
       const color = String(properties.get('--grid-color'));
       const segmentsX = parseInt(properties.get('--grid-segmentsX'));
       const segmentsY = parseInt(properties.get('--grid-segmentsY'));
-      const gridHighlight =
-        properties.get('--grid-highlight').length != 0
-          ? JSON.parse(String(properties.get('--grid-highlight')))
-          : undefined;
+      const gridHighlight = parseInt(properties.get('--grid-highlight'));
 
       const height = size.height;
       const width = size.width;
@@ -38,25 +35,14 @@ if (typeof registerPaint !== 'undefined') {
       ctx.stroke();
 
       if (gridHighlight) {
-        ctx.strokeStyle = '#000';
+        ctx.strokeStyle = '#1c1c1ccc';
 
-        if (gridHighlight.x === 0 && gridHighlight.y === 0) {
-          return;
-        }
-
-        const position = {
-          x: gridHighlight.x + 5,
-          y: height - gridHighlight.y - 5,
-        };
+        const x = gridHighlight + 5;
 
         ctx.beginPath();
-        ctx.moveTo(0, position.y);
-        ctx.lineTo(width, position.y);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(position.x, 0);
-        ctx.lineTo(position.x, height);
+        ctx.setLineDash([20, 5]);
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
         ctx.stroke();
       }
     }
