@@ -88,6 +88,7 @@ class LineChart {
     this.renderYaxis();
     this.renderXAxis();
     this.renderDatasets();
+    this.renderDatapoints();
     this.renderTooltip();
   };
 
@@ -158,36 +159,32 @@ class LineChart {
   };
 
   private renderDatasets = () => {
-    const template = `
-      <section class='houdini__datasets'>
-        ${this.datasets
-          .map((set) => {
-            return `<div id='${set.name}' class='houdini__dataset'>${this.renderDataset(
-              set.values,
-              set.name
-            )}</div>`;
-          })
-          .join('')}
-      </section>
-    `;
-    this.root.querySelector('.houdini__chart')!.innerHTML += template;
+    const template = this.datasets
+      .map((set) => {
+        return `<div id='${set.name}' class='houdini__dataset'></div>`;
+      })
+      .join('');
+
+    this.root.querySelector(
+      '.houdini__chart'
+    )!.innerHTML += `<section class='houdini__datasets'>${template}</section>`;
     this.elemDatasets = this.root.querySelector('.houdini__datasets')!;
     this.setChartSize();
   };
 
-  private renderDataset = (values: number[], name: string) => {
-    return `
-      ${values
-        .map(
-          (value, index) =>
-            `<span class='houdini__datapoint' dataset='${name}' data-y='${value}' data-x='${this.xaxis[index]}' ></span>`
-        )
-        .join('')}
-    `;
+  private renderDatapoints = () => {
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
+
+    datasets.forEach((datasetElem, index) => {
+      const name = this.datasets[index].name;
+      this.datasets[index].values.map(
+        (value) =>
+          (datasetElem.innerHTML += `<span class='houdini__datapoint' dataset='${name}' data-y='${value}' data-x='${this.xaxis[index]}' ></span>`)
+      );
+    });
   };
 
   private renderTooltip = () => {
-    // todo: remove paramaters
     const template = Tooltip();
     this.root.querySelector('.houdini__datasets')!.innerHTML += template;
   };

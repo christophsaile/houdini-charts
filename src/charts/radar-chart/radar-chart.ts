@@ -15,6 +15,7 @@ import { coordinates } from '../../utils/utils';
 
 // classes
 import Header from '../../elements/header/header';
+import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
 
 // worklets
 const gridRadarWorklet = new URL('../../worklets/grid-radar.js', import.meta.url);
@@ -103,6 +104,7 @@ class RadarChart {
     this.renderXaxis();
     this.renderDatasets();
     this.renderDatapoints();
+    this.renderTooltip();
   };
 
   private renderWrapper = () => {
@@ -158,13 +160,20 @@ class RadarChart {
   };
 
   private renderDatapoints = () => {
-    const elems = this.root.querySelectorAll('.houdini__dataset');
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
 
-    elems.forEach((elem, index) => {
+    datasets.forEach((datasetElem, index) => {
+      const name = this.datasets[index].name;
       this.datasets[index].values.map(
-        () => (elem.innerHTML += `<span class='houdini__datapoint'></span>`)
+        (value) =>
+          (datasetElem.innerHTML += `<span class='houdini__datapoint' dataset='${name}' data-y='${value}' data-x='${this.xaxis[index]}' ></span>`)
       );
     });
+  };
+
+  private renderTooltip = () => {
+    const template = Tooltip();
+    this.root.querySelector('.houdini__datasets')!.innerHTML += template;
   };
 
   private styles = () => {
@@ -237,13 +246,26 @@ class RadarChart {
 
   // todo: add listeners
   private events = () => {
+    this.highlightDatapoint();
     this.resize();
+  };
+
+  private highlightDatapoint = () => {
+    const datapoints: HTMLElement[] = [].slice.call(
+      document.querySelectorAll('.houdini__datapoint')
+    );
+
+    datapoints.forEach((elem: HTMLElement) => {
+      elem.addEventListener('mouseover', (event: MouseEvent) => updateTooltip(event, this.root));
+      elem.addEventListener('mouseout', () => hideTooltip(this.root));
+    });
   };
 
   private resize = () => {
     window.addEventListener(
       'resize',
       debounce(() => {
+        hideTooltip(this.root);
         this.setChartSize();
         this.datapointCoordinates = this.getDatapointCoordinates();
         this.labelCoordinates = this.getLabelsCoordinates();
