@@ -9,13 +9,7 @@ const tooltipWorklet = new URL('../../worklets/tooltip.js', import.meta.url);
 // @ts-ignore
 CSS.paintWorklet.addModule(tooltipWorklet.href);
 
-export function Tooltip(
-  label: string,
-  dataset: string,
-  value: number,
-  color: string,
-  position: coordinates
-): string {
+export function Tooltip(): string {
   return `<div class='houdini__tooltip houdini__tooltip--hide'><p class='houdini__headline'></p><p class='houdini__subline'></p></div>`;
 }
 
@@ -45,4 +39,9 @@ export function updateTooltip(event: MouseEvent, chart: HTMLElement) {
   tooltip.attributeStyleMap.set('left', CSS.px(position.x - tooltipWidth));
   // @ts-ignore
   tooltip.attributeStyleMap.set('bottom', CSS.px(position.y + tooltipHeight));
+}
+
+export function hideTooltip(chart: HTMLElement) {
+  const tooltip = chart.querySelector('.houdini__tooltip')!;
+  tooltip.classList.add('houdini__tooltip--hide');
 }

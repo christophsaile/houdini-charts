@@ -25,7 +25,7 @@ CSS.paintWorklet.addModule(gridRadarWorklet.href);
 CSS.paintWorklet.addModule(pathRadarWorklet.href);
 
 class RadarChart {
-  constructor(private readonly container: HTMLElement, private readonly config: Config) {
+  constructor(private readonly root: HTMLElement, private readonly config: Config) {
     this.init();
   }
 
@@ -63,14 +63,16 @@ class RadarChart {
   private pathFill = this.options?.fill ? true : false;
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
-  private getChartElem!: HTMLElement;
+  private elemChart!: HTMLElement;
+  private elemDatsets!: HTMLElement;
+
   private chartSize: coordinates = {
     x: 0,
     y: 0,
   };
   private setChartSize = () => {
-    this.chartSize.x = this.getChartElem.clientWidth;
-    this.chartSize.y = this.getChartElem.clientHeight;
+    this.chartSize.x = this.elemDatsets.clientWidth;
+    this.chartSize.y = this.elemDatsets.clientHeight;
   };
 
   private datapointCoordinates: coordinates[][] = [];
@@ -105,18 +107,17 @@ class RadarChart {
 
   private renderWrapper = () => {
     const template = `<div class='houdini houdini--radar'></div>`;
-    this.container.innerHTML = template;
+    this.root.innerHTML = template;
   };
 
   private renderHeader = () => {
-    this.container.querySelector('.houdini')!.innerHTML += Header(this.config);
+    this.root.querySelector('.houdini')!.innerHTML += Header(this.config);
   };
 
   private renderChart = () => {
     const template = `<section class='houdini__chart'></section>`;
-    this.container.querySelector('.houdini')!.innerHTML += template;
-    this.getChartElem = this.container.querySelector('.houdini__chart')!;
-    this.setChartSize();
+    this.root.querySelector('.houdini')!.innerHTML += template;
+    this.elemChart = this.root.querySelector('.houdini__chart')!;
   };
 
   // todo: add xaxis
@@ -127,7 +128,7 @@ class RadarChart {
       })
       .join('');
 
-    this.getChartElem.innerHTML += `<div class='houdini__xaxis'>${template}</div>`;
+    this.elemChart.innerHTML += `<div class='houdini__xaxis'>${template}</div>`;
   };
 
   private renderYaxis = () => {
@@ -141,7 +142,7 @@ class RadarChart {
       j = j + 1;
     }
 
-    this.getChartElem.innerHTML += `<div class='houdini__yaxis'>${template}</div>`;
+    this.elemChart.innerHTML += `<div class='houdini__yaxis'>${template}</div>`;
   };
 
   private renderDatasets = () => {
@@ -151,11 +152,13 @@ class RadarChart {
       })
       .join('');
 
-    this.getChartElem.innerHTML += template;
+    this.elemChart.innerHTML += `<div class='houdini__datasets'>${template}</div>`;
+    this.elemDatsets = this.root.querySelector('.houdini__datasets')!;
+    this.setChartSize();
   };
 
   private renderDatapoints = () => {
-    const elems = this.container.querySelectorAll('.houdini__dataset');
+    const elems = this.root.querySelectorAll('.houdini__dataset');
 
     elems.forEach((elem, index) => {
       this.datasets[index].values.map(
@@ -174,7 +177,7 @@ class RadarChart {
   };
 
   private setAxisLabels() {
-    const elems = this.container.querySelectorAll('.houdini__xlabel');
+    const elems = this.root.querySelectorAll('.houdini__xlabel');
     const centerX = this.chartSize.x / 2;
     const centerY = this.chartSize.y / 2;
 
@@ -190,17 +193,17 @@ class RadarChart {
 
   private setGrid = () => {
     // @ts-ignore
-    this.getChartElem.attributeStyleMap.set('background', 'paint(grid-radar)');
+    this.elemDatsets.attributeStyleMap.set('background', 'paint(grid-radar)');
     // @ts-ignore
-    this.getChartElem.attributeStyleMap.set('--grid-segments', this.segments);
+    this.elemDatsets.attributeStyleMap.set('--grid-segments', this.segments);
     // @ts-ignore
-    this.getChartElem.attributeStyleMap.set('--grid-xaxis', this.numberOfAxis());
+    this.elemDatsets.attributeStyleMap.set('--grid-xaxis', this.numberOfAxis());
     // @ts-ignore
-    this.getChartElem.attributeStyleMap.set('--grid-color', this.gridColor);
+    this.elemDatsets.attributeStyleMap.set('--grid-color', this.gridColor);
   };
 
   private setPath = () => {
-    const elems = this.container.querySelectorAll('.houdini__dataset');
+    const elems = this.root.querySelectorAll('.houdini__dataset');
     elems.forEach((elem, index) => {
       // @ts-ignore
       elem.attributeStyleMap.set('background', 'paint(path-radar)');
@@ -214,7 +217,7 @@ class RadarChart {
   };
 
   private setDatapoints = () => {
-    const elems = this.container.querySelectorAll('.houdini__dataset');
+    const elems = this.root.querySelectorAll('.houdini__dataset');
     elems.forEach((elem, index) => {
       const color = this.datasets[index].color;
 

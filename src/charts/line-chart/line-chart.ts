@@ -15,7 +15,7 @@ import { coordinates } from '../../utils/utils';
 
 // classes
 import Header from '../../elements/header/header';
-import { Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
+import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
 
 // worklets
 const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
@@ -26,7 +26,7 @@ CSS.paintWorklet.addModule(gridBasicWorklet.href);
 CSS.paintWorklet.addModule(pathLineWorklet.href);
 
 class LineChart {
-  constructor(private readonly container: HTMLElement, private readonly config: Config) {
+  constructor(private readonly root: HTMLElement, private readonly config: Config) {
     this.init();
   }
 
@@ -54,14 +54,14 @@ class LineChart {
     y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
   };
 
-  private getChartElem!: HTMLElement;
+  private elemDatasets!: HTMLElement;
   private chartSize: coordinates = {
     x: 0,
     y: 0,
   };
   private setChartSize = () => {
-    this.chartSize.x = this.getChartElem.clientWidth;
-    this.chartSize.y = this.getChartElem.clientHeight;
+    this.chartSize.x = this.elemDatasets.clientWidth;
+    this.chartSize.y = this.elemDatasets.clientHeight;
   };
 
   private datapointCoordinates: coordinates[][] = [];
@@ -96,11 +96,11 @@ class LineChart {
       <div class='houdini houdini--line'></div>
     `;
 
-    this.container.innerHTML = template;
+    this.root.innerHTML = template;
   };
 
   private renderHeader = () => {
-    this.container.querySelector('.houdini')!.innerHTML += Header(this.config);
+    this.root.querySelector('.houdini')!.innerHTML += Header(this.config);
   };
 
   private renderAxisTitle = () => {
@@ -110,17 +110,17 @@ class LineChart {
 
   private renderTitleY = () => {
     const template = `<h3 class='houdini__ytitle'>${this.config.options?.titleAxis?.y}</h3>`;
-    this.container.querySelector('.houdini')!.innerHTML += template;
+    this.root.querySelector('.houdini')!.innerHTML += template;
   };
 
   private renderTitleX = () => {
     const template = `<h3 class='houdini__xtitle'>${this.config.options?.titleAxis?.x}</h3>`;
-    this.container.querySelector('.houdini')!.innerHTML += template;
+    this.root.querySelector('.houdini')!.innerHTML += template;
   };
 
   private renderChart = () => {
     const template = `<section class='houdini__chart'></section>`;
-    this.container.querySelector('.houdini')!.innerHTML += template;
+    this.root.querySelector('.houdini')!.innerHTML += template;
   };
 
   private renderYaxis = () => {
@@ -136,7 +136,7 @@ class LineChart {
       j = j + 1;
     }
 
-    this.container.querySelector(
+    this.root.querySelector(
       '.houdini__chart'
     )!.innerHTML += `<section class='houdini__yaxis'>${template}</section>`;
   };
@@ -150,7 +150,7 @@ class LineChart {
       template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.xaxis[i]}</span>`; // -8px because fontSize = 16px / 2
     }
 
-    this.container.querySelector('.houdini__chart')!.innerHTML += `
+    this.root.querySelector('.houdini__chart')!.innerHTML += `
       <section class='houdini__xaxis'>
       ${template}
       </section>
@@ -170,8 +170,8 @@ class LineChart {
           .join('')}
       </section>
     `;
-    this.container.querySelector('.houdini__chart')!.innerHTML += template;
-    this.getChartElem = this.container.querySelector('.houdini__datasets')!;
+    this.root.querySelector('.houdini__chart')!.innerHTML += template;
+    this.elemDatasets = this.root.querySelector('.houdini__datasets')!;
     this.setChartSize();
   };
 
@@ -188,8 +188,8 @@ class LineChart {
 
   private renderTooltip = () => {
     // todo: remove paramaters
-    const template = Tooltip('Monday', 'dataset1', 33, '#fcffa6', { x: 200, y: 100 });
-    this.container.querySelector('.houdini__datasets')!.innerHTML += template;
+    const template = Tooltip();
+    this.root.querySelector('.houdini__datasets')!.innerHTML += template;
   };
 
   private styles = () => {
@@ -200,7 +200,7 @@ class LineChart {
   };
 
   private setGrid = () => {
-    const elem = this.container.querySelector('.houdini__datasets')!;
+    const elem = this.root.querySelector('.houdini__datasets')!;
     // @ts-ignore
     elem.attributeStyleMap.set('background', 'paint(grid-basic)');
     // @ts-ignore
@@ -212,7 +212,7 @@ class LineChart {
   };
 
   private setPath = () => {
-    const elems = this.container.querySelectorAll('.houdini__dataset');
+    const elems = this.root.querySelectorAll('.houdini__dataset');
     elems.forEach((elem, index) => {
       // @ts-ignore
       elem.attributeStyleMap.set('background', 'paint(path-line)');
@@ -224,7 +224,7 @@ class LineChart {
   };
 
   private setDatapoints = () => {
-    const elems = this.container.querySelectorAll('.houdini__dataset');
+    const elems = this.root.querySelectorAll('.houdini__dataset');
     elems.forEach((elem, index) => {
       const color = this.datasets[index].color;
 
@@ -249,26 +249,23 @@ class LineChart {
   };
 
   private highlightDatapoint = () => {
-    const container: HTMLElement = this.container.querySelector('.houdini__datasets')!;
     const datapoints: HTMLElement[] = [].slice.call(
       document.querySelectorAll('.houdini__datapoint')
     );
 
-    container.addEventListener('click', () => this.handleGridClick(container));
+    this.elemDatasets.addEventListener('click', () => this.hideHighlight());
     datapoints.forEach((elem: HTMLElement) => {
-      elem.addEventListener('click', (event: MouseEvent) =>
-        this.handleDatapointClick(event, container)
-      );
+      elem.addEventListener('click', (event: MouseEvent) => this.handleDatapointClick(event));
     });
   };
 
-  private handleGridClick = (container: HTMLElement) => {
+  private hideHighlight = () => {
     // @ts-ignore
-    container.attributeStyleMap.set('--grid-highlight', '{"x": 0, "y": 0}');
-    container.lastElementChild!.classList.add('houdini__tooltip--hide');
+    this.elemDatasets.attributeStyleMap.set('--grid-highlight', '{"x": 0, "y": 0}');
+    hideTooltip(this.root);
   };
 
-  private handleDatapointClick = (event: MouseEvent, container: HTMLElement) => {
+  private handleDatapointClick = (event: MouseEvent) => {
     const position = {
       // @ts-ignore
       x: event.target.attributeStyleMap.get('left').value,
@@ -276,8 +273,8 @@ class LineChart {
       y: event.target.attributeStyleMap.get('bottom').value,
     };
     // @ts-ignore
-    container.attributeStyleMap.set('--grid-highlight', JSON.stringify(position));
-    updateTooltip(event, this.container);
+    this.elemDatasets.attributeStyleMap.set('--grid-highlight', JSON.stringify(position));
+    updateTooltip(event, this.root);
 
     event.stopPropagation();
   };
@@ -286,6 +283,7 @@ class LineChart {
     window.addEventListener(
       'resize',
       debounce(() => {
+        this.hideHighlight();
         this.setChartSize();
         this.datapointCoordinates = this.getDatapointCoordinates();
         this.setPath();

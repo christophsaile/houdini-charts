@@ -45,7 +45,11 @@
     font-size: var(--font-md);
   }
 }
-
+.houdini--radar .houdini__datasets {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 .houdini--radar .houdini__dataset {
   position: absolute;
   width: 100%;
