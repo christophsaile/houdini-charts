@@ -1,10 +1,12 @@
 :root {
   --datapoint-size: 10px;
+  --spacing-xs: 5px;
   --spacing-sm: 10px;
   --spacing-md: 20px;
   --spacing-lg: 30px;
   --spacing-xl: 40px;
-  --font-sm: 10px;
+  --font-xs: 10px;
+  --font-sm: 12px;
   --font-md: 16px;
   --color-purple: #cab8ff;
   --color-green: #c1ffd7;

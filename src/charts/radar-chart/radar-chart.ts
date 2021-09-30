@@ -60,14 +60,18 @@ class RadarChart {
     }
     return length;
   };
-  private chartSize: coordinates = {
-    x: 0,
-    y: 0,
-  };
   private pathFill = this.options?.fill ? true : false;
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
   private getChartElem!: HTMLElement;
+  private chartSize: coordinates = {
+    x: 0,
+    y: 0,
+  };
+  private setChartSize = () => {
+    this.chartSize.x = this.getChartElem.clientWidth;
+    this.chartSize.y = this.getChartElem.clientHeight;
+  };
 
   private datapointCoordinates: coordinates[][] = [];
   private getDatapointCoordinates = () => {
@@ -81,11 +85,6 @@ class RadarChart {
     // +0.8 to get the right offset for the labels
     const maxDataset = new Array(this.numberOfAxis()).fill(this.niceNumbers.niceMaximum + 0.8);
     return getRadarPoints(maxDataset, this.chartSize, this.range);
-  };
-
-  private setChartSize = () => {
-    this.chartSize.x = this.getChartElem.clientHeight;
-    this.chartSize.y = this.getChartElem.clientWidth;
   };
 
   private init = () => {
