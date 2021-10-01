@@ -4,7 +4,7 @@ import './header.css';
 // Interfaces
 import { Config } from '../../config';
 
-export default function Header(config: Config): string {
+export function Header(config: Config): string {
   const title = config.title;
   const legend = config.options?.legend;
 
@@ -27,4 +27,17 @@ export default function Header(config: Config): string {
       ${legend ? renderLegend() : ''}
     </section>
   `;
+}
+
+export function headerEvents(root: HTMLElement) {
+  const legendItems: HTMLElement[] = [].slice.call(root.querySelectorAll('.houdini__legend-item'));
+  if (legendItems) {
+    legendItems.forEach((elem) => {
+      elem.addEventListener('click', () => {
+        const attribute = elem.getAttribute('data-set');
+        const dataset = root.querySelector('#' + attribute);
+        dataset?.classList.toggle('houdini__dataset--hide');
+      });
+    });
+  }
 }

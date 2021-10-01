@@ -56,11 +56,16 @@
   height: 100%;
 }
 
+.houdini--radar .houdini__dataset--hide {
+  display: none;
+}
+
 .houdini--radar .houdini__datapoint {
   position: absolute;
   width: var(--datapoint-size);
   height: var(--datapoint-size);
   background-color: black;
   border-radius: 100%;
+  cursor: pointer;
   z-index: 1;
 }

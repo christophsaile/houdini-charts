@@ -107,11 +107,16 @@
   height: 100%;
 }
 
+.houdini--line .houdini__dataset--hide {
+  display: none;
+}
+
 .houdini--line .houdini__datapoint {
   position: absolute;
   width: var(--datapoint-size);
   height: var(--datapoint-size);
   background-color: black;
   border-radius: 100%;
+  cursor: pointer;
   z-index: 1;
 }

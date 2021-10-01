@@ -14,7 +14,7 @@ import { Config } from '../../config';
 import { coordinates } from '../../utils/utils';
 
 // classes
-import Header from '../../elements/header/header';
+import { Header, headerEvents } from '../../elements/header/header';
 import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
 
 // worklets
@@ -243,6 +243,7 @@ class LineChart {
   private events = () => {
     this.highlightDatapoint();
     this.resize();
+    headerEvents(this.root);
   };
 
   private highlightDatapoint = () => {
