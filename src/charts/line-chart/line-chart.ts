@@ -132,8 +132,8 @@ class LineChart {
     for (let i = niceMinimum; i <= niceMaximum; i = i + tickSpacing) {
       const percentage = (j / this.segments.y) * 100;
       const perTwoDigits = Math.round(percentage * 100) / 100;
-      // -8px because fontSize = 16px / 2
-      template += `<span class='houdini__ylabel' style='bottom: calc(${perTwoDigits}% - 8px)'>${i}</span>`;
+      // -6px because fontSize = 12px / 2
+      template += `<span class='houdini__ylabel' style='bottom: calc(${perTwoDigits}% - 6px)'>${i}</span>`;
       j = j + 1;
     }
 

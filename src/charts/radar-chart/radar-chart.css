@@ -23,7 +23,7 @@
 }
 @media screen and (min-width: 768px) {
   .houdini--radar .houdini__ylabel {
-    font-size: var(--font-md);
+    font-size: var(--font-sm);
   }
 }
 
@@ -42,7 +42,7 @@
 
 @media screen and (min-width: 768px) {
   .houdini--radar .houdini__xlabel {
-    font-size: var(--font-md);
+    font-size: var(--font-sm);
   }
 }
 .houdini--radar .houdini__datasets {
