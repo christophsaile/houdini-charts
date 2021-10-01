@@ -10,14 +10,14 @@ export function Header(config: Config): string {
 
   const renderLegend = () => {
     return `
-      <section class='houdini__legend'>
+      <ul class='houdini__legend'>
         ${config.data.datasets
           .map(
             (elem) =>
-              `<div data-set='${elem.name}'class='houdini__legend-item'><span style='background-color: ${elem.color}'></span><p>${elem.name}</p></div>`
+              `<li data-set='${elem.name}'class='houdini__legend-item'><span style='background-color: ${elem.color}'></span><p>${elem.name}</p></li>`
           )
           .join('')}
-      </section>
+      </ul>
     `;
   };
 
