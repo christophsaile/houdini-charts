@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    </main>
+    <script src="./chart.js"></script>
+    <script>
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData('https://api.corona-zahlen.org/germany/age-groups').then((apiData) => {
+        const xaxis = Object.keys(apiData.data);
+        const values = (name) => {
+          return Object.entries(apiData.data).map((outerKeys) => {
+            return outerKeys[1][name];
+          });
+        };
+        const data = {
+          labels: xaxis,
+          datasets: [
+            {
+              label: 'casesMale',
+              borderColor: 'red',
+              data: values('casesMale'),
+            },
+            {
+              label: 'casesFemale',
+              borderColor: 'blue',
+              data: values('casesFemale'),
+            },
+            {
+              label: 'deathsMale',
+              borderColor: 'green',
+              data: values('deathsMale'),
+            },
+            {
+              label: 'deathsFemale',
+              borderColor: 'yellow',
+              data: values('deathsFemale'),
+            },
+          ],
+        };
+        const config = {
+          type: 'radar',
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Chart.js Radar Chart',
+              },
+            },
+          },
+        };
+        const myChart = new Chart(document.getElementById('myChart'), config);
+      });
+    </script>
+  </body>
+</html>

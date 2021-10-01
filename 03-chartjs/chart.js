@@ -9114,7 +9114,6 @@
         (this._valueRange = 0);
     }
     parse(t, e) {
-      console.log('hello', t, e);
       return $(t) || (('number' == typeof t || t instanceof Number) && !isFinite(+t)) ? null : +t;
     }
     handleTickRangeOptions() {
