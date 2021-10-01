@@ -165,8 +165,8 @@ class RadarChart {
     datasets.forEach((datasetElem, index) => {
       const name = this.datasets[index].name;
       this.datasets[index].values.map(
-        (value) =>
-          (datasetElem.innerHTML += `<span class='houdini__datapoint' dataset='${name}' data-y='${value}' data-x='${this.xaxis[index]}' ></span>`)
+        (value, innerIndex) =>
+          (datasetElem.innerHTML += `<span class='houdini__datapoint' dataset='${name}' data-y='${value}' data-x='${this.xaxis[innerIndex]}' ></span>`)
       );
     });
   };
