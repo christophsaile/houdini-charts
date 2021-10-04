@@ -22,7 +22,7 @@ export function getRadarPoints(
     return curPos;
   };
 
-  for (let i = 0; i < points.length; i++) {
+  for (let i = 0, n = points.length; i < n; i++) {
     const newSize = center * (points[i] / range.y - range.zeroY);
     dotsArray.push(getPolygonPos(newSize, i));
   }

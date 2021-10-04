@@ -191,7 +191,7 @@ class LineChart {
 
   private renderDateXAxis = () => {
     let template: string = '';
-    for (let i = this.min.x; i <= this.dateScaleLabels.length - 1; i++) {
+    for (let i = this.min.x, n = this.dateScaleLabels.length - 1; i <= n; i++) {
       const segmentWidth = 100 / this.segments.x;
       const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
       template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.dateScaleLabels[i]}</span>`; // -8px because fontSize = 16px / 2

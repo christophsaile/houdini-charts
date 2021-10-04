@@ -44,7 +44,7 @@ if (typeof registerPaint !== 'undefined') {
       ctx.strokeStyle = color;
 
       // Polygon
-      for (let i = 0; i < radiusSizes.length; i++) {
+      for (let i = 0, n = radiusSizes.length; i < n; i++) {
         const polygon = getPolygonPos(radiusSizes[i], xaxis);
         ctx.beginPath();
         ctx.moveTo(polygon[0].x, polygon[0].y);

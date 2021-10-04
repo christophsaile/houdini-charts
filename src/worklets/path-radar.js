@@ -25,7 +25,7 @@ if (typeof registerPaint !== 'undefined') {
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
 
-      for (let i = 0; i < points.length; i++) {
+      for (let i = 0, n = points.length; i < n; i++) {
         ctx.lineTo(points[i].x, points[i].y);
       }
 
