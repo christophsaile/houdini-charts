@@ -4,23 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Line Chart</title>
-    <link rel="stylesheet" href="./main.css" />
+    <title>Document</title>
   </head>
   <body>
     <main>
-      <section class="fullpage fullpage--center">
-        <section id="houdiniLine"></section>
-      </section>
+      <div>
+        <section id="myChart"></section>
+      </div>
     </main>
-    <script>
-      (function () {
-        if (typeof CSS.paintWorklet === 'undefined') {
-          document.write('<script src="https://unpkg.com/css-paint-polyfill"><\/script>');
-        }
-      })();
-    </script>
-    <script src="./index.js"></script>
+    <script src="./apexcharts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <script>
       const DateTime = luxon.DateTime;
@@ -36,35 +28,48 @@
         let labels = apiData.data.map((elem) => {
           return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
         });
+
         let datasets = apiData.data.map((elem) => {
           return elem.cases;
         });
-        const data = {
-          xaxis: labels,
-          datasets: [
+
+        var options = {
+          series: [
             {
-              name: 'Corona-Cases',
-              values: datasets,
-              color: '#cab8ff',
+              name: 'Desktops',
+              data: datasets,
             },
           ],
-          scale: {
-            auto: true,
-          },
-        };
-        const config = {
-          title: 'Line Chart',
-          chartType: 'Line',
-          data: data,
-          options: {
-            legend: true,
-            titleAxis: {
-              x: 'Months',
-              y: 'Cases',
+          chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false,
             },
           },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            curve: 'straight',
+          },
+          title: {
+            text: 'Product Trends by Month',
+            align: 'left',
+          },
+          grid: {
+            row: {
+              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+              opacity: 0.5,
+            },
+          },
+          xaxis: {
+            categories: labels,
+          },
         };
-        const HOUDNINICHART = new HoudiniChart(document.getElementById('houdiniLine'), config);
+
+        var chart = new ApexCharts(document.querySelector('#myChart'), options);
+        chart.render();
       });
     </script>
   </body>
