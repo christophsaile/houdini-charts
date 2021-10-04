@@ -20,7 +20,8 @@ if (typeof registerPaint !== 'undefined') {
       ctx.strokeStyle = color;
 
       ctx.beginPath();
-      for (let x = 0; x <= width; x += segments.width) {
+      // +1 quickfix for rounding issues
+      for (let x = 0; x <= width + 1; x += segments.width) {
         ctx.moveTo(x, 0);
         ctx.lineTo(x, height);
       }
