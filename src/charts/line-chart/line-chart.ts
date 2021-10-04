@@ -4,7 +4,9 @@ import { getMaxValue } from '../../utils/get-max-value';
 import { flattenDataset } from '../../utils/flatten-dataset';
 import { setMinToZero } from '../../utils/set-min-to-zero';
 import { debounce } from '../../utils/debounce';
-import { getLinePoints } from '../../utils/get-line-points';
+import { getLinePoints, getLinePointsDate } from '../../utils/get-line-points';
+import { getDateScaleLabels } from '../../utils/get-date-scale-labels';
+import { checkXAxisType } from '../../utils/check-x-axis-type';
 
 // styles
 import './line-chart.css';
@@ -35,6 +37,7 @@ class LineChart {
   private xaxis = this.config.data.xaxis;
   private options = this.config.options;
   private autoScale = this.scaleSettings.auto;
+
   private min = {
     x: 0,
     y: this.autoScale ? getMinValue(flattenDataset(this.datasets)) : this.scaleSettings.min!,
@@ -67,14 +70,31 @@ class LineChart {
   private datapointCoordinates: coordinates[][] = [];
   private getDatapointCoordinates = () => {
     const datapoints = this.datasets.map((set) => {
-      return getLinePoints(set.values, this.chartSize, this.range);
+      if (checkXAxisType(this.xaxis[0]) === 'date') {
+        return getLinePointsDate(set.values, this.xaxis, this.chartSize, this.range);
+      } else {
+        return getLinePoints(set.values, this.chartSize, this.range);
+      }
     });
     return datapoints;
+  };
+
+  private dateScaleLabels: string[] = [];
+
+  private xaxisFormat = () => {
+    if (checkXAxisType(this.xaxis[0]) === 'date') {
+      const scale = getDateScaleLabels(this.xaxis);
+      this.max.x = scale.maxValue;
+      this.range.x = scale.maxValue - this.min.x;
+      this.segments.x = scale.labels.length - 1;
+      this.dateScaleLabels = scale.labels;
+    }
   };
 
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
   private init = () => {
+    this.xaxisFormat();
     this.render();
     this.styles();
     this.events();
@@ -143,6 +163,21 @@ class LineChart {
   };
 
   private renderXAxis = () => {
+    let template;
+    if (checkXAxisType(this.xaxis[0]) === 'date') {
+      template = this.renderDateXAxis();
+    } else {
+      template = this.renderDefaultXaxis();
+    }
+
+    this.root.querySelector('.houdini__chart')!.innerHTML += `
+      <section class='houdini__xaxis'>
+        ${template}
+      </section>
+    `;
+  };
+
+  private renderDefaultXaxis = () => {
     let template: string = '';
 
     for (let i = this.min.x; i <= this.max.x; i++) {
@@ -151,11 +186,18 @@ class LineChart {
       template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.xaxis[i]}</span>`; // -8px because fontSize = 16px / 2
     }
 
-    this.root.querySelector('.houdini__chart')!.innerHTML += `
-      <section class='houdini__xaxis'>
-      ${template}
-      </section>
-    `;
+    return template;
+  };
+
+  private renderDateXAxis = () => {
+    let template: string = '';
+    for (let i = this.min.x; i <= this.dateScaleLabels.length - 1; i++) {
+      const segmentWidth = 100 / this.segments.x;
+      const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
+      template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.dateScaleLabels[i]}</span>`; // -8px because fontSize = 16px / 2
+    }
+
+    return template;
   };
 
   private renderDatasets = () => {
@@ -226,9 +268,9 @@ class LineChart {
       const color = this.datasets[index].color;
 
       elem.querySelectorAll('.houdini__datapoint').forEach((datapoint, innerIndex) => {
-        // -5px because dotSize = 10 / 2
-        const x = this.datapointCoordinates[index][innerIndex].x - 5;
-        const y = this.datapointCoordinates[index][innerIndex].y - 5;
+        // -4px because dotSize = 8 / 2
+        const x = this.datapointCoordinates[index][innerIndex].x - 4;
+        const y = this.datapointCoordinates[index][innerIndex].y - 4;
 
         // @ts-ignore
         datapoint.attributeStyleMap.set('background-color', color);

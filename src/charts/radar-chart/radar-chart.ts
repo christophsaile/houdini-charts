@@ -232,9 +232,9 @@ class RadarChart {
       const color = this.datasets[index].color;
 
       elem.querySelectorAll('.houdini__datapoint').forEach((datapoint, innerIndex) => {
-        // -5px because dotSize = 10 / 2
-        const x = this.datapointCoordinates[index][innerIndex].x + this.chartSize.x / 2 - 5;
-        const y = this.datapointCoordinates[index][innerIndex].y + this.chartSize.y / 2 - 5;
+        // -4px because dotSize = 8 / 2
+        const x = this.datapointCoordinates[index][innerIndex].x + this.chartSize.x / 2 - 4;
+        const y = this.datapointCoordinates[index][innerIndex].y + this.chartSize.y / 2 - 4;
         // @ts-ignore
         datapoint.attributeStyleMap.set('background-color', color);
         // @ts-ignore
