@@ -21,48 +21,51 @@
       })();
     </script>
     <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <script>
-      const data = {
-        xaxis: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-        datasets: [
-          {
-            name: 'dataset1',
-            values: [0.5, 1.5, 2.5, 3.5, 4],
-            color: '#cab8ff',
+      const DateTime = luxon.DateTime;
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData('https://api.corona-zahlen.org/germany/history/cases').then((apiData) => {
+        let labels = apiData.data.map((elem) => {
+          return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
+        });
+        let datasets = apiData.data.map((elem) => {
+          return elem.cases;
+        });
+        const data = {
+          xaxis: labels,
+          datasets: [
+            {
+              name: 'dataset1',
+              values: datasets,
+              color: '#cab8ff',
+            },
+          ],
+          scale: {
+            auto: true,
           },
-          {
-            name: 'dataset2',
-            values: [0, 0, 0, 0, 0],
-            color: '#c1ffd7',
+        };
+        const config = {
+          title: 'Line Chart',
+          chartType: 'Line',
+          data: data,
+          options: {
+            legend: true,
+            titleAxis: {
+              x: 'Wochentage',
+              y: 'Anzahl',
+            },
           },
-          {
-            name: 'dataset3',
-            values: [-1, 0, 1, 2, 3],
-            color: '#b5deff',
-          },
-          {
-            name: 'dataset4',
-            values: [4, -1, 2, 3, 4],
-            color: '#fcffa6',
-          },
-        ],
-        scale: {
-          auto: true,
-        },
-      };
-      const config = {
-        title: 'Line Chart',
-        chartType: 'Line',
-        data: data,
-        options: {
-          legend: true,
-          titleAxis: {
-            x: 'Wochentage',
-            y: 'Anzahl',
-          },
-        },
-      };
-      const HOUDNINICHART = new HoudiniChart(document.getElementById('houdiniLine'), config);
+        };
+        const HOUDNINICHART = new HoudiniChart(document.getElementById('houdiniLine'), config);
+      });
     </script>
   </body>
 </html>

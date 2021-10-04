@@ -13,8 +13,9 @@
       </div>
     </main>
     <script src="./chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/helpers.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <script>
+      const DateTime = luxon.DateTime;
       async function fetchData(url) {
         try {
           const response = await fetch(url);
@@ -25,8 +26,9 @@
       }
       fetchData('https://api.corona-zahlen.org/germany/history/cases').then((apiData) => {
         let labels = apiData.data.map((elem) => {
-          return elem.date;
+          return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
         });
+
         let datasets = apiData.data.map((elem) => {
           return elem.cases;
         });
