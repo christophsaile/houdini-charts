@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <section id="myChart"></section>
+      </div>
+    </main>
+    <script src="./apexcharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+    <script>
+      const DateTime = luxon.DateTime;
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData('https://api.corona-zahlen.org/germany/history/cases').then((apiData) => {
+        let labels = apiData.data.map((elem) => {
+          return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
+        });
+
+        let datasets = apiData.data.map((elem) => {
+          return elem.cases;
+        });
+
+        var options = {
+          series: [
+            {
+              name: 'Desktops',
+              data: datasets,
+            },
+          ],
+          chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false,
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            curve: 'straight',
+          },
+          title: {
+            text: 'Product Trends by Month',
+            align: 'left',
+          },
+          grid: {
+            row: {
+              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+              opacity: 0.5,
+            },
+          },
+          xaxis: {
+            categories: labels,
+          },
+        };
+
+        var chart = new ApexCharts(document.querySelector('#myChart'), options);
+        chart.render();
+      });
+    </script>
+  </body>
+</html>
