@@ -12,7 +12,7 @@
         <section id="myChart"></section>
       </div>
     </main>
-    <script src="./apexcharts.js"></script>
+    <script src="./highcharts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <script>
       const DateTime = luxon.DateTime;
@@ -33,43 +33,23 @@
           return elem.cases;
         });
 
-        var options = {
+        Highcharts.chart('myChart', {
+          legend: {
+            layout: 'vertical',
+            align: 'center',
+            verticalAlign: 'top',
+          },
+          xAxis: {
+            categories: labels,
+          },
           series: [
             {
-              name: 'Desktops',
+              type: 'line',
+              name: 'corona cases',
               data: datasets,
             },
           ],
-          chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-              enabled: false,
-            },
-          },
-          dataLabels: {
-            enabled: false,
-          },
-          stroke: {
-            curve: 'straight',
-          },
-          title: {
-            text: 'Product Trends by Month',
-            align: 'left',
-          },
-          grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5,
-            },
-          },
-          xaxis: {
-            categories: labels,
-          },
-        };
-
-        var chart = new ApexCharts(document.querySelector('#myChart'), options);
-        chart.render();
+        });
       });
     </script>
   </body>

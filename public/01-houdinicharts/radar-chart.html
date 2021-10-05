@@ -31,7 +31,6 @@
         }
       }
       fetchData('https://api.corona-zahlen.org/germany/age-groups').then((apiData) => {
-        console.log(apiData);
         const labels = Object.keys(apiData.data);
         const values = (name) => {
           return Object.entries(apiData.data).map((outerKeys) => {

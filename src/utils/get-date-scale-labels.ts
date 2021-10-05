@@ -1,4 +1,4 @@
-import { DateTime, Duration } from 'luxon';
+import { DateTime } from 'luxon';
 import { getDaysDiff } from './get-days-difference';
 
 interface Scale {
@@ -71,6 +71,7 @@ export function getDateScaleLabels(values: string[]): Scale {
     case 'months_fortnight':
     case 'days':
     case 'week_days': {
+      scale = generateMonthScale(values);
       //generateDayScale(params)
       break;
     }

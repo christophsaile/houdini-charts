@@ -29,7 +29,7 @@ export function getLinePointsDate(
   let dotsArray: coordinates[] = [];
 
   for (let i = 0, n = pointsY.length; i < n; i++) {
-    const daysDifference = getDaysDiff(pointsX[i], '2020 Jan 02');
+    const daysDifference = getDaysDiff(pointsX[i], pointsX[0]);
     const x = size.x * (daysDifference / range.x);
 
     const y = size.y * (pointsY[i] / range.y - range.zeroY);
