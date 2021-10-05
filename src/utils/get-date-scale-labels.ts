@@ -59,6 +59,7 @@ export function getDateScaleLabels(values: string[]): Scale {
   let scale: Scale = { labels: [], maxValue: 0 };
   switch (tickInterval) {
     case 'years': {
+      console.log('scale not defined');
       //generateYearScale(params)
       break;
     }
@@ -76,16 +77,19 @@ export function getDateScaleLabels(values: string[]): Scale {
       break;
     }
     case 'hours': {
+      console.log('scale not defined');
       //generateHourScale(params)
       break;
     }
     case 'minutes_fives':
     case 'minutes':
+      console.log('scale not defined');
       //generateMinuteScale(params)
       break;
     case 'seconds_tens':
     case 'seconds_fives':
     case 'seconds':
+      console.log('scale not defined');
       //generateSecondScale(params)
       break;
   }
