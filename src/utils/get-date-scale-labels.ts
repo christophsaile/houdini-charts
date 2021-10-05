@@ -96,28 +96,21 @@ function generateMonthScale(values: string[]) {
   const max = values[values.length - 1];
   const min = values[0];
 
-  const lastMonth = DateTime.fromFormat(max, 'yyyy LLL dd');
-  const firstMonth = DateTime.fromFormat(min, 'yyyy LLL dd');
-  const diffInMonths = lastMonth.diff(firstMonth, ['months', 'days']);
+  const lastMonthEnd = DateTime.fromFormat(max, 'yyyy LLL dd').endOf('month');
+  const firstMonthStart = DateTime.fromFormat(min, 'yyyy LLL dd').startOf('month');
+
+  const numberOfMonths = lastMonthEnd.diff(firstMonthStart, 'months').months;
+  const numberOfDays = lastMonthEnd.diff(firstMonthStart, 'days').days;
 
   let months: string[] = [];
-  months.push(firstMonth.toFormat('LLL yyyy'));
+  months.push(firstMonthStart.toFormat('LLL yyyy'));
 
-  for (let i = 0; i < diffInMonths.months + 1; i++) {
+  for (let i = 0, n = numberOfMonths; i < n; i++) {
     const date: any = DateTime.fromFormat(months[i], 'LLL yyyy')
       .plus({ months: 1 })
       .toFormat('LLL yyyy');
     months.push(date);
   }
-  const passedDaysInFirstMonth = firstMonth.day;
-  const newStart = firstMonth.minus({ days: passedDaysInFirstMonth });
-
-  const daysInLastMonth = lastMonth.daysInMonth;
-  const passedDaysInLastMonth = lastMonth.day;
-  const lastMonthDiff = daysInLastMonth - passedDaysInLastMonth;
-  const newEnd = lastMonth.plus({ days: lastMonthDiff });
-
-  const numberOfDays = newEnd.diff(newStart, 'days').days;
 
   let Scale: Scale = {
     labels: months,

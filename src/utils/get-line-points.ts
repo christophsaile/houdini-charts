@@ -1,5 +1,6 @@
 import { coordinates } from './utils';
 import { getDaysDiff } from './get-days-difference';
+import { DateTime } from 'luxon';
 
 export function getLinePoints(
   points: number[],
@@ -26,12 +27,14 @@ export function getLinePointsDate(
   size: coordinates,
   range: { x: number; y: number; zeroY: number }
 ): coordinates[] {
+  const firstMonthStart = DateTime.fromFormat(pointsX[0], 'yyyy LLL dd')
+    .startOf('month')
+    .toFormat('yyyy LLL dd');
   let dotsArray: coordinates[] = [];
 
   for (let i = 0, n = pointsY.length; i < n; i++) {
-    const daysDifference = getDaysDiff(pointsX[i], pointsX[0]);
+    const daysDifference = getDaysDiff(pointsX[i], firstMonthStart);
     const x = size.x * (daysDifference / range.x);
-
     const y = size.y * (pointsY[i] / range.y - range.zeroY);
     const coordinates = {
       x: x,
@@ -39,5 +42,6 @@ export function getLinePointsDate(
     };
     dotsArray.push(coordinates);
   }
+
   return dotsArray;
 }
