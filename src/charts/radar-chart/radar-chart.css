@@ -60,7 +60,7 @@
   display: none;
 }
 
-.houdini--radar .houdini__datapoint {
+.houdini--radar .houdini__dataset span {
   position: absolute;
   width: var(--datapoint-size);
   height: var(--datapoint-size);
