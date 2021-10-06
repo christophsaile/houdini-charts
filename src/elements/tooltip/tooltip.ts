@@ -23,7 +23,7 @@ export function updateTooltip(event: MouseEvent, chart: HTMLElement) {
     // @ts-ignore
     y: event.target.attributeStyleMap.get('bottom').value + 5,
   };
-  const dataset = (event.target as HTMLElement).getAttribute('dataset');
+  const dataset = (event.target as HTMLElement).parentElement!.id;
   const label = (event.target as HTMLElement).getAttribute('data-x') || '';
   const value = (event.target as HTMLElement).getAttribute('data-y') || '';
   // @ts-ignore

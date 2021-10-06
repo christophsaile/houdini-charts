@@ -111,7 +111,7 @@
   display: none;
 }
 
-.houdini--line .houdini__datapoint {
+.houdini--line .houdini__dataset span {
   position: absolute;
   width: var(--datapoint-size);
   height: var(--datapoint-size);

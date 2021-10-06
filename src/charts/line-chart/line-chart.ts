@@ -218,10 +218,9 @@ class LineChart {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
 
     datasets.forEach((datasetElem, index) => {
-      const name = this.datasets[index].name;
-      this.datasets[index].values.map(
+      this.datasets[index].values.forEach(
         (value, innerIndex) =>
-          (datasetElem.innerHTML += `<span class='houdini__datapoint' dataset='${name}' data-y='${value}' data-x='${this.xaxis[innerIndex]}' ></span>`)
+          (datasetElem.innerHTML += `<span data-y='${value}' data-x='${this.xaxis[innerIndex]}' />`)
       );
     });
   };
@@ -267,7 +266,7 @@ class LineChart {
     elems.forEach((elem, index) => {
       const color = this.datasets[index].color;
 
-      elem.querySelectorAll('.houdini__datapoint').forEach((datapoint, innerIndex) => {
+      elem.querySelectorAll('span').forEach((datapoint, innerIndex) => {
         // -4px because dotSize = 8 / 2
         const x = this.datapointCoordinates[index][innerIndex].x - 4;
         const y = this.datapointCoordinates[index][innerIndex].y - 4;
@@ -290,7 +289,7 @@ class LineChart {
 
   private highlightDatapoint = () => {
     const datapoints: HTMLElement[] = [].slice.call(
-      document.querySelectorAll('.houdini__datapoint')
+      document.querySelectorAll('.houdini__dataset span')
     );
 
     datapoints.forEach((elem: HTMLElement) => {
