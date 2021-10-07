@@ -1,9 +1,6 @@
 // styles
 import './tooltip.css';
 
-// interfaces
-import { coordinates } from '../../utils/utils';
-
 // worklets
 const tooltipWorklet = new URL('../../worklets/tooltip.js', import.meta.url);
 // @ts-ignore

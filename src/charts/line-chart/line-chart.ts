@@ -13,7 +13,7 @@ import './line-chart.css';
 
 // interfaces
 import { Config } from '../../config';
-import { coordinates } from '../../utils/utils';
+import { Coordinates, Range } from '../charts';
 
 // classes
 import { Header, headerEvents } from '../../elements/header/header';
@@ -47,7 +47,7 @@ class LineChart {
     y: this.autoScale ? getMaxValue(flattenDataset(this.datasets)) : this.scaleSettings.max!,
   };
   private niceNumbers = niceScale(this.min.y, this.max.y);
-  private range = {
+  private range: Range = {
     x: this.max.x - this.min.x,
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
     zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
@@ -58,7 +58,7 @@ class LineChart {
   };
 
   private elemDatasets!: HTMLElement;
-  private chartSize: coordinates = {
+  private chartSize: Coordinates = {
     x: 0,
     y: 0,
   };
@@ -67,7 +67,7 @@ class LineChart {
     this.chartSize.y = this.elemDatasets.clientHeight;
   };
 
-  private datapointCoordinates: coordinates[][] = [];
+  private datapointCoordinates: Coordinates[][] = [];
   private getDatapointCoordinates = () => {
     const datapoints = this.datasets.map((set) => {
       if (checkXAxisType(this.xaxis[0]) === 'date') {
@@ -85,7 +85,8 @@ class LineChart {
     if (checkXAxisType(this.xaxis[0]) === 'date') {
       const scale = getDateScaleLabels(this.xaxis);
       this.max.x = scale.maxValue;
-      this.range.x = scale.maxValue - this.min.x;
+      this.range.x = this.max.x - this.min.x;
+      this.range.tickInterval = scale.tickInterval;
       this.segments.x = scale.labels.length - 1;
       this.dateScaleLabels = scale.labels;
     }
@@ -191,7 +192,7 @@ class LineChart {
 
   private renderDateXAxis = () => {
     let template: string = '';
-    for (let i = this.min.x, n = this.dateScaleLabels.length - 1; i <= n; i++) {
+    for (let i = this.min.x, n = this.segments.x; i <= n; i++) {
       const segmentWidth = 100 / this.segments.x;
       const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
       template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.dateScaleLabels[i]}</span>`; // -8px because fontSize = 16px / 2

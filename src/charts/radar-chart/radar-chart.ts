@@ -11,7 +11,7 @@ import './radar-chart.css';
 
 // interfaces
 import { Config } from '../../config';
-import { coordinates } from '../../utils/utils';
+import { Coordinates, Range } from '../charts';
 
 // classes
 import { Header, headerEvents } from '../../elements/header/header';
@@ -42,11 +42,10 @@ class RadarChart {
     ? getMaxValue(flattenDataset(this.datasets))
     : this.scaleSettings.max!;
   private niceNumbers = niceScale(this.min, this.max);
-  private range = {
+  private range: Range = {
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
     zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
   };
-  // todo: check why + 1 is needed to show top lane
   private segments =
     (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing +
     1;
@@ -67,7 +66,7 @@ class RadarChart {
   private elemChart!: HTMLElement;
   private elemDatsets!: HTMLElement;
 
-  private chartSize: coordinates = {
+  private chartSize: Coordinates = {
     x: 0,
     y: 0,
   };
@@ -76,14 +75,14 @@ class RadarChart {
     this.chartSize.y = this.elemDatsets.clientHeight;
   };
 
-  private datapointCoordinates: coordinates[][] = [];
+  private datapointCoordinates: Coordinates[][] = [];
   private getDatapointCoordinates = () => {
     const datapoints = this.datasets.map((set) => {
       return getRadarPoints(set.values, this.chartSize, this.range);
     });
     return datapoints;
   };
-  private labelCoordinates: coordinates[] = [];
+  private labelCoordinates: Coordinates[] = [];
   private getLabelsCoordinates = () => {
     const maxDataset = new Array(this.numberOfAxis()).fill(
       this.niceNumbers.niceMaximum + this.niceNumbers.tickSpacing / 2
@@ -123,7 +122,6 @@ class RadarChart {
     this.elemChart = this.root.querySelector('.houdini__chart')!;
   };
 
-  // todo: add xaxis
   private renderXaxis = () => {
     const template = this.xaxis
       .map((label) => {
@@ -244,7 +242,6 @@ class RadarChart {
     });
   };
 
-  // todo: add listeners
   private events = () => {
     this.highlightDatapoint();
     this.resize();

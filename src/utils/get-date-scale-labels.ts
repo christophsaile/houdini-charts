@@ -4,10 +4,10 @@ import { getDaysDiff } from './get-days-difference';
 interface Scale {
   labels: string[];
   maxValue: number;
+  tickInterval?: string;
 }
 
 export function getDateScaleLabels(values: string[]): Scale {
-  // todo: check if +1 for current day is needed
   const daysDifference = getDaysDiff(values[values.length - 1], values[0]) + 1;
   const yearsDiff = daysDifference / 365;
   const hoursDiff = daysDifference * 24;
@@ -65,15 +65,24 @@ export function getDateScaleLabels(values: string[]): Scale {
     }
     case 'months':
     case 'half_year': {
-      scale = generateMonthScale(values);
+      const { labels, maxValue } = generateMonthScale(values);
+      scale = {
+        labels: labels,
+        maxValue: maxValue,
+        tickInterval: tickInterval,
+      };
       break;
     }
     case 'months_days':
     case 'months_fortnight':
     case 'days':
     case 'week_days': {
-      scale = generateMonthScale(values);
-      //generateDayScale(params)
+      const { labels, maxValue } = generateDayScale(values);
+      scale = {
+        labels: labels,
+        maxValue: maxValue,
+        tickInterval: tickInterval,
+      };
       break;
     }
     case 'hours': {
@@ -118,6 +127,35 @@ function generateMonthScale(values: string[]) {
 
   let Scale: Scale = {
     labels: months,
+    maxValue: numberOfDays,
+  };
+
+  return Scale;
+}
+
+function generateDayScale(values: string[]) {
+  const max = values[values.length - 1];
+  const min = values[0];
+
+  const lastDay = DateTime.fromFormat(max, 'yyyy LLL dd');
+  const firstDay = DateTime.fromFormat(min, 'yyyy LLL dd');
+
+  const numberOfDays = lastDay.diff(firstDay, 'days').days;
+
+  console.log(lastDay, firstDay, numberOfDays);
+
+  let days: string[] = [];
+  days.push(firstDay.toFormat('yyyy LLL dd'));
+
+  for (let i = 0, n = numberOfDays; i < n; i++) {
+    const date: any = DateTime.fromFormat(days[i], 'yyyy LLL dd')
+      .plus({ days: 1 })
+      .toFormat('yyyy LLL dd');
+    days.push(date);
+  }
+
+  let Scale: Scale = {
+    labels: days,
     maxValue: numberOfDays,
   };
 
