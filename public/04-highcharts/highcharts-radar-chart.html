@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <section id="myChart"></section>
+      </div>
+    </main>
+    <script src="./highcharts.js"></script>
+    <script src="./highcharts-more.js"></script>
+    <script>
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData('https://api.corona-zahlen.org/germany/age-groups').then((apiData) => {
+        const labels = Object.keys(apiData.data);
+        const values = (name) => {
+          return Object.entries(apiData.data).map((outerKeys) => {
+            return outerKeys[1][name];
+          });
+        };
+        Highcharts.chart('myChart', {
+          chart: {
+            polar: true,
+            type: 'line',
+          },
+          xAxis: {
+            categories: labels,
+            tickmarkPlacement: 'on',
+            lineWidth: 0,
+          },
+          yAxis: {
+            gridLineInterpolation: 'polygon',
+            lineWidth: 0,
+            min: 0,
+          },
+          title: {
+            text: 'Radar Chart',
+          },
+          series: [
+            {
+              name: 'casesMale',
+              data: values('casesMale'),
+              pointPlacement: 'on',
+            },
+            {
+              name: 'casesFemale',
+              data: values('casesFemale'),
+              pointPlacement: 'on',
+            },
+            {
+              name: 'deathsMale',
+              data: values('deathsMale'),
+              pointPlacement: 'on',
+            },
+            {
+              name: 'deathsFemale',
+              data: values('deathsFemale'),
+              pointPlacement: 'on',
+            },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>

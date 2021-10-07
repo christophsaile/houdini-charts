@@ -39,8 +39,24 @@
             align: 'center',
             verticalAlign: 'top',
           },
+          plotOptions: {
+            series: {
+              animation: false,
+            },
+          },
           xAxis: {
             categories: labels,
+            title: {
+              text: 'Date',
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Cases',
+            },
+          },
+          title: {
+            text: 'Line Chart',
           },
           series: [
             {
