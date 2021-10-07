@@ -36,35 +36,36 @@
         var options = {
           series: [
             {
-              name: 'Desktops',
+              name: 'Corona-Cases',
               data: datasets,
             },
           ],
           chart: {
-            height: 350,
             type: 'line',
             zoom: {
               enabled: false,
             },
-          },
-          dataLabels: {
-            enabled: false,
+            animations: {
+              enabled: false,
+            },
           },
           stroke: {
             curve: 'straight',
           },
           title: {
-            text: 'Product Trends by Month',
+            text: 'Line Chart',
             align: 'left',
-          },
-          grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5,
-            },
           },
           xaxis: {
             categories: labels,
+            title: {
+              text: 'Date',
+            },
+          },
+          yaxis: {
+            title: {
+              text: 'Cases',
+            },
           },
         };
 

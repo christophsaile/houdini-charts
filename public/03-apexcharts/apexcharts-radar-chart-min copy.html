@@ -13,9 +13,7 @@
       </div>
     </main>
     <script src="./apexcharts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <script>
-      const DateTime = luxon.DateTime;
       async function fetchData(url) {
         try {
           const response = await fetch(url);
@@ -24,47 +22,32 @@
           console.log(error);
         }
       }
-      fetchData('https://api.corona-zahlen.org/germany/history/cases/7').then((apiData) => {
-        let labels = apiData.data.map((elem) => {
-          return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
-        });
-
-        let datasets = apiData.data.map((elem) => {
-          return elem.cases;
-        });
+      fetchData('https://api.corona-zahlen.org/germany/age-groups').then((apiData) => {
+        const labels = Object.keys(apiData.data);
+        const values = (name) => {
+          return Object.entries(apiData.data).map((outerKeys) => {
+            return outerKeys[1][name];
+          });
+        };
 
         var options = {
           series: [
             {
-              name: 'Corona-Cases',
-              data: datasets,
+              name: 'caseMale',
+              data: values('casesMale'),
             },
           ],
           chart: {
-            type: 'line',
-            zoom: {
-              enabled: false,
-            },
+            type: 'radar',
             animations: {
               enabled: false,
             },
           },
-          stroke: {
-            curve: 'straight',
-          },
           title: {
-            text: 'Line Chart',
+            text: 'Radar Chart',
           },
           xaxis: {
             categories: labels,
-            title: {
-              text: 'Date',
-            },
-          },
-          yaxis: {
-            title: {
-              text: 'Cases',
-            },
           },
         };
 
