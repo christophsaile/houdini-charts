@@ -36,14 +36,16 @@ if (typeof registerPaint !== 'undefined') {
       ctx.stroke();
 
       if (gridHighlight) {
-        ctx.strokeStyle = '#1c1c1ccc';
+        const lineWidth = 2;
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = '#929292';
 
         const x = gridHighlight + 5;
 
         ctx.beginPath();
         ctx.setLineDash([20, 5]);
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
+        ctx.moveTo(x - lineWidth / 2, 0);
+        ctx.lineTo(x - lineWidth / 2, height);
         ctx.stroke();
       }
     }

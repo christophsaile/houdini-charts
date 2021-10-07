@@ -63,8 +63,9 @@ export function getDateScaleLabels(values: string[]): Scale {
       //generateYearScale(params)
       break;
     }
+    case 'half_year':
     case 'months':
-    case 'half_year': {
+    case 'months_fortnight': {
       const { labels, maxValue } = generateMonthScale(values);
       scale = {
         labels: labels,
@@ -74,9 +75,8 @@ export function getDateScaleLabels(values: string[]): Scale {
       break;
     }
     case 'months_days':
-    case 'months_fortnight':
-    case 'days':
-    case 'week_days': {
+    case 'week_days':
+    case 'days': {
       const { labels, maxValue } = generateDayScale(values);
       scale = {
         labels: labels,
@@ -141,8 +141,6 @@ function generateDayScale(values: string[]) {
   const firstDay = DateTime.fromFormat(min, 'yyyy LLL dd');
 
   const numberOfDays = lastDay.diff(firstDay, 'days').days;
-
-  console.log(lastDay, firstDay, numberOfDays);
 
   let days: string[] = [];
   days.push(firstDay.toFormat('yyyy LLL dd'));
