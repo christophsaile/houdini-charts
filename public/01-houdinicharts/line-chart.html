@@ -9,9 +9,9 @@
   </head>
   <body>
     <main>
-      <section class="fullpage fullpage--center">
-        <section id="houdiniLine"></section>
-      </section>
+      <div style="display: flex; width: 75%; margin: auto">
+        <section style="width: 100%" id="myChart"></section>
+      </div>
     </main>
     <script>
       (function () {
@@ -64,7 +64,7 @@
             },
           },
         };
-        const HOUDNINICHART = new HoudiniChart(document.getElementById('houdiniLine'), config);
+        const HOUDNINICHART = new HoudiniChart(document.getElementById('myChart'), config);
       });
     </script>
   </body>

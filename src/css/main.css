@@ -138,18 +138,3 @@ a {
   justify-content: center;
   align-content: center;
 }
-
-#houdiniLine,
-#houdiniRadar {
-  width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  #houdiniRadar {
-    width: 50%;
-  }
-
-  #houdiniLine {
-    width: 80%;
-  }
-}
