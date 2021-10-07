@@ -35,21 +35,25 @@
             {
               label: 'casesMale',
               borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgba(255, 99, 132, 0.5)',
               data: values('casesMale'),
             },
             {
               label: 'casesFemale',
               borderColor: 'rgb(54, 162, 235)',
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
               data: values('casesFemale'),
             },
             {
               label: 'deathsMale',
               borderColor: 'rgb(75, 192, 192)',
+              backgroundColor: 'rgba(75, 192, 192, 0.5)',
               data: values('deathsMale'),
             },
             {
               label: 'deathsFemale',
               borderColor: 'rgb(255, 205, 86)',
+              backgroundColor: 'rgba(255, 205, 86, 0.5)',
               data: values('deathsFemale'),
             },
           ],
@@ -60,6 +64,12 @@
           options: {
             animation: {
               duration: 0,
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: 'Radar Chart',
+              },
             },
           },
         };

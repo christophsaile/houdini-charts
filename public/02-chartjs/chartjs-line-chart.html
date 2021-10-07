@@ -36,7 +36,7 @@
           labels: labels,
           datasets: [
             {
-              label: 'My First dataset',
+              label: 'Corona-Cases',
               backgroundColor: 'rgb(255, 99, 132)',
               borderColor: 'rgb(255, 99, 132)',
               data: datasets,
@@ -49,6 +49,26 @@
           options: {
             animation: {
               duration: 0,
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: 'Line Chart',
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Date',
+                },
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Cases',
+                },
+              },
             },
           },
         };

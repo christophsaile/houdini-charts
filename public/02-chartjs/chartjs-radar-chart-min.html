@@ -35,6 +35,7 @@
             {
               label: 'casesMale',
               borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgba(255, 99, 132,0.5)',
               data: values('casesMale'),
             },
           ],
@@ -45,6 +46,12 @@
           options: {
             animation: {
               duration: 0,
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: 'Radar Chart',
+              },
             },
           },
         };
