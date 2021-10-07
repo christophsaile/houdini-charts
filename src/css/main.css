@@ -12,6 +12,7 @@
   --color-green: #c1ffd7;
   --color-blue: #b5deff;
   --color-yellow: #fcffa6;
+  --color-grey: #d4d4d4;
   --color-black: #1c1c1ccc;
 }
 
@@ -26,30 +27,110 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-nav {
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: column;
+  grid-template-areas:
+    '. charttyp charttyp'
+    'library content content'
+    'library content content'
+    'library content content'
+    'library content content';
+  width: 100%;
+  margin-top: 10vh;
+}
+
+.charttyp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    '. .'
+    'dataset dataset';
+  grid-area: charttyp;
+  padding: var(--spacing-md) 0;
+  text-align: center;
+}
+
+.charttyp p {
+  padding: var(--spacing-md) 0 0;
+}
+
+.dataset {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: '. . . .';
+  grid-area: dataset;
+}
+
+.library {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-area: library;
+}
+.library * {
+  padding: var(--spacing-sm);
+}
+
+.library *:nth-child(odd) {
+  background-color: var(--color-grey);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: column;
+  grid-template-areas:
+    '. . . .'
+    '. . . .'
+    '. . . .'
+    '. . . .';
+  grid-area: content;
+  text-align: center;
+}
+
+.content * {
   display: flex;
-  flex-direction: column;
-  align-items: left;
   justify-content: center;
-}
-nav ul {
-  padding-bottom: var(--spacing-lg);
-}
-
-nav li {
-  list-style: none;
+  align-items: center;
+  padding: var(--spacing-sm);
 }
 
-nav a {
+.content *:nth-child(odd) {
+  background-color: var(--color-grey);
+  height: 100%;
+}
+
+a {
   color: black;
   text-decoration: none;
-  line-height: 2;
 }
 
 .fullpage {
   width: 100%;
   min-height: 100vh;
-  padding: 2rem;
+  height: 100vh;
+  padding: var(--spacing-xs);
+}
+
+@media screen and (min-width: 768px) {
+  .fullpage {
+    padding: var(--spacing-sm);
+  }
 }
 
 .fullpage--center {

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radar Chart</title>
+    <link rel="stylesheet" href="../main.css" />
+  </head>
+  <body>
+    <main>
+      <section class="fullpage fullpage--center">
+        <section id="houdiniRadar"></section>
+      </section>
+    </main>
+    <script>
+      (function () {
+        if (typeof CSS.paintWorklet === 'undefined') {
+          document.write('<script src="https://unpkg.com/css-paint-polyfill"><\/script>');
+        }
+      })();
+    </script>
+    <script src="../index.js"></script>
+    <script>
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData('https://api.corona-zahlen.org/germany/age-groups').then((apiData) => {
+        const labels = Object.keys(apiData.data);
+        const values = (name) => {
+          return Object.entries(apiData.data).map((outerKeys) => {
+            return outerKeys[1][name];
+          });
+        };
+
+        const data = {
+          xaxis: labels,
+          datasets: [
+            {
+              name: 'casesMale',
+              values: values('casesMale'),
+              color: '#cab8ff',
+            },
+          ],
+          scale: {
+            auto: true,
+          },
+        };
+        const config = {
+          title: 'Radar Chart',
+          chartType: 'Radar',
+          data: data,
+          options: {
+            fill: true,
+            legend: true,
+          },
+        };
+
+        const HOUDNINICHART = new HoudiniChart(document.getElementById('houdiniRadar'), config);
+      });
+    </script>
+  </body>
+</html>

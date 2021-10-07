@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    </main>
+    <script src="./chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+    <script>
+      const DateTime = luxon.DateTime;
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData('https://api.corona-zahlen.org/germany/history/cases/7').then((apiData) => {
+        let labels = apiData.data.map((elem) => {
+          return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
+        });
+
+        let datasets = apiData.data.map((elem) => {
+          return elem.cases;
+        });
+        const data = {
+          labels: labels,
+          datasets: [
+            {
+              label: 'My First dataset',
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: datasets,
+            },
+          ],
+        };
+        const config = {
+          type: 'line',
+          data: data,
+          options: {},
+        };
+        var myChart = new Chart(document.getElementById('myChart'), config);
+      });
+    </script>
+  </body>
+</html>
