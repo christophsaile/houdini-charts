@@ -22,10 +22,6 @@ import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tool
 // worklets
 const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
 const pathLineWorklet = new URL('../../worklets/path-line.js', import.meta.url);
-// @ts-ignore
-CSS.paintWorklet.addModule(gridBasicWorklet.href);
-// @ts-ignore
-CSS.paintWorklet.addModule(pathLineWorklet.href);
 
 class LineChart {
   constructor(private readonly root: HTMLElement, private readonly config: Config) {
@@ -95,10 +91,18 @@ class LineChart {
   private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
 
   private init = () => {
+    this.worklets();
     this.xaxisFormat();
     this.render();
     this.styles();
     this.events();
+  };
+
+  private worklets = () => {
+    // @ts-ignore
+    CSS.paintWorklet.addModule(gridBasicWorklet.href);
+    // @ts-ignore
+    CSS.paintWorklet.addModule(pathLineWorklet.href);
   };
 
   private render = () => {
