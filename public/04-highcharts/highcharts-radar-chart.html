@@ -8,7 +8,7 @@
   </head>
   <body>
     <main>
-      <div style="display: flex; width: 75%; margin: auto">
+      <div style="display: flex; width: 90%; margin: auto">
         <section style="width: 100%" id="myChart"></section>
       </div>
     </main>
@@ -84,7 +84,7 @@
         for (let i = 0, n = apiData.length; i < n; i++) {
           for (let j = 0, m = groups.length; j < m; j++) {
             const setData = {
-              label: `${stateNames[i]}-${groups[j]}`,
+              name: `${stateNames[i]}-${groups[j]}`,
               fillColor: rainbow(apiData.length, i) + '33',
               color: rainbow(apiData.length, i),
               data: values(groups[j], i),
@@ -97,6 +97,7 @@
           chart: {
             polar: true,
             type: 'area',
+            height: '100%',
           },
           plotOptions: {
             series: {
