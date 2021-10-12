@@ -23,17 +23,80 @@
           console.log(error);
         }
       }
-      fetchData('https://api.corona-zahlen.org/germany/age-groups').then((apiData) => {
-        const labels = Object.keys(apiData.data);
-        const values = (name) => {
-          return Object.entries(apiData.data).map((outerKeys) => {
-            return outerKeys[1][name];
-          });
-        };
+      function rainbow(numOfSteps, step) {
+        var r, g, b;
+        var h = step / numOfSteps;
+        var i = ~~(h * 6);
+        var f = h * 6 - i;
+        var q = 1 - f;
+        switch (i % 6) {
+          case 0:
+            r = 1;
+            g = f;
+            b = 0;
+            break;
+          case 1:
+            r = q;
+            g = 1;
+            b = 0;
+            break;
+          case 2:
+            r = 0;
+            g = 1;
+            b = f;
+            break;
+          case 3:
+            r = 0;
+            g = q;
+            b = 1;
+            break;
+          case 4:
+            r = f;
+            g = 0;
+            b = 1;
+            break;
+          case 5:
+            r = 1;
+            g = 0;
+            b = q;
+            break;
+        }
+        var c =
+          '#' +
+          ('00' + (~~(r * 255)).toString(16)).slice(-2) +
+          ('00' + (~~(g * 255)).toString(16)).slice(-2) +
+          ('00' + (~~(b * 255)).toString(16)).slice(-2);
+        return c;
+      }
+      fetchData('https://api.corona-zahlen.org/states/age-groups').then((result) => {
+        const apiData = Object.values(result.data);
+        const ageGroups = Object.keys(apiData[0]).sort();
+        const stateNames = Object.keys(result.data);
+        const groups = ['casesMale', 'casesFemale', 'deathsMale', 'deathsFemale'];
+        const filtered = Object.values(apiData).map((sets) =>
+          Object.values(sets).map((set) =>
+            Object.assign({}, ...groups.map((key) => ({ [key]: set[key] })))
+          )
+        );
+        const values = (name, index) => filtered[index].map((setItem) => setItem[name]);
+
+        const datasets = [];
+        for (let i = 0, n = apiData.length; i < n; i++) {
+          for (let j = 0, m = groups.length; j < m; j++) {
+            const setData = {
+              label: `${stateNames[i]}-${groups[j]}`,
+              fillColor: rainbow(apiData.length, i) + '33',
+              color: rainbow(apiData.length, i),
+              data: values(groups[j], i),
+              pointPlacement: 'on',
+            };
+            datasets.push(setData);
+          }
+        }
         Highcharts.chart('myChart', {
           chart: {
             polar: true,
-            type: 'line',
+            type: 'area',
           },
           plotOptions: {
             series: {
@@ -41,7 +104,7 @@
             },
           },
           xAxis: {
-            categories: labels,
+            categories: ageGroups,
             tickmarkPlacement: 'on',
             lineWidth: 0,
           },
@@ -53,28 +116,7 @@
           title: {
             text: 'Radar Chart',
           },
-          series: [
-            {
-              name: 'casesMale',
-              data: values('casesMale'),
-              pointPlacement: 'on',
-            },
-            {
-              name: 'casesFemale',
-              data: values('casesFemale'),
-              pointPlacement: 'on',
-            },
-            {
-              name: 'deathsMale',
-              data: values('deathsMale'),
-              pointPlacement: 'on',
-            },
-            {
-              name: 'deathsFemale',
-              data: values('deathsFemale'),
-              pointPlacement: 'on',
-            },
-          ],
+          series: datasets,
         });
       });
     </script>
