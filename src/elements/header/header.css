@@ -13,6 +13,7 @@
   justify-content: center;
   width: 100%;
   padding-bottom: var(--spacing-lg);
+  font-size: var(--font-xs);
 }
 
 .houdini__legend-item {
