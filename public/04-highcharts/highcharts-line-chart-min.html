@@ -33,7 +33,7 @@
           return elem.cases;
         });
 
-        Highcharts.chart('myChart', {
+        const config = {
           chart: {
             height: '100%',
           },
@@ -68,7 +68,11 @@
               data: datasets,
             },
           ],
-        });
+        };
+        const start = performance.now();
+        Highcharts.chart('myChart', config);
+        const end = performance.now();
+        console.log(`time to load Chart took ${end - start} milliseconds.`);
       });
     </script>
   </body>

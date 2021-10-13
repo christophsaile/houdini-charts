@@ -30,7 +30,7 @@
             return outerKeys[1][name];
           });
         };
-        Highcharts.chart('myChart', {
+        const config = {
           chart: {
             polar: true,
             type: 'area',
@@ -61,7 +61,11 @@
               pointPlacement: 'on',
             },
           ],
-        });
+        };
+        const start = performance.now();
+        Highcharts.chart('myChart', config);
+        const end = performance.now();
+        console.log(`time to load Chart took ${end - start} milliseconds.`);
       });
     </script>
   </body>

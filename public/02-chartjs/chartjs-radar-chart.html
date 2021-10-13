@@ -110,7 +110,10 @@
             },
           },
         };
+        const start = performance.now();
         const myChart = new Chart(document.getElementById('myChart'), config);
+        const end = performance.now();
+        console.log(`time to load Chart took ${end - start} milliseconds.`);
       });
     </script>
   </body>
