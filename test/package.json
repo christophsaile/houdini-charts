@@ -1,0 +1,16 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "performance tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index_old.js",
+    "houdini-line": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lighthouse": "^8.5.1",
+    "yargs": "^16.2.0"
+  }
+}
