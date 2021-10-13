@@ -6,19 +6,28 @@ const chromeLauncher = require('chrome-launcher');
   const chrome = await chromeLauncher.launch({ chromeFlags: ['--headless'] });
   const options = {
     logLevel: 'info',
-    output: 'html',
+    output: 'json',
     onlyCategories: ['performance'],
     port: chrome.port,
   };
-  const runnerResult = await lighthouse('https://www.christoph-saile.com', options);
+  const runnerResult = await lighthouse(
+    'https://houdini-charts.netlify.app/04-highcharts/highcharts-line-chart.html',
+    options
+  );
 
   // `.report` is the HTML report as a string
-  const reportHtml = runnerResult.report;
-  fs.writeFileSync('lhreport.html', reportHtml);
+  // const reportHtml = runnerResult.report;
+  const report = require('./report.json');
+  const newObj = { url: runnerResult.lhr.finalUrl };
+  report.data.push(newObj);
+  console.log(runnerResult.lhr);
+
+  fs.writeFileSync('./report.json', JSON.stringify(report));
 
   // `.lhr` is the Lighthouse Result as a JS object
-  console.log('Report is done for', runnerResult.lhr.finalUrl);
-  console.log('Performance score was', runnerResult.lhr.categories.performance.score * 100);
+  // console.log('Report is done for', runnerResult.lhr.finalUrl);
+  // console.log('Performance score was', runnerResult.lhr.categories.performance.score * 100);
+  // console.log(runnerResult.lhr.categories.performance);
 
   await chrome.kill();
 })();
