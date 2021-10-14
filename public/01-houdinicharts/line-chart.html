@@ -57,9 +57,11 @@
             },
           },
         };
+        window.myData = {};
         const start = performance.now();
         const HOUDNINICHART = new HoudiniChart(document.getElementById('myChart'), config);
         const end = performance.now();
+        myData.performance = end - start;
         console.log(`time to load Chart took ${end - start} milliseconds.`);
       });
     </script>

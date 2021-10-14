@@ -5,7 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "node index_old.js",
-    "houdini-line": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html"
+    "houdini-line": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
+    "houdini-line-min": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
+    "houdini-radar": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/radar-chart.html",
+    "houdini-radar-min": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/radar-chart.html",
+    "chartjs-line": "node index.js --url https://houdini-charts.netlify.app/02-chartjs/line-chart.html",
+    "chartjs-line-min": "node index.js --url https://houdini-charts.netlify.app/02-chartjs/line-chart.html",
+    "chartjs-radar": "node index.js --url https://houdini-charts.netlify.app/02-chartjs/radar-chart.html",
+    "chartjs-radar-min": "node index.js --url https://houdini-charts.netlify.app/02-chartjs/radar-chart.html",
+    "highcharts-line": "node index.js --url https://houdini-charts.netlify.app/03-highcharts/line-chart.html",
+    "highcharts-line-min": "node index.js --url https://houdini-charts.netlify.app/03-highcharts/line-chart.html",
+    "highcharts-radar": "node index.js --url https://houdini-charts.netlify.app/03-highcharts/radar-chart.html",
+    "highcharts-radar-min": "node index.js --url https://houdini-charts.netlify.app/03-highcharts/radar-chart.html"
   },
   "author": "",
   "license": "ISC",
