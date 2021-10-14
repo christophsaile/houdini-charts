@@ -1,17 +1,13 @@
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const config = require('./custom-config');
 const argv = require('yargs').argv;
 const url = require('url');
 const fs = require('fs');
 
 const launchChromeAndRunLighthouse = (url) => {
   return chromeLauncher.launch({ chromeFlags: ['--headless'] }).then((chrome) => {
-    const opts = {
-      output: 'json',
-      onlyCategories: ['performance'],
-      port: chrome.port,
-    };
-    return lighthouse(url, opts).then((results) => {
+    return lighthouse(url, { port: chrome.port }, config).then((results) => {
       return chrome.kill().then(() => results.lhr);
     });
   });
@@ -19,11 +15,14 @@ const launchChromeAndRunLighthouse = (url) => {
 
 if (argv.url) {
   const urlObj = new URL(argv.url);
-  let fileName = `${urlObj.pathname.replaceAll('/', '_').replace('.html', '')}.json`;
+  const run = argv.run;
+
+  let fileName = urlObj.pathname.replace(/\//g, '_').replace('.html', '.json');
   let filePath = `./results/${fileName}`;
 
   if (!fs.existsSync(filePath)) {
-    const initJSON = { data: [] };
+    const initJSON = { page: argv.url, data: [] };
+
     fs.writeFile(filePath, JSON.stringify(initJSON), (err) => {
       if (err) throw err;
     });
@@ -31,7 +30,10 @@ if (argv.url) {
 
   launchChromeAndRunLighthouse(argv.url).then((results) => {
     const report = require(filePath);
-    const newReportData = { url: results.finalUrl };
+    const newReportData = {
+      run: run,
+      jsExecutionTime: results.audits['custom-audit'].numericValue,
+    };
     report.data.push(newReportData);
 
     fs.writeFile(filePath, JSON.stringify(report), (err) => {

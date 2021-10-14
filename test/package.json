@@ -4,7 +4,7 @@
   "description": "performance tests",
   "main": "index.js",
   "scripts": {
-    "test": "node index_old.js",
+    "multiple-tests": "node multiple-tests.js --runs 10",
     "houdini-line": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
     "houdini-line-min": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
     "houdini-radar": "node index.js --url https://houdini-charts.netlify.app/01-houdinicharts/radar-chart.html",
