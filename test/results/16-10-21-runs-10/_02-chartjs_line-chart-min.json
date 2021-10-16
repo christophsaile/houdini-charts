@@ -1,0 +1,95 @@
+{
+  "page": "https://houdini-charts.netlify.app/02-chartjs/line-chart-min.html",
+  "data": [
+    {
+      "timestamp": "2021-10-16T13:59:24.458Z",
+      "executionTime": 44.7,
+      "fcp": 1876.75,
+      "speedIndex": 2726.7558999992907,
+      "interactive": 1876.75,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T13:59:30.250Z",
+      "executionTime": 36.2,
+      "fcp": 1721.25,
+      "speedIndex": 1721.25,
+      "interactive": 1721.25,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T13:59:35.147Z",
+      "executionTime": 38.3,
+      "fcp": 1704.625,
+      "speedIndex": 1704.625,
+      "interactive": 1704.625,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T13:59:40.029Z",
+      "executionTime": 42.9,
+      "fcp": 1680.625,
+      "speedIndex": 1680.625,
+      "interactive": 1680.625,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T13:59:44.936Z",
+      "executionTime": 39.6,
+      "fcp": 1720.625,
+      "speedIndex": 1720.625,
+      "interactive": 1720.625,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T13:59:49.836Z",
+      "executionTime": 40.8,
+      "fcp": 1718.75,
+      "speedIndex": 1718.75,
+      "interactive": 1718.75,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T13:59:54.740Z",
+      "executionTime": 49.4,
+      "fcp": 1939.125,
+      "speedIndex": 2695.373250001669,
+      "interactive": 1960.125,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T14:00:00.474Z",
+      "executionTime": 42.8,
+      "fcp": 1738.75,
+      "speedIndex": 1738.75,
+      "interactive": 1740.875,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T14:00:05.393Z",
+      "executionTime": 43.8,
+      "fcp": 1712.875,
+      "speedIndex": 1712.875,
+      "interactive": 1714.4375,
+      "tbt": 0,
+      "domSize": 6
+    },
+    {
+      "timestamp": "2021-10-16T14:00:10.318Z",
+      "executionTime": 40.8,
+      "fcp": 1723.75,
+      "speedIndex": 1723.75,
+      "interactive": 1729.875,
+      "tbt": 0,
+      "domSize": 6
+    }
+  ]
+}

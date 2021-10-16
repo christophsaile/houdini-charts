@@ -9,6 +9,7 @@ module.exports = {
       'interactive',
       'total-blocking-time',
     ],
+    throttlingMethod: 'devtools',
   },
   passes: [
     {
