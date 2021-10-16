@@ -5,17 +5,17 @@
   "main": "index.js",
   "scripts": {
     "houdini-line": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
-    "houdini-line-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
+    "houdini-line-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart-min.html",
     "houdini-radar": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/01-houdinicharts/radar-chart.html",
-    "houdini-radar-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/01-houdinicharts/radar-chart.html",
+    "houdini-radar-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/01-houdinicharts/radar-chart-min.html",
     "chartjs-line": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/02-chartjs/line-chart.html",
-    "chartjs-line-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/02-chartjs/line-chart.html",
+    "chartjs-line-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/02-chartjs/line-chart-min.html",
     "chartjs-radar": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/02-chartjs/radar-chart.html",
-    "chartjs-radar-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/02-chartjs/radar-chart.html",
+    "chartjs-radar-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/02-chartjs/radar-chart-min.html",
     "highcharts-line": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/03-highcharts/line-chart.html",
-    "highcharts-line-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/03-highcharts/line-chart.html",
+    "highcharts-line-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/03-highcharts/line-chart-min.html",
     "highcharts-radar": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/03-highcharts/radar-chart.html",
-    "highcharts-radar-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/03-highcharts/radar-chart.html"
+    "highcharts-radar-min": "node multiple-tests.js --runs 10 --url https://houdini-charts.netlify.app/03-highcharts/radar-chart-min.html"
   },
   "author": "",
   "license": "ISC",
