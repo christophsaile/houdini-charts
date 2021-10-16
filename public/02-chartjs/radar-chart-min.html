@@ -22,7 +22,7 @@
           console.log(error);
         }
       }
-      fetchData('https://api.corona-zahlen.org/germany/age-groups').then((apiData) => {
+      fetchData('../mock/local-test-data-radar-min.json').then((apiData) => {
         const xaxis = Object.keys(apiData.data);
         const values = (name) => {
           return Object.entries(apiData.data).map((outerKeys) => {

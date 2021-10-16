@@ -41,3 +41,10 @@ Aktuell sind das die folgenden Dateien:
 - .js
 
 Worklets werden als .js Datei gespeichert, da einige Methoden noch nicht von TypeScript unterstützt werden (registerProperty ...)
+
+## Live APIs
+
+- https://api.corona-zahlen.org/germany/history/cases/7
+- https://api.corona-zahlen.org/germany/history/cases
+- https://api.corona-zahlen.org/germany/age-groups
+- https://api.corona-zahlen.org/states/age-groups
