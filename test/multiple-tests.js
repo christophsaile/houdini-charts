@@ -1,17 +1,15 @@
 const execSync = require('child_process').execSync;
 const argv = require('yargs').argv;
 
+const url = new URL(argv.url);
+
 let runs = 0;
 let runLimit = argv.runs;
 
 do {
   console.log('\x1b[33m', `Starting performance test ${runs + 1}`, '\x1b[0m');
   try {
-    execSync(
-      `node index.js --run ${
-        runs + 1
-      } --url https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html`
-    );
+    execSync(`node index.js --url ${url}`);
   } catch (err) {
     console.log('\x1b[31m', `Performance test ${runs + 1} failed`, '\x1b[0m');
     break;

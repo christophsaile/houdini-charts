@@ -15,7 +15,6 @@ const launchChromeAndRunLighthouse = (url) => {
 
 if (argv.url) {
   const urlObj = new URL(argv.url);
-  const run = argv.run;
 
   let fileName = urlObj.pathname.replace(/\//g, '_').replace('.html', '.json');
   let filePath = `./results/${fileName}`;
@@ -31,8 +30,8 @@ if (argv.url) {
   launchChromeAndRunLighthouse(argv.url).then((results) => {
     const report = require(filePath);
     const newReportData = {
-      run: run,
-      jsExecutionTime: results.audits['custom-audit'].numericValue,
+      timestamp: results.fetchTime,
+      executionTime: results.audits['custom-audit'].numericValue,
     };
     report.data.push(newReportData);
 
