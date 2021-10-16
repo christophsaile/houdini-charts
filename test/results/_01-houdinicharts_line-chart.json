@@ -1,1 +1,104 @@
-{"page":"https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html","data":[{"run":0,"jsExecutionTime":245},{"run":1,"jsExecutionTime":247.5},{"run":2,"jsExecutionTime":245.8},{"run":3,"jsExecutionTime":245.8},{"run":4,"jsExecutionTime":246.1},{"run":5,"jsExecutionTime":246.6},{"run":6,"jsExecutionTime":246.7},{"run":7,"jsExecutionTime":247},{"run":8,"jsExecutionTime":249},{"run":9,"jsExecutionTime":246.4}]}
+{
+  "page": "https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
+  "data": [
+    {
+      "timestamp": "2021-10-16T09:00:09.633Z",
+      "executionTime": 234.3,
+      "fcp": 1681.75,
+      "speedIndex": 1799.868380000677,
+      "interactive": 1681.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:00:40.121Z",
+      "executionTime": 234,
+      "fcp": 1688.25,
+      "speedIndex": 1698.9652240000887,
+      "interactive": 1688.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:00:45.310Z",
+      "executionTime": 232.2,
+      "fcp": 1740.375,
+      "speedIndex": 1740.375,
+      "interactive": 1740.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:00:50.438Z",
+      "executionTime": 233.6,
+      "fcp": 1750.625,
+      "speedIndex": 1760.338733999878,
+      "interactive": 1750.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:00:55.632Z",
+      "executionTime": 233.8,
+      "fcp": 1718.5,
+      "speedIndex": 1718.5,
+      "interactive": 1718.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:01:00.789Z",
+      "executionTime": 233.3,
+      "fcp": 1695.5,
+      "speedIndex": 1695.5,
+      "interactive": 1695.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:01:05.938Z",
+      "executionTime": 233.4,
+      "fcp": 1715.5,
+      "speedIndex": 1760.7301240001098,
+      "interactive": 1715.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:01:11.151Z",
+      "executionTime": 233.5,
+      "fcp": 1687.25,
+      "speedIndex": 1738.8092719993851,
+      "interactive": 1687.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:01:16.351Z",
+      "executionTime": 234,
+      "fcp": 1705.625,
+      "speedIndex": 1725.2627739995828,
+      "interactive": 1705.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:01:21.536Z",
+      "executionTime": 232.5,
+      "fcp": 1699.5,
+      "speedIndex": 1699.5,
+      "interactive": 1699.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-16T09:01:26.660Z",
+      "executionTime": 234.4,
+      "fcp": 1672.125,
+      "speedIndex": 1672.125,
+      "interactive": 1672.125,
+      "tbt": 0,
+      "domSize": 669
+    }
+  ]
+}

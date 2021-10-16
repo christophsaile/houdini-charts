@@ -1,7 +1,14 @@
 module.exports = {
   extends: 'lighthouse:default',
   settings: {
-    onlyCategories: ['performance', 'custom'],
+    onlyAudits: [
+      'custom-audit',
+      'dom-size',
+      'speed-index',
+      'first-contentful-paint',
+      'interactive',
+      'total-blocking-time',
+    ],
   },
   passes: [
     {

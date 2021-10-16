@@ -18,9 +18,9 @@ class CustomAudit extends Audit {
 
     return {
       numericValue: value,
-      numericUnit: 'ms',
+      numericUnit: 'milliseconds',
       score: score,
-      displayValue: `JavaScript execution time is: ${value}ms`,
+      displayValue: `JavaScript execution time is: ${value} ms`,
     };
   }
 }
