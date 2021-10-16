@@ -62,10 +62,12 @@
             },
           ],
         };
+        window.myData = {};
         const start = performance.now();
         Highcharts.chart('myChart', config);
         const end = performance.now();
-        console.log(`time to load Chart took ${end - start} milliseconds.`);
+        myData.performance = end - start;
+        console.log(`time to load Chart took ${myData.performance} milliseconds.`);
       });
     </script>
   </body>

@@ -1,0 +1,85 @@
+{
+  "page": "https://houdini-charts.netlify.app/03-highcharts/line-chart.html",
+  "data": [
+    {
+      "timestamp": "2021-10-16T09:27:23.757Z",
+      "fcp": 2042.875,
+      "speedIndex": 3496.1378832267947,
+      "interactive": 2163.875,
+      "tbt": 73,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:27:29.951Z",
+      "fcp": 2064.5,
+      "speedIndex": 3425.9979403981997,
+      "interactive": 2163,
+      "tbt": 73.5,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:27:36.078Z",
+      "fcp": 1957.75,
+      "speedIndex": 1957.75,
+      "interactive": 2042.25,
+      "tbt": 59.5,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:27:41.037Z",
+      "fcp": 1805,
+      "speedIndex": 1805,
+      "interactive": 1899,
+      "tbt": 59.5,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:27:46.007Z",
+      "fcp": 1806.5,
+      "speedIndex": 1806.5,
+      "interactive": 1896.5,
+      "tbt": 57.5,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:27:50.949Z",
+      "fcp": 2028.375,
+      "speedIndex": 3145.323137550382,
+      "interactive": 2148.375,
+      "tbt": 72.5,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:27:56.900Z",
+      "fcp": 1808.25,
+      "speedIndex": 1808.25,
+      "interactive": 1890.25,
+      "tbt": 53.5,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:28:01.801Z",
+      "fcp": 1875.5,
+      "speedIndex": 1875.5,
+      "interactive": 1956.5,
+      "tbt": 56,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:28:06.772Z",
+      "fcp": 1868,
+      "speedIndex": 1868,
+      "interactive": 1949,
+      "tbt": 56,
+      "domSize": 72
+    },
+    {
+      "timestamp": "2021-10-16T09:28:11.711Z",
+      "fcp": 1912.5,
+      "speedIndex": 1912.5,
+      "interactive": 2071.5,
+      "tbt": 109,
+      "domSize": 72
+    }
+  ]
+}
