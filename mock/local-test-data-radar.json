@@ -1,0 +1,1003 @@
+{
+  "data": {
+    "NI": {
+      "A15-A34": {
+        "casesMale": 2752,
+        "casesFemale": 2642,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 6566.9,
+        "casesFemalePer100k": 6998.1,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A35-A59": {
+        "casesMale": 3219,
+        "casesFemale": 3321,
+        "deathsMale": 11,
+        "deathsFemale": 2,
+        "casesMalePer100k": 5192.9,
+        "casesFemalePer100k": 5339,
+        "deathsMalePer100k": 17.7,
+        "deathsFemalePer100k": 3.2
+      },
+      "A60-A79": {
+        "casesMale": 1060,
+        "casesFemale": 1033,
+        "deathsMale": 62,
+        "deathsFemale": 26,
+        "casesMalePer100k": 2829.8,
+        "casesFemalePer100k": 2598.2,
+        "deathsMalePer100k": 165.5,
+        "deathsFemalePer100k": 65.4
+      },
+      "A80+": {
+        "casesMale": 341,
+        "casesFemale": 718,
+        "deathsMale": 88,
+        "deathsFemale": 123,
+        "casesMalePer100k": 3531.5,
+        "casesFemalePer100k": 4559.6,
+        "deathsMalePer100k": 911.4,
+        "deathsFemalePer100k": 781.1
+      },
+      "A00-A04": {
+        "casesMale": 361,
+        "casesFemale": 266,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3863,
+        "casesFemalePer100k": 2990.1,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 909,
+        "casesFemale": 885,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 5040.2,
+        "casesFemalePer100k": 5291.8,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      }
+    },
+    "SH": {
+      "A00-A04": {
+        "casesMale": 104,
+        "casesFemale": 109,
+        "deathsMale": 0,
+        "deathsFemale": 1,
+        "casesMalePer100k": 1790.9,
+        "casesFemalePer100k": 2025.3,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 18.6
+      },
+      "A05-A14": {
+        "casesMale": 355,
+        "casesFemale": 333,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 2858.8,
+        "casesFemalePer100k": 2830.4,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 1203,
+        "casesFemale": 1171,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 4997.9,
+        "casesFemalePer100k": 5263.6,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A35-A59": {
+        "casesMale": 1449,
+        "casesFemale": 1569,
+        "deathsMale": 9,
+        "deathsFemale": 4,
+        "casesMalePer100k": 3307.6,
+        "casesFemalePer100k": 3442,
+        "deathsMalePer100k": 20.5,
+        "deathsFemalePer100k": 8.8
+      },
+      "A60-A79": {
+        "casesMale": 560,
+        "casesFemale": 552,
+        "deathsMale": 53,
+        "deathsFemale": 24,
+        "casesMalePer100k": 2173.7,
+        "casesFemalePer100k": 1933.7,
+        "deathsMalePer100k": 205.7,
+        "deathsFemalePer100k": 84.1
+      },
+      "A80+": {
+        "casesMale": 277,
+        "casesFemale": 664,
+        "deathsMale": 93,
+        "deathsFemale": 135,
+        "casesMalePer100k": 3522.4,
+        "casesFemalePer100k": 5658.8,
+        "deathsMalePer100k": 1182.6,
+        "deathsFemalePer100k": 1150.5
+      }
+    },
+    "BW": {
+      "A15-A34": {
+        "casesMale": 96810,
+        "casesFemale": 92379,
+        "deathsMale": 17,
+        "deathsFemale": 12,
+        "casesMalePer100k": 6933.5,
+        "casesFemalePer100k": 7246.7,
+        "deathsMalePer100k": 1.2,
+        "deathsFemalePer100k": 0.9
+      },
+      "A35-A59": {
+        "casesMale": 111194,
+        "casesFemale": 114014,
+        "deathsMale": 380,
+        "deathsFemale": 150,
+        "casesMalePer100k": 5760.1,
+        "casesFemalePer100k": 6018.6,
+        "deathsMalePer100k": 19.7,
+        "deathsFemalePer100k": 7.9
+      },
+      "A60-A79": {
+        "casesMale": 38081,
+        "casesFemale": 37820,
+        "deathsMale": 2055,
+        "deathsFemale": 1060,
+        "casesMalePer100k": 3498,
+        "casesFemalePer100k": 3157.4,
+        "deathsMalePer100k": 188.8,
+        "deathsFemalePer100k": 88.5
+      },
+      "A80+": {
+        "casesMale": 12235,
+        "casesFemale": 22960,
+        "deathsMale": 3331,
+        "deathsFemale": 3808,
+        "casesMalePer100k": 4127.6,
+        "casesFemalePer100k": 5039.7,
+        "deathsMalePer100k": 1123.8,
+        "deathsFemalePer100k": 835.9
+      },
+      "A00-A04": {
+        "casesMale": 8490,
+        "casesFemale": 7720,
+        "deathsMale": 3,
+        "deathsFemale": 3,
+        "casesMalePer100k": 3017.4,
+        "casesFemalePer100k": 2895.2,
+        "deathsMalePer100k": 1.1,
+        "deathsFemalePer100k": 1.1
+      },
+      "A05-A14": {
+        "casesMale": 27116,
+        "casesFemale": 24514,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 5179.5,
+        "casesFemalePer100k": 4930.1,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      }
+    },
+    "TH": {
+      "A60-A79": {
+        "casesMale": 13030,
+        "casesFemale": 13835,
+        "deathsMale": 891,
+        "deathsFemale": 463,
+        "casesMalePer100k": 4926.8,
+        "casesFemalePer100k": 4691.4,
+        "deathsMalePer100k": 336.9,
+        "deathsFemalePer100k": 157
+      },
+      "A80+": {
+        "casesMale": 4772,
+        "casesFemale": 9092,
+        "deathsMale": 1335,
+        "deathsFemale": 1577,
+        "casesMalePer100k": 7158.4,
+        "casesFemalePer100k": 8081.3,
+        "deathsMalePer100k": 2002.6,
+        "deathsFemalePer100k": 1401.7
+      },
+      "A00-A04": {
+        "casesMale": 1625,
+        "casesFemale": 1563,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3629.3,
+        "casesFemalePer100k": 3643.9,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 5174,
+        "casesFemale": 4949,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 5461.1,
+        "casesFemalePer100k": 5540.1,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 14790,
+        "casesFemale": 16026,
+        "deathsMale": 6,
+        "deathsFemale": 2,
+        "casesMalePer100k": 7254.7,
+        "casesFemalePer100k": 8739.2,
+        "deathsMalePer100k": 2.9,
+        "deathsFemalePer100k": 1.1
+      },
+      "A35-A59": {
+        "casesMale": 25185,
+        "casesFemale": 30657,
+        "deathsMale": 109,
+        "deathsFemale": 53,
+        "casesMalePer100k": 6721.5,
+        "casesFemalePer100k": 8809.2,
+        "deathsMalePer100k": 29.1,
+        "deathsFemalePer100k": 15.2
+      }
+    },
+    "BY": {
+      "A00-A04": {
+        "casesMale": 10650,
+        "casesFemale": 9942,
+        "deathsMale": 0,
+        "deathsFemale": 2,
+        "casesMalePer100k": 3222,
+        "casesFemalePer100k": 3154.5,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0.6
+      },
+      "A05-A14": {
+        "casesMale": 33508,
+        "casesFemale": 30454,
+        "deathsMale": 0,
+        "deathsFemale": 3,
+        "casesMalePer100k": 5559.2,
+        "casesFemalePer100k": 5333.7,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0.5
+      },
+      "A15-A34": {
+        "casesMale": 124868,
+        "casesFemale": 115602,
+        "deathsMale": 16,
+        "deathsFemale": 13,
+        "casesMalePer100k": 7741.7,
+        "casesFemalePer100k": 7762.2,
+        "deathsMalePer100k": 1,
+        "deathsFemalePer100k": 0.9
+      },
+      "A35-A59": {
+        "casesMale": 139502,
+        "casesFemale": 140191,
+        "deathsMale": 467,
+        "deathsFemale": 190,
+        "casesMalePer100k": 6021,
+        "casesFemalePer100k": 6135,
+        "deathsMalePer100k": 20.2,
+        "deathsFemalePer100k": 8.3
+      },
+      "A60-A79": {
+        "casesMale": 49685,
+        "casesFemale": 48621,
+        "deathsMale": 2968,
+        "deathsFemale": 1585,
+        "casesMalePer100k": 3794.8,
+        "casesFemalePer100k": 3386.8,
+        "deathsMalePer100k": 226.7,
+        "deathsFemalePer100k": 110.4
+      },
+      "A80+": {
+        "casesMale": 16771,
+        "casesFemale": 32469,
+        "deathsMale": 4631,
+        "deathsFemale": 5906,
+        "casesMalePer100k": 4930.5,
+        "casesFemalePer100k": 6109.6,
+        "deathsMalePer100k": 1361.5,
+        "deathsFemalePer100k": 1111.3
+      }
+    },
+    "HH": {
+      "A00-A04": {
+        "casesMale": 1559,
+        "casesFemale": 1269,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3060.2,
+        "casesFemalePer100k": 2622.7,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 4779,
+        "casesFemale": 4387,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 5547.4,
+        "casesFemalePer100k": 5408,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 16794,
+        "casesFemale": 16528,
+        "deathsMale": 5,
+        "deathsFemale": 3,
+        "casesMalePer100k": 6784.4,
+        "casesFemalePer100k": 6727.3,
+        "deathsMalePer100k": 2,
+        "deathsFemalePer100k": 1.2
+      },
+      "A35-A59": {
+        "casesMale": 16551,
+        "casesFemale": 16577,
+        "deathsMale": 77,
+        "deathsFemale": 26,
+        "casesMalePer100k": 5050.5,
+        "casesFemalePer100k": 5077.6,
+        "deathsMalePer100k": 23.5,
+        "deathsFemalePer100k": 8
+      },
+      "A60-A79": {
+        "casesMale": 5062,
+        "casesFemale": 4852,
+        "deathsMale": 365,
+        "deathsFemale": 182,
+        "casesMalePer100k": 3333.1,
+        "casesFemalePer100k": 2787.6,
+        "deathsMalePer100k": 240.3,
+        "deathsFemalePer100k": 104.6
+      },
+      "A80+": {
+        "casesMale": 1755,
+        "casesFemale": 3393,
+        "deathsMale": 518,
+        "deathsFemale": 586,
+        "casesMalePer100k": 4108.1,
+        "casesFemalePer100k": 4859.7,
+        "deathsMalePer100k": 1212.5,
+        "deathsFemalePer100k": 839.3
+      }
+    },
+    "SL": {
+      "A00-A04": {
+        "casesMale": 823,
+        "casesFemale": 847,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3885.6,
+        "casesFemalePer100k": 4190.8,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 2518,
+        "casesFemale": 2345,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 6087.9,
+        "casesFemalePer100k": 6083.5,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 6952,
+        "casesFemale": 7320,
+        "deathsMale": 2,
+        "deathsFemale": 3,
+        "casesMalePer100k": 6286.5,
+        "casesFemalePer100k": 7241,
+        "deathsMalePer100k": 1.8,
+        "deathsFemalePer100k": 3
+      },
+      "A35-A59": {
+        "casesMale": 7943,
+        "casesFemale": 8699,
+        "deathsMale": 39,
+        "deathsFemale": 14,
+        "casesMalePer100k": 4833.1,
+        "casesFemalePer100k": 5254.8,
+        "deathsMalePer100k": 23.7,
+        "deathsFemalePer100k": 8.5
+      },
+      "A60-A79": {
+        "casesMale": 3590,
+        "casesFemale": 3541,
+        "deathsMale": 198,
+        "deathsFemale": 102,
+        "casesMalePer100k": 3089.1,
+        "casesFemalePer100k": 2792.1,
+        "deathsMalePer100k": 170.4,
+        "deathsFemalePer100k": 80.4
+      },
+      "A80+": {
+        "casesMale": 1314,
+        "casesFemale": 2548,
+        "deathsMale": 323,
+        "deathsFemale": 379,
+        "casesMalePer100k": 4482.7,
+        "casesFemalePer100k": 5224,
+        "deathsMalePer100k": 1101.9,
+        "deathsFemalePer100k": 777
+      }
+    },
+    "BE": {
+      "A00-A04": {
+        "casesMale": 3064,
+        "casesFemale": 2870,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3121.8,
+        "casesFemalePer100k": 3080.3,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 10287,
+        "casesFemale": 9686,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 6031.7,
+        "casesFemalePer100k": 6008.5,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 34998,
+        "casesFemale": 37132,
+        "deathsMale": 6,
+        "deathsFemale": 2,
+        "casesMalePer100k": 7322.8,
+        "casesFemalePer100k": 7888.1,
+        "deathsMalePer100k": 1.3,
+        "deathsFemalePer100k": 0.4
+      },
+      "A35-A59": {
+        "casesMale": 36691,
+        "casesFemale": 39406,
+        "deathsMale": 109,
+        "deathsFemale": 50,
+        "casesMalePer100k": 5661.2,
+        "casesFemalePer100k": 6271.1,
+        "deathsMalePer100k": 16.8,
+        "deathsFemalePer100k": 8
+      },
+      "A60-A79": {
+        "casesMale": 12642,
+        "casesFemale": 12352,
+        "deathsMale": 806,
+        "deathsFemale": 398,
+        "casesMalePer100k": 3912.7,
+        "casesFemalePer100k": 3324.8,
+        "deathsMalePer100k": 249.5,
+        "deathsFemalePer100k": 107.1
+      },
+      "A80+": {
+        "casesMale": 4473,
+        "casesFemale": 8160,
+        "deathsMale": 1058,
+        "deathsFemale": 1225,
+        "casesMalePer100k": 5313.2,
+        "casesFemalePer100k": 5953.8,
+        "deathsMalePer100k": 1256.7,
+        "deathsFemalePer100k": 893.8
+      }
+    },
+    "HB": {
+      "A00-A04": {
+        "casesMale": 90,
+        "casesFemale": 87,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 2996,
+        "casesFemalePer100k": 3082.9,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 444,
+        "casesFemale": 338,
+        "deathsMale": 0,
+        "deathsFemale": 1,
+        "casesMalePer100k": 7770.4,
+        "casesFemalePer100k": 6359.4,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 18.8
+      },
+      "A15-A34": {
+        "casesMale": 1211,
+        "casesFemale": 1052,
+        "deathsMale": 1,
+        "deathsFemale": 0,
+        "casesMalePer100k": 8387.6,
+        "casesFemalePer100k": 8182.9,
+        "deathsMalePer100k": 6.9,
+        "deathsFemalePer100k": 0
+      },
+      "A35-A59": {
+        "casesMale": 1223,
+        "casesFemale": 1067,
+        "deathsMale": 6,
+        "deathsFemale": 2,
+        "casesMalePer100k": 6478.8,
+        "casesFemalePer100k": 6050.1,
+        "deathsMalePer100k": 31.8,
+        "deathsFemalePer100k": 11.3
+      },
+      "A60-A79": {
+        "casesMale": 407,
+        "casesFemale": 399,
+        "deathsMale": 33,
+        "deathsFemale": 21,
+        "casesMalePer100k": 3497.8,
+        "casesFemalePer100k": 2958.6,
+        "deathsMalePer100k": 283.6,
+        "deathsFemalePer100k": 155.7
+      },
+      "A80+": {
+        "casesMale": 93,
+        "casesFemale": 197,
+        "deathsMale": 26,
+        "deathsFemale": 30,
+        "casesMalePer100k": 3229.2,
+        "casesFemalePer100k": 4026.2,
+        "deathsMalePer100k": 902.8,
+        "deathsFemalePer100k": 613.1
+      }
+    },
+    "NW": {
+      "A00-A04": {
+        "casesMale": 383,
+        "casesFemale": 401,
+        "deathsMale": 0,
+        "deathsFemale": 1,
+        "casesMalePer100k": 4072.3,
+        "casesFemalePer100k": 4485.5,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 11.2
+      },
+      "A05-A14": {
+        "casesMale": 1190,
+        "casesFemale": 1061,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 6588.8,
+        "casesFemalePer100k": 6244.8,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 3127,
+        "casesFemale": 3237,
+        "deathsMale": 2,
+        "deathsFemale": 1,
+        "casesMalePer100k": 7270.6,
+        "casesFemalePer100k": 8147.9,
+        "deathsMalePer100k": 4.7,
+        "deathsFemalePer100k": 2.5
+      },
+      "A35-A59": {
+        "casesMale": 3543,
+        "casesFemale": 3967,
+        "deathsMale": 16,
+        "deathsFemale": 15,
+        "casesMalePer100k": 5275.7,
+        "casesFemalePer100k": 5782.5,
+        "deathsMalePer100k": 23.8,
+        "deathsFemalePer100k": 21.9
+      },
+      "A60-A79": {
+        "casesMale": 1311,
+        "casesFemale": 1460,
+        "deathsMale": 91,
+        "deathsFemale": 60,
+        "casesMalePer100k": 3031.4,
+        "casesFemalePer100k": 2968,
+        "deathsMalePer100k": 210.4,
+        "deathsFemalePer100k": 122
+      },
+      "A80+": {
+        "casesMale": 463,
+        "casesFemale": 1025,
+        "deathsMale": 134,
+        "deathsFemale": 180,
+        "casesMalePer100k": 4259.8,
+        "casesFemalePer100k": 5566.1,
+        "deathsMalePer100k": 1232.9,
+        "deathsFemalePer100k": 977.5
+      }
+    },
+    "BB": {
+      "A00-A04": {
+        "casesMale": 1363,
+        "casesFemale": 1275,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 2447.3,
+        "casesFemalePer100k": 2423.5,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 4364,
+        "casesFemale": 3988,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3681.1,
+        "casesFemalePer100k": 3561.5,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 12360,
+        "casesFemale": 13425,
+        "deathsMale": 2,
+        "deathsFemale": 1,
+        "casesMalePer100k": 5443.5,
+        "casesFemalePer100k": 6420.1,
+        "deathsMalePer100k": 0.9,
+        "deathsFemalePer100k": 0.5
+      },
+      "A35-A59": {
+        "casesMale": 21600,
+        "casesFemale": 27047,
+        "deathsMale": 80,
+        "deathsFemale": 33,
+        "casesMalePer100k": 4674.8,
+        "casesFemalePer100k": 6064.2,
+        "deathsMalePer100k": 17.3,
+        "deathsFemalePer100k": 7.4
+      },
+      "A60-A79": {
+        "casesMale": 10476,
+        "casesFemale": 10828,
+        "deathsMale": 704,
+        "deathsFemale": 386,
+        "casesMalePer100k": 3429.3,
+        "casesFemalePer100k": 3243.3,
+        "deathsMalePer100k": 230.5,
+        "deathsFemalePer100k": 115.6
+      },
+      "A80+": {
+        "casesMale": 4280,
+        "casesFemale": 8172,
+        "deathsMale": 1256,
+        "deathsFemale": 1408,
+        "casesMalePer100k": 5403.6,
+        "casesFemalePer100k": 6312.5,
+        "deathsMalePer100k": 1585.7,
+        "deathsFemalePer100k": 1087.6
+      }
+    },
+    "HE": {
+      "A00-A04": {
+        "casesMale": 150,
+        "casesFemale": 149,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3848.1,
+        "casesFemalePer100k": 4092.3,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 501,
+        "casesFemale": 427,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 5531.6,
+        "casesFemalePer100k": 5181.4,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 2118,
+        "casesFemale": 1841,
+        "deathsMale": 2,
+        "deathsFemale": 1,
+        "casesMalePer100k": 7023.9,
+        "casesFemalePer100k": 6666.9,
+        "deathsMalePer100k": 6.6,
+        "deathsFemalePer100k": 3.6
+      },
+      "A35-A59": {
+        "casesMale": 9735,
+        "casesFemale": 8912,
+        "deathsMale": 44,
+        "deathsFemale": 15,
+        "casesMalePer100k": 6796.4,
+        "casesFemalePer100k": 6473.8,
+        "deathsMalePer100k": 30.7,
+        "deathsFemalePer100k": 10.9
+      },
+      "A60-A79": {
+        "casesMale": 2762,
+        "casesFemale": 2364,
+        "deathsMale": 194,
+        "deathsFemale": 105,
+        "casesMalePer100k": 4750.2,
+        "casesFemalePer100k": 3649.2,
+        "deathsMalePer100k": 333.6,
+        "deathsFemalePer100k": 162.1
+      },
+      "A80+": {
+        "casesMale": 724,
+        "casesFemale": 1286,
+        "deathsMale": 232,
+        "deathsFemale": 256,
+        "casesMalePer100k": 5196.3,
+        "casesFemalePer100k": 5629.5,
+        "deathsMalePer100k": 1665.1,
+        "deathsFemalePer100k": 1120.6
+      }
+    },
+    "MV": {
+      "A00-A04": {
+        "casesMale": 836,
+        "casesFemale": 757,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 2471.1,
+        "casesFemalePer100k": 2342.1,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 2365,
+        "casesFemale": 2259,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 3289.8,
+        "casesFemalePer100k": 3292,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 5862,
+        "casesFemale": 5911,
+        "deathsMale": 1,
+        "deathsFemale": 1,
+        "casesMalePer100k": 3811.4,
+        "casesFemalePer100k": 4158.5,
+        "deathsMalePer100k": 0.7,
+        "deathsFemalePer100k": 0.7
+      },
+      "A35-A59": {
+        "casesMale": 9289,
+        "casesFemale": 10141,
+        "deathsMale": 35,
+        "deathsFemale": 16,
+        "casesMalePer100k": 3260.3,
+        "casesFemalePer100k": 3774.1,
+        "deathsMalePer100k": 12.3,
+        "deathsFemalePer100k": 6
+      },
+      "A60-A79": {
+        "casesMale": 4441,
+        "casesFemale": 4488,
+        "deathsMale": 253,
+        "deathsFemale": 137,
+        "casesMalePer100k": 2217.8,
+        "casesFemalePer100k": 2031.7,
+        "deathsMalePer100k": 126.3,
+        "deathsFemalePer100k": 62
+      },
+      "A80+": {
+        "casesMale": 1487,
+        "casesFemale": 2932,
+        "deathsMale": 362,
+        "deathsFemale": 407,
+        "casesMalePer100k": 3043,
+        "casesFemalePer100k": 3467.8,
+        "deathsMalePer100k": 740.8,
+        "deathsFemalePer100k": 481.4
+      }
+    },
+    "RP": {
+      "A00-A04": {
+        "casesMale": 103,
+        "casesFemale": 108,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 4718.3,
+        "casesFemalePer100k": 5194.8,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 147,
+        "casesFemale": 157,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 6383,
+        "casesFemalePer100k": 7370.9,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 584,
+        "casesFemale": 507,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 9886.6,
+        "casesFemalePer100k": 9533.7,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A35-A59": {
+        "casesMale": 534,
+        "casesFemale": 627,
+        "deathsMale": 0,
+        "deathsFemale": 2,
+        "casesMalePer100k": 6244.2,
+        "casesFemalePer100k": 7120.1,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 22.7
+      },
+      "A60-A79": {
+        "casesMale": 205,
+        "casesFemale": 250,
+        "deathsMale": 16,
+        "deathsFemale": 8,
+        "casesMalePer100k": 3857.7,
+        "casesFemalePer100k": 3962.6,
+        "deathsMalePer100k": 301.1,
+        "deathsFemalePer100k": 126.8
+      },
+      "A80+": {
+        "casesMale": 70,
+        "casesFemale": 181,
+        "deathsMale": 22,
+        "deathsFemale": 43,
+        "casesMalePer100k": 4978.7,
+        "casesFemalePer100k": 7497.9,
+        "deathsMalePer100k": 1564.7,
+        "deathsFemalePer100k": 1781.3
+      }
+    },
+    "SN": {
+      "A00-A04": {
+        "casesMale": 2344,
+        "casesFemale": 2251,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 2538.9,
+        "casesFemalePer100k": 2556.6,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 10121,
+        "casesFemale": 9371,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 5389.8,
+        "casesFemalePer100k": 5275.4,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 31800,
+        "casesFemale": 35492,
+        "deathsMale": 8,
+        "deathsFemale": 3,
+        "casesMalePer100k": 7756.5,
+        "casesFemalePer100k": 9432.8,
+        "deathsMalePer100k": 2,
+        "deathsFemalePer100k": 0.8
+      },
+      "A35-A59": {
+        "casesMale": 53912,
+        "casesFemale": 68302,
+        "deathsMale": 211,
+        "deathsFemale": 88,
+        "casesMalePer100k": 7666.4,
+        "casesFemalePer100k": 10531.1,
+        "deathsMalePer100k": 30,
+        "deathsFemalePer100k": 13.6
+      },
+      "A60-A79": {
+        "casesMale": 27298,
+        "casesFemale": 30438,
+        "deathsMale": 1981,
+        "deathsFemale": 960,
+        "casesMalePer100k": 5796.7,
+        "casesFemalePer100k": 5634.6,
+        "deathsMalePer100k": 420.7,
+        "deathsFemalePer100k": 177.7
+      },
+      "A80+": {
+        "casesMale": 11825,
+        "casesFemale": 23393,
+        "deathsMale": 3222,
+        "deathsFemale": 3777,
+        "casesMalePer100k": 8772.8,
+        "casesFemalePer100k": 10296.4,
+        "deathsMalePer100k": 2390.4,
+        "deathsFemalePer100k": 1662.4
+      }
+    },
+    "ST": {
+      "A00-A04": {
+        "casesMale": 1281,
+        "casesFemale": 1189,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 2827.4,
+        "casesFemalePer100k": 2779.3,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A05-A14": {
+        "casesMale": 4233,
+        "casesFemale": 3967,
+        "deathsMale": 0,
+        "deathsFemale": 0,
+        "casesMalePer100k": 4496,
+        "casesFemalePer100k": 4467.3,
+        "deathsMalePer100k": 0,
+        "deathsFemalePer100k": 0
+      },
+      "A15-A34": {
+        "casesMale": 11604,
+        "casesFemale": 12024,
+        "deathsMale": 3,
+        "deathsFemale": 2,
+        "casesMalePer100k": 5590.4,
+        "casesFemalePer100k": 6478.3,
+        "deathsMalePer100k": 1.4,
+        "deathsFemalePer100k": 1.1
+      },
+      "A35-A59": {
+        "casesMale": 18892,
+        "casesFemale": 22197,
+        "deathsMale": 112,
+        "deathsFemale": 46,
+        "casesMalePer100k": 4932.8,
+        "casesFemalePer100k": 6201,
+        "deathsMalePer100k": 29.2,
+        "deathsFemalePer100k": 12.9
+      },
+      "A60-A79": {
+        "casesMale": 9603,
+        "casesFemale": 10097,
+        "deathsMale": 725,
+        "deathsFemale": 387,
+        "casesMalePer100k": 3517.1,
+        "casesFemalePer100k": 3244.8,
+        "deathsMalePer100k": 265.5,
+        "deathsFemalePer100k": 124.4
+      },
+      "A80+": {
+        "casesMale": 3834,
+        "casesFemale": 7622,
+        "deathsMale": 1042,
+        "deathsFemale": 1242,
+        "casesMalePer100k": 5513.5,
+        "casesFemalePer100k": 6259.2,
+        "deathsMalePer100k": 1498.4,
+        "deathsFemalePer100k": 1019.9
+      }
+    }
+  },
+  "meta": {
+    "source": "Robert Koch-Institut",
+    "contact": "Marlon Lueckert (m.lueckert@me.com)",
+    "info": "https://github.com/marlon360/rki-covid-api",
+    "lastUpdate": "2021-10-16T02:35:46.000Z",
+    "lastCheckedForUpdate": "2021-10-16T07:16:45.778Z"
+  }
+}

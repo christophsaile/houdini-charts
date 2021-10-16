@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "cases": 6997,
+      "date": "2021-10-09T00:00:00.000Z"
+    },
+    {
+      "cases": 2624,
+      "date": "2021-10-10T00:00:00.000Z"
+    },
+    {
+      "cases": 6158,
+      "date": "2021-10-11T00:00:00.000Z"
+    },
+    {
+      "cases": 12522,
+      "date": "2021-10-12T00:00:00.000Z"
+    },
+    {
+      "cases": 11838,
+      "date": "2021-10-13T00:00:00.000Z"
+    },
+    {
+      "cases": 10737,
+      "date": "2021-10-14T00:00:00.000Z"
+    },
+    {
+      "cases": 7964,
+      "date": "2021-10-15T00:00:00.000Z"
+    }
+  ],
+  "meta": {
+    "source": "Robert Koch-Institut",
+    "contact": "Marlon Lueckert (m.lueckert@me.com)",
+    "info": "https://github.com/marlon360/rki-covid-api",
+    "lastUpdate": "2021-10-15T00:00:00.000Z",
+    "lastCheckedForUpdate": "2021-10-16T07:27:26.386Z"
+  }
+}

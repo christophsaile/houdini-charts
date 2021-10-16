@@ -1,0 +1,71 @@
+{
+  "data": {
+    "A00-A04": {
+      "casesMale": 62793,
+      "casesFemale": 58230,
+      "deathsMale": 3,
+      "deathsFemale": 9,
+      "casesMalePer100k": 3084,
+      "casesFemalePer100k": 3012.3,
+      "deathsMalePer100k": 0.1,
+      "deathsFemalePer100k": 0.5
+    },
+    "A05-A14": {
+      "casesMale": 204125,
+      "casesFemale": 187043,
+      "deathsMale": 3,
+      "deathsFemale": 4,
+      "casesMalePer100k": 5287.8,
+      "casesFemalePer100k": 5126.7,
+      "deathsMalePer100k": 0.1,
+      "deathsFemalePer100k": 0.1
+    },
+    "A15-A34": {
+      "casesMale": 670579,
+      "casesFemale": 655159,
+      "deathsMale": 141,
+      "deathsFemale": 82,
+      "casesMalePer100k": 6831.9,
+      "casesFemalePer100k": 7194.9,
+      "deathsMalePer100k": 1.4,
+      "deathsFemalePer100k": 0.9
+    },
+    "A35-A59": {
+      "casesMale": 785209,
+      "casesFemale": 828813,
+      "deathsMale": 3072,
+      "deathsFemale": 1303,
+      "casesMalePer100k": 5443.2,
+      "casesFemalePer100k": 5820.1,
+      "deathsMalePer100k": 21.3,
+      "deathsFemalePer100k": 9.1
+    },
+    "A60-A79": {
+      "casesMale": 291032,
+      "casesFemale": 293256,
+      "deathsMale": 18574,
+      "deathsFemale": 9830,
+      "casesMalePer100k": 3381.8,
+      "casesFemalePer100k": 3071.6,
+      "deathsMalePer100k": 215.8,
+      "deathsFemalePer100k": 103
+    },
+    "A80+": {
+      "casesMale": 102979,
+      "casesFemale": 199464,
+      "deathsMale": 28008,
+      "deathsFemale": 33426,
+      "casesMalePer100k": 4510.3,
+      "casesFemalePer100k": 5459.9,
+      "deathsMalePer100k": 1226.7,
+      "deathsFemalePer100k": 915
+    }
+  },
+  "meta": {
+    "source": "Robert Koch-Institut",
+    "contact": "Marlon Lueckert (m.lueckert@me.com)",
+    "info": "https://github.com/marlon360/rki-covid-api",
+    "lastUpdate": "2021-10-16T02:35:46.000Z",
+    "lastCheckedForUpdate": "2021-10-16T07:25:59.288Z"
+  }
+}
