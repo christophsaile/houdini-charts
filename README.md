@@ -20,6 +20,16 @@ npm start
 npm run build
 ```
 
+### Test
+
+```
+cd test
+
+npm run houdini line
+node multiple-tests.js --runs <number> --url <url>
+node index.js --url <url>
+```
+
 ## Projekt Struktur
 
 ### public
@@ -41,6 +51,10 @@ Aktuell sind das die folgenden Dateien:
 - .js
 
 Worklets werden als .js Datei gespeichert, da einige Methoden noch nicht von TypeScript unterstützt werden (registerProperty ...)
+
+### test
+
+Enthält Scripte zum ausführen von automatisierten Tests.
 
 ## Live APIs
 

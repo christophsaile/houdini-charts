@@ -60,11 +60,12 @@
   display: none;
 }
 
-.houdini--radar .houdini__dataset span {
+.houdini--radar .houdini__dataset button {
   position: absolute;
   width: var(--datapoint-size);
   height: var(--datapoint-size);
   background-color: black;
+  border-color: transparent;
   border-radius: 100%;
   cursor: pointer;
   z-index: 1;

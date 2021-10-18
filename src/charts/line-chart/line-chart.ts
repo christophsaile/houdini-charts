@@ -33,6 +33,7 @@ class LineChart {
   private xaxis = this.config.data.xaxis;
   private options = this.config.options;
   private autoScale = this.scaleSettings.auto;
+  private accessible = this.options?.accessibility;
 
   private min = {
     x: 0,
@@ -96,6 +97,7 @@ class LineChart {
     this.render();
     this.styles();
     this.events();
+    if (this.accessible) this.accessibility();
   };
 
   private worklets = () => {
@@ -225,7 +227,7 @@ class LineChart {
     datasets.forEach((datasetElem, index) => {
       this.datasets[index].values.forEach(
         (value, innerIndex) =>
-          (datasetElem.innerHTML += `<span data-y='${value}' data-x='${this.xaxis[innerIndex]}' />`)
+          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.xaxis[innerIndex]}' />`)
       );
     });
   };
@@ -255,8 +257,8 @@ class LineChart {
   };
 
   private setPath = () => {
-    const elems = this.root.querySelectorAll('.houdini__dataset');
-    elems.forEach((elem, index) => {
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
+    datasets.forEach((elem, index) => {
       // @ts-ignore
       elem.attributeStyleMap.set('background', 'paint(path-line)');
       // @ts-ignore
@@ -267,11 +269,11 @@ class LineChart {
   };
 
   private setDatapoints = () => {
-    const elems = this.root.querySelectorAll('.houdini__dataset');
-    elems.forEach((elem, index) => {
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
+    datasets.forEach((elem, index) => {
       const color = this.datasets[index].color;
 
-      elem.querySelectorAll('span').forEach((datapoint, innerIndex) => {
+      elem.querySelectorAll('button').forEach((datapoint, innerIndex) => {
         // -4px because dotSize = 8 / 2
         const x = this.datapointCoordinates[index][innerIndex].x - 4;
         const y = this.datapointCoordinates[index][innerIndex].y - 4;
@@ -294,7 +296,7 @@ class LineChart {
 
   private highlightDatapoint = () => {
     const datapoints: HTMLElement[] = [].slice.call(
-      document.querySelectorAll('.houdini__dataset span')
+      document.querySelectorAll('.houdini__dataset button')
     );
 
     datapoints.forEach((elem: HTMLElement) => {
@@ -332,6 +334,37 @@ class LineChart {
         this.setDatapoints();
       }, 250)
     );
+  };
+
+  private accessibility = () => {
+    if (this.accessible?.description)
+      this.root.querySelector('.houdini')?.setAttribute('aria-label', this.accessible.description);
+
+    const yAxis = this.root.querySelector('.houdini__yaxis');
+    const xAxis = this.root.querySelector('.houdini__xaxis');
+
+    xAxis?.setAttribute('aria-hidden', 'true');
+    yAxis?.setAttribute('aria-hidden', 'true');
+
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
+
+    datasets.forEach((set, index) => {
+      const datapoints = set.querySelectorAll('span');
+
+      set.setAttribute(
+        'aria-label',
+        `${set.id}, line ${index + 1} of ${datasets.length} with ${datapoints.length} data points.`
+      );
+
+      datapoints.forEach((item) => {
+        const xLabel = item.getAttribute('data-x');
+        const yLabel = item.getAttribute('data-y');
+        const dataset = item.parentElement?.id;
+
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-label', `X axis: ${xLabel}, Y axis: ${yLabel}, ${dataset}`);
+      });
+    });
   };
 }
 

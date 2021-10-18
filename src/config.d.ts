@@ -7,6 +7,10 @@ export interface Config {
     scale: Scale;
   };
   options?: {
+    accessibility?: {
+      description?: string;
+    };
+
     fill?: boolean;
     legend?: boolean;
     titleAxis?: {

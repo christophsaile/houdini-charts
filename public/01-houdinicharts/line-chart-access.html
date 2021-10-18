@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Houdini - Line Chart</title>
+    <link rel="stylesheet" href="../main.css" />
+  </head>
+  <body>
+    <main>
+      <div style="display: flex; width: 90%; margin: auto">
+        <section style="width: 100%" id="myChart"></section>
+      </div>
+    </main>
+    <script src="../index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+    <script>
+      const DateTime = luxon.DateTime;
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData('../mock/basic-test-data.json').then((apiData) => {
+        // let labels = apiData.data.map((elem) => {
+        //   return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
+        // });
+        // let datasets = apiData.data.map((elem) => {
+        //   return elem.cases;
+        // });
+        const data = {
+          xaxis: apiData.xaxis,
+          datasets: apiData.datasets,
+          scale: {
+            auto: true,
+          },
+        };
+        const config = {
+          title: 'Line Chart',
+          chartType: 'Line',
+          data: data,
+          options: {
+            accessibility: {
+              description:
+                'Line Chart that shows 4 Lines. The chart has 1 X axis displaying Date and 1 Y axis displaying Corona Cases',
+            },
+            legend: true,
+            titleAxis: {
+              x: 'Date',
+              y: 'Cases',
+            },
+          },
+        };
+        window.myData = {};
+        const start = performance.now();
+        const HOUDNINICHART = new HoudiniChart(document.getElementById('myChart'), config);
+        const end = performance.now();
+        myData.performance = end - start;
+        console.log(`time to load Chart took ${myData.performance} milliseconds.`);
+      });
+    </script>
+  </body>
+</html>

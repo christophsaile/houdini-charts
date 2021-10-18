@@ -7,17 +7,22 @@ import { Config } from '../../config';
 export function Header(config: Config): string {
   const title = config.title;
   const legend = config.options?.legend;
+  const accessibility = config.options?.accessibility;
 
   const renderLegend = () => {
     return `
-      <ul class='houdini__legend'>
+      <section class='houdini__legend'>
         ${config.data.datasets
           .map(
             (elem) =>
-              `<li data-set='${elem.name}'class='houdini__legend-item'><span style='background-color: ${elem.color}'></span><p>${elem.name}</p></li>`
+              `<button ${accessibility ? `aria-label='Show ${elem.name}'` : ''} data-set='${
+                elem.name
+              }'class='houdini__legend-item'><span style='background-color: ${
+                elem.color
+              }'></span><p ${accessibility ? `aria-hidden='true'` : ''}>${elem.name}</p></button>`
           )
           .join('')}
-      </ul>
+      </section>
     `;
   };
 

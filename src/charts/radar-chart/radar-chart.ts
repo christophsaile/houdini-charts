@@ -31,6 +31,8 @@ class RadarChart {
   private xaxis = this.config.data.xaxis;
   private options = this.config.options;
   private autoScale = this.scaleSettings.auto;
+  private accessible = this.options?.accessibility;
+
   private min = this.autoScale
     ? getMinValue(flattenDataset(this.datasets))
     : this.scaleSettings.min!;
@@ -91,6 +93,7 @@ class RadarChart {
     this.render();
     this.styles();
     this.events();
+    if (this.accessible) this.accessibility();
   };
 
   private worklets = () => {
@@ -168,7 +171,7 @@ class RadarChart {
     datasets.forEach((datasetElem, index) => {
       this.datasets[index].values.forEach(
         (value, innerIndex) =>
-          (datasetElem.innerHTML += `<span data-y='${value}' data-x='${this.xaxis[innerIndex]}' />`)
+          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.xaxis[innerIndex]}' />`)
       );
     });
   };
@@ -214,8 +217,8 @@ class RadarChart {
   };
 
   private setPath = () => {
-    const elems = this.root.querySelectorAll('.houdini__dataset');
-    elems.forEach((elem, index) => {
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
+    datasets.forEach((elem, index) => {
       // @ts-ignore
       elem.attributeStyleMap.set('background', 'paint(path-radar)');
       // @ts-ignore
@@ -228,11 +231,11 @@ class RadarChart {
   };
 
   private setDatapoints = () => {
-    const elems = this.root.querySelectorAll('.houdini__dataset');
-    elems.forEach((elem, index) => {
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
+    datasets.forEach((elem, index) => {
       const color = this.datasets[index].color;
 
-      elem.querySelectorAll('span').forEach((datapoint, innerIndex) => {
+      elem.querySelectorAll('button').forEach((datapoint, innerIndex) => {
         // -4px because dotSize = 8 / 2
         const x = this.datapointCoordinates[index][innerIndex].x + this.chartSize.x / 2 - 4;
         const y = this.datapointCoordinates[index][innerIndex].y + this.chartSize.y / 2 - 4;
@@ -254,13 +257,15 @@ class RadarChart {
 
   private highlightDatapoint = () => {
     const datapoints: HTMLElement[] = [].slice.call(
-      document.querySelectorAll('.houdini__dataset span')
+      document.querySelectorAll('.houdini__dataset button')
     );
 
     datapoints.forEach((elem: HTMLElement) => {
+      elem.addEventListener('click', (event: MouseEvent) => updateTooltip(event, this.root));
       elem.addEventListener('mouseover', (event: MouseEvent) => updateTooltip(event, this.root));
       elem.addEventListener('mouseout', () => hideTooltip(this.root));
     });
+    // this.elemDatasets.addEventListener('click', () => this.hideHighlight());
   };
 
   private resize = () => {
@@ -276,6 +281,39 @@ class RadarChart {
         this.setDatapoints();
       }, 250)
     );
+  };
+
+  private accessibility = () => {
+    if (this.accessible?.description)
+      this.root.querySelector('.houdini')?.setAttribute('aria-label', this.accessible.description);
+
+    const yAxis = this.root.querySelector('.houdini__yaxis');
+    const xAxis = this.root.querySelector('.houdini__xaxis');
+
+    xAxis?.setAttribute('aria-hidden', 'true');
+    yAxis?.setAttribute('aria-hidden', 'true');
+
+    const datasets = this.root.querySelectorAll('.houdini__dataset');
+
+    datasets.forEach((set, index) => {
+      const datapoints = set.querySelectorAll('button');
+
+      set.setAttribute(
+        'aria-label',
+        `${set.id}, Category ${index + 1} of ${datasets.length} with ${
+          datapoints.length
+        } data points.`
+      );
+
+      datapoints.forEach((item) => {
+        const xLabel = item.getAttribute('data-x');
+        const yLabel = item.getAttribute('data-y');
+        const dataset = item.parentElement?.id;
+
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-label', `Category: ${xLabel}, Value: ${yLabel}, ${dataset}`);
+      });
+    });
   };
 }
 

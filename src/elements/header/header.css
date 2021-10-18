@@ -18,7 +18,9 @@
 
 .houdini__legend-item {
   display: flex;
-  padding: 0 var(--spacing-sm) var(--spacing-sm) 0;
+  margin: 0 var(--spacing-sm) var(--spacing-sm) 0;
+  border: 0;
+  background-color: transparent;
   cursor: pointer;
 }
 
