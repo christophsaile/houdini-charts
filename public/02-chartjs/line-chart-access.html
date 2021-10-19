@@ -4,16 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Highcharts - Line Chart</title>
+    <title>Chartjs - Line Chart</title>
   </head>
   <body>
     <main>
       <div style="display: flex; width: 90%; margin: auto">
-        <section style="width: 100%" id="myChart"></section>
+        <canvas aria-label='Line Chart that shows 4 Lines. The chart has 1 X axis displaying Date and 1 Y axis displaying Corona Cases' id="myChart"></canvas>
       </div>
     </main>
-    <script src="./highcharts.js"></script>
-    <script src="./highcharts-access.js"></script>
+    <script src="./chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <script>
       const DateTime = luxon.DateTime;
@@ -33,64 +32,59 @@
         // let datasets = apiData.data.map((elem) => {
         //   return elem.cases;
         // });
-        const config = {
-          accessibility: {
-              description:
-                'Line Chart that shows 4 Lines. The chart has 1 X axis displaying Date and 1 Y axis displaying Corona Cases',
-            },
-          chart: {
-            height: '100%',
-          },
-          legend: {
-            layout: 'vertical',
-            align: 'center',
-            verticalAlign: 'top',
-          },
-          plotOptions: {
-            series: {
-              animation: false,
-            },
-          },
-          xAxis: {
-            categories: apiData.xaxis,
-            title: {
-              text: 'Date',
-            },
-          },
-          yAxis: {
-            title: {
-              text: 'Cases',
-            },
-          },
-          title: {
-            text: 'Line Chart',
-          },
-          series: [
+        const data = {
+          labels: apiData.xaxis,
+          datasets: [
             {
-              type: 'line',
-              name: apiData.datasets[0].name,
+              label: apiData.datasets[0].name,
               data: apiData.datasets[0].values,
             },
             {
-              type: 'line',
-              name: apiData.datasets[1].name,
+              label: apiData.datasets[1].name,
               data: apiData.datasets[1].values,
             },
             {
-              type: 'line',
-              name: apiData.datasets[2].name,
+              label: apiData.datasets[2].name,
               data: apiData.datasets[2].values,
             },
             {
-              type: 'line',
-              name: apiData.datasets[3].name,
+              label: apiData.datasets[3].name,
               data: apiData.datasets[3].values,
             },
           ],
         };
+        const config = {
+          type: 'line',
+          data: data,
+          options: {
+            animation: {
+              duration: 0,
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: 'Line Chart',
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Date',
+                },
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Cases',
+                },
+              },
+            },
+          },
+        };
         window.myData = {};
         const start = performance.now();
-        Highcharts.chart('myChart', config);
+        const myChart = new Chart(document.getElementById('myChart'), config);
         const end = performance.now();
         myData.performance = end - start;
         console.log(`time to load Chart took ${myData.performance} milliseconds.`);

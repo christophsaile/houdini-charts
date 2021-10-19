@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chartjs - Radar Chart</title>
+  </head>
+  <body>
+    <main>
+      <div style="display: flex; width: 90%; margin: auto">
+        <canvas aria-label='Radar Chart that shows 5 Categorys' id="myChart"></canvas>
+      </div>
+    </main>
+    <script src="./chart.js"></script>
+    <script>
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      // function rainbow(numOfSteps, step) {
+      //   var r, g, b;
+      //   var h = step / numOfSteps;
+      //   var i = ~~(h * 6);
+      //   var f = h * 6 - i;
+      //   var q = 1 - f;
+      //   switch (i % 6) {
+      //     case 0:
+      //       r = 1;
+      //       g = f;
+      //       b = 0;
+      //       break;
+      //     case 1:
+      //       r = q;
+      //       g = 1;
+      //       b = 0;
+      //       break;
+      //     case 2:
+      //       r = 0;
+      //       g = 1;
+      //       b = f;
+      //       break;
+      //     case 3:
+      //       r = 0;
+      //       g = q;
+      //       b = 1;
+      //       break;
+      //     case 4:
+      //       r = f;
+      //       g = 0;
+      //       b = 1;
+      //       break;
+      //     case 5:
+      //       r = 1;
+      //       g = 0;
+      //       b = q;
+      //       break;
+      //   }
+      //   var c =
+      //     '#' +
+      //     ('00' + (~~(r * 255)).toString(16)).slice(-2) +
+      //     ('00' + (~~(g * 255)).toString(16)).slice(-2) +
+      //     ('00' + (~~(b * 255)).toString(16)).slice(-2);
+      //   return c;
+      // }
+      
+      fetchData('../mock/basic-test-data.json').then((result) => {
+        // const apiData = Object.values(result.data);
+        // const ageGroups = Object.keys(apiData[0]).sort();
+        // const stateNames = Object.keys(result.data);
+        // const groups = ['casesMale', 'casesFemale', 'deathsMale', 'deathsFemale'];
+        // const filtered = Object.values(apiData).map((sets) =>
+        //   Object.values(sets).map((set) =>
+        //     Object.assign({}, ...groups.map((key) => ({ [key]: set[key] })))
+        //   )
+        // );
+        // const values = (name, index) => filtered[index].map((setItem) => setItem[name]);
+
+        // const datasets = [];
+        // for (let i = 0, n = apiData.length; i < n; i++) {
+        //   for (let j = 0, m = groups.length; j < m; j++) {
+        //     const setData = {
+        //       label: `${stateNames[i]}-${groups[j]}`,
+        //       backgroundColor: rainbow(apiData.length, i) + '33',
+        //       borderColor: rainbow(apiData.length, i),
+        //       data: values(groups[j], i),
+        //     };
+        //     datasets.push(setData);
+        //   }
+        // }
+        const data = {
+          labels: result.xaxis,
+          datasets: [
+            {
+              label: result.datasets[0].name,
+              data: result.datasets[0].values,
+            },
+            {
+              label: result.datasets[1].name,
+              data: result.datasets[1].values,
+            },
+            {
+              label: result.datasets[2].name,
+              data: result.datasets[2].values,
+            },
+            {
+              label: result.datasets[3].name,
+              data: result.datasets[3].values,
+            },
+          ],
+        };
+        const config = {
+          type: 'radar',
+          data: data,
+          options: {
+            animation: {
+              duration: 0,
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: 'Radar Chart',
+              },
+            },
+          },
+        };
+        window.myData = {};
+        const start = performance.now();
+        const myChart = new Chart(document.getElementById('myChart'), config);
+        const end = performance.now();
+        myData.performance = end - start;
+        console.log(`time to load Chart took ${myData.performance} milliseconds.`);
+      });
+    </script>
+  </body>
+</html>
