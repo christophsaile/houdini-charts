@@ -1,0 +1,1733 @@
+{
+  "page": "https://houdini-charts.netlify.app/01-houdinicharts/line-chart.html",
+  "data": [
+    {
+      "timestamp": "2021-10-18T20:07:21.475Z",
+      "executionTime": 271.2,
+      "fcp": 695.75,
+      "speedIndex": 724,
+      "interactive": 695.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:07:35.323Z",
+      "executionTime": 263.3,
+      "fcp": 605.375,
+      "speedIndex": 638,
+      "interactive": 605.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:07:49.076Z",
+      "executionTime": 268.6,
+      "fcp": 1590.875,
+      "speedIndex": 1718,
+      "interactive": 1590.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:08:03.828Z",
+      "executionTime": 265.9,
+      "fcp": 619.125,
+      "speedIndex": 643,
+      "interactive": 619.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:08:47.465Z",
+      "executionTime": 263.5,
+      "fcp": 630.375,
+      "speedIndex": 646,
+      "interactive": 630.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:09:01.241Z",
+      "executionTime": 262.3,
+      "fcp": 588.25,
+      "speedIndex": 618,
+      "interactive": 588.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:09:14.989Z",
+      "executionTime": 263.8,
+      "fcp": 1493,
+      "speedIndex": 1594,
+      "interactive": 1493,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:09:29.651Z",
+      "executionTime": 266.1,
+      "fcp": 612.5,
+      "speedIndex": 641,
+      "interactive": 612.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:09:43.428Z",
+      "executionTime": 264.9,
+      "fcp": 652.875,
+      "speedIndex": 677,
+      "interactive": 652.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:09:57.235Z",
+      "executionTime": 267.1,
+      "fcp": 634.625,
+      "speedIndex": 662,
+      "interactive": 634.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:10:11.027Z",
+      "executionTime": 270.2,
+      "fcp": 1082.875,
+      "speedIndex": 1115,
+      "interactive": 1082.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:10:25.278Z",
+      "executionTime": 263,
+      "fcp": 576.75,
+      "speedIndex": 596,
+      "interactive": 576.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:10:39.027Z",
+      "executionTime": 264,
+      "fcp": 631,
+      "speedIndex": 663,
+      "interactive": 631,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:10:52.819Z",
+      "executionTime": 265.3,
+      "fcp": 617.125,
+      "speedIndex": 638,
+      "interactive": 617.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:11:06.574Z",
+      "executionTime": 260,
+      "fcp": 612.375,
+      "speedIndex": 640,
+      "interactive": 612.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:11:20.353Z",
+      "executionTime": 262.5,
+      "fcp": 584.25,
+      "speedIndex": 603,
+      "interactive": 584.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:11:34.096Z",
+      "executionTime": 264.1,
+      "fcp": 643.625,
+      "speedIndex": 670,
+      "interactive": 643.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:11:47.921Z",
+      "executionTime": 267.4,
+      "fcp": 623,
+      "speedIndex": 659,
+      "interactive": 623,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:12:01.706Z",
+      "executionTime": 262.8,
+      "fcp": 613.375,
+      "speedIndex": 641,
+      "interactive": 613.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:12:15.482Z",
+      "executionTime": 263.2,
+      "fcp": 620.875,
+      "speedIndex": 648,
+      "interactive": 620.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:12:29.273Z",
+      "executionTime": 263.9,
+      "fcp": 618.25,
+      "speedIndex": 645,
+      "interactive": 618.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:12:43.041Z",
+      "executionTime": 263.2,
+      "fcp": 580,
+      "speedIndex": 609,
+      "interactive": 580,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:12:56.812Z",
+      "executionTime": 266.1,
+      "fcp": 627,
+      "speedIndex": 656,
+      "interactive": 627,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:13:10.611Z",
+      "executionTime": 264.8,
+      "fcp": 617.125,
+      "speedIndex": 638,
+      "interactive": 617.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:13:24.412Z",
+      "executionTime": 264.6,
+      "fcp": 717.375,
+      "speedIndex": 747,
+      "interactive": 717.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:13:38.309Z",
+      "executionTime": 262.5,
+      "fcp": 630.25,
+      "speedIndex": 652,
+      "interactive": 630.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:13:52.112Z",
+      "executionTime": 271,
+      "fcp": 918.875,
+      "speedIndex": 942,
+      "interactive": 918.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:14:06.195Z",
+      "executionTime": 268.2,
+      "fcp": 798.75,
+      "speedIndex": 827,
+      "interactive": 798.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:14:20.174Z",
+      "executionTime": 265.8,
+      "fcp": 687.625,
+      "speedIndex": 711,
+      "interactive": 687.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:14:34.030Z",
+      "executionTime": 263.9,
+      "fcp": 589.75,
+      "speedIndex": 618,
+      "interactive": 589.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:14:47.788Z",
+      "executionTime": 267.6,
+      "fcp": 658.75,
+      "speedIndex": 687,
+      "interactive": 658.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:15:01.630Z",
+      "executionTime": 263.1,
+      "fcp": 582.5,
+      "speedIndex": 611,
+      "interactive": 582.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:15:15.382Z",
+      "executionTime": 264.6,
+      "fcp": 644.75,
+      "speedIndex": 674,
+      "interactive": 644.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:15:29.191Z",
+      "executionTime": 260.8,
+      "fcp": 576.375,
+      "speedIndex": 604,
+      "interactive": 576.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:15:42.916Z",
+      "executionTime": 267.2,
+      "fcp": 1359,
+      "speedIndex": 1454,
+      "interactive": 1359,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:15:57.453Z",
+      "executionTime": 269.8,
+      "fcp": 1308.5,
+      "speedIndex": 1354,
+      "interactive": 1308.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:16:11.939Z",
+      "executionTime": 266.8,
+      "fcp": 660.5,
+      "speedIndex": 691,
+      "interactive": 660.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:16:25.785Z",
+      "executionTime": 261.3,
+      "fcp": 567.25,
+      "speedIndex": 598,
+      "interactive": 567.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:16:39.525Z",
+      "executionTime": 263.9,
+      "fcp": 639.125,
+      "speedIndex": 653,
+      "interactive": 639.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:16:53.335Z",
+      "executionTime": 264.5,
+      "fcp": 5547.5,
+      "speedIndex": 5575,
+      "interactive": 5547.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:17:12.069Z",
+      "executionTime": 269.3,
+      "fcp": 727.625,
+      "speedIndex": 757,
+      "interactive": 727.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:17:25.966Z",
+      "executionTime": 264.1,
+      "fcp": 610.375,
+      "speedIndex": 634,
+      "interactive": 610.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:17:39.740Z",
+      "executionTime": 262.3,
+      "fcp": 601.75,
+      "speedIndex": 636,
+      "interactive": 601.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:17:53.514Z",
+      "executionTime": 263.1,
+      "fcp": 576.5,
+      "speedIndex": 608,
+      "interactive": 576.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:18:07.317Z",
+      "executionTime": 261.9,
+      "fcp": 615.375,
+      "speedIndex": 645,
+      "interactive": 615.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:18:21.101Z",
+      "executionTime": 262.9,
+      "fcp": 595.375,
+      "speedIndex": 621,
+      "interactive": 595.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:18:34.871Z",
+      "executionTime": 262.4,
+      "fcp": 623.625,
+      "speedIndex": 662,
+      "interactive": 623.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:18:48.672Z",
+      "executionTime": 265,
+      "fcp": 630.5,
+      "speedIndex": 658,
+      "interactive": 630.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:19:02.473Z",
+      "executionTime": 265.2,
+      "fcp": 662,
+      "speedIndex": 684,
+      "interactive": 662,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:19:16.326Z",
+      "executionTime": 264.8,
+      "fcp": 644,
+      "speedIndex": 671,
+      "interactive": 644,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:19:30.125Z",
+      "executionTime": 262.4,
+      "fcp": 627.25,
+      "speedIndex": 648,
+      "interactive": 627.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:19:43.934Z",
+      "executionTime": 262.2,
+      "fcp": 573,
+      "speedIndex": 606,
+      "interactive": 573,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:19:57.692Z",
+      "executionTime": 263.5,
+      "fcp": 619.375,
+      "speedIndex": 647,
+      "interactive": 619.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:20:11.483Z",
+      "executionTime": 263,
+      "fcp": 606.25,
+      "speedIndex": 630,
+      "interactive": 606.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:20:25.285Z",
+      "executionTime": 263.4,
+      "fcp": 615.25,
+      "speedIndex": 639,
+      "interactive": 615.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:20:39.067Z",
+      "executionTime": 261.7,
+      "fcp": 610,
+      "speedIndex": 641,
+      "interactive": 610,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:20:52.850Z",
+      "executionTime": 262.8,
+      "fcp": 626.625,
+      "speedIndex": 661,
+      "interactive": 626.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:21:06.654Z",
+      "executionTime": 263.1,
+      "fcp": 595.5,
+      "speedIndex": 615,
+      "interactive": 595.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:21:20.427Z",
+      "executionTime": 263.2,
+      "fcp": 622.375,
+      "speedIndex": 653,
+      "interactive": 622.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:21:34.227Z",
+      "executionTime": 261,
+      "fcp": 575.25,
+      "speedIndex": 591,
+      "interactive": 575.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:21:47.979Z",
+      "executionTime": 261.2,
+      "fcp": 619.125,
+      "speedIndex": 650,
+      "interactive": 619.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:22:01.760Z",
+      "executionTime": 261.4,
+      "fcp": 576.5,
+      "speedIndex": 605,
+      "interactive": 576.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:22:15.506Z",
+      "executionTime": 263.6,
+      "fcp": 624.875,
+      "speedIndex": 749,
+      "interactive": 624.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:22:29.311Z",
+      "executionTime": 261.8,
+      "fcp": 580.875,
+      "speedIndex": 605,
+      "interactive": 580.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:22:43.070Z",
+      "executionTime": 262.2,
+      "fcp": 618.625,
+      "speedIndex": 643,
+      "interactive": 618.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:22:56.863Z",
+      "executionTime": 261.8,
+      "fcp": 590.625,
+      "speedIndex": 614,
+      "interactive": 590.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:23:10.630Z",
+      "executionTime": 265.8,
+      "fcp": 663.875,
+      "speedIndex": 688,
+      "interactive": 663.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:23:24.482Z",
+      "executionTime": 260.8,
+      "fcp": 582.5,
+      "speedIndex": 613,
+      "interactive": 582.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:23:38.231Z",
+      "executionTime": 263.7,
+      "fcp": 656.625,
+      "speedIndex": 682,
+      "interactive": 656.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:23:52.045Z",
+      "executionTime": 262.8,
+      "fcp": 612.75,
+      "speedIndex": 641,
+      "interactive": 612.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:24:05.803Z",
+      "executionTime": 261.3,
+      "fcp": 607.125,
+      "speedIndex": 643,
+      "interactive": 607.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:24:19.590Z",
+      "executionTime": 261.4,
+      "fcp": 577.75,
+      "speedIndex": 607,
+      "interactive": 577.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:24:33.355Z",
+      "executionTime": 263.6,
+      "fcp": 632.875,
+      "speedIndex": 659,
+      "interactive": 632.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:24:47.177Z",
+      "executionTime": 262.6,
+      "fcp": 598.375,
+      "speedIndex": 617,
+      "interactive": 598.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:25:00.947Z",
+      "executionTime": 263.4,
+      "fcp": 643.125,
+      "speedIndex": 692,
+      "interactive": 643.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:25:14.772Z",
+      "executionTime": 264.9,
+      "fcp": 626.125,
+      "speedIndex": 654,
+      "interactive": 626.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:25:28.578Z",
+      "executionTime": 267,
+      "fcp": 684.375,
+      "speedIndex": 713,
+      "interactive": 684.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:25:42.442Z",
+      "executionTime": 264.5,
+      "fcp": 617.125,
+      "speedIndex": 648,
+      "interactive": 617.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:25:56.238Z",
+      "executionTime": 263.7,
+      "fcp": 651.75,
+      "speedIndex": 757,
+      "interactive": 651.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:26:10.070Z",
+      "executionTime": 261.3,
+      "fcp": 592.75,
+      "speedIndex": 617,
+      "interactive": 592.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:26:23.838Z",
+      "executionTime": 262.4,
+      "fcp": 610.875,
+      "speedIndex": 639,
+      "interactive": 610.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:26:37.629Z",
+      "executionTime": 262.8,
+      "fcp": 598.75,
+      "speedIndex": 615,
+      "interactive": 598.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:26:51.408Z",
+      "executionTime": 262.8,
+      "fcp": 622.75,
+      "speedIndex": 646,
+      "interactive": 622.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:27:05.219Z",
+      "executionTime": 263.1,
+      "fcp": 620.875,
+      "speedIndex": 650,
+      "interactive": 620.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:27:19.024Z",
+      "executionTime": 265,
+      "fcp": 658.5,
+      "speedIndex": 688,
+      "interactive": 658.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:27:32.848Z",
+      "executionTime": 262.2,
+      "fcp": 593.5,
+      "speedIndex": 617,
+      "interactive": 593.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:27:46.629Z",
+      "executionTime": 264.3,
+      "fcp": 645.25,
+      "speedIndex": 665,
+      "interactive": 645.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:28:00.448Z",
+      "executionTime": 266.2,
+      "fcp": 614.25,
+      "speedIndex": 665,
+      "interactive": 614.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:28:14.246Z",
+      "executionTime": 262.5,
+      "fcp": 617.875,
+      "speedIndex": 641,
+      "interactive": 617.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:28:28.050Z",
+      "executionTime": 264,
+      "fcp": 629.25,
+      "speedIndex": 658,
+      "interactive": 629.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:28:41.854Z",
+      "executionTime": 266.9,
+      "fcp": 771.125,
+      "speedIndex": 797,
+      "interactive": 771.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:28:55.805Z",
+      "executionTime": 264.8,
+      "fcp": 598.875,
+      "speedIndex": 623,
+      "interactive": 598.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:29:09.582Z",
+      "executionTime": 263.4,
+      "fcp": 623.75,
+      "speedIndex": 642,
+      "interactive": 623.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:29:23.383Z",
+      "executionTime": 263.3,
+      "fcp": 601.5,
+      "speedIndex": 621,
+      "interactive": 601.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:29:37.156Z",
+      "executionTime": 265.7,
+      "fcp": 668.25,
+      "speedIndex": 691,
+      "interactive": 668.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:29:51.006Z",
+      "executionTime": 265,
+      "fcp": 650.875,
+      "speedIndex": 675,
+      "interactive": 650.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:30:04.850Z",
+      "executionTime": 261.1,
+      "fcp": 772.25,
+      "speedIndex": 789,
+      "interactive": 772.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:30:18.799Z",
+      "executionTime": 260.6,
+      "fcp": 805,
+      "speedIndex": 849,
+      "interactive": 805,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:30:32.784Z",
+      "executionTime": 262.2,
+      "fcp": 631.75,
+      "speedIndex": 655,
+      "interactive": 631.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:30:46.581Z",
+      "executionTime": 261.8,
+      "fcp": 584.5,
+      "speedIndex": 608,
+      "interactive": 584.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:31:00.348Z",
+      "executionTime": 263.4,
+      "fcp": 638.25,
+      "speedIndex": 660,
+      "interactive": 638.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:31:14.158Z",
+      "executionTime": 261.2,
+      "fcp": 572.125,
+      "speedIndex": 605,
+      "interactive": 572.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:31:27.912Z",
+      "executionTime": 264.1,
+      "fcp": 780.375,
+      "speedIndex": 807,
+      "interactive": 780.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:31:41.857Z",
+      "executionTime": 261.7,
+      "fcp": 576.5,
+      "speedIndex": 618,
+      "interactive": 576.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:31:55.626Z",
+      "executionTime": 264.5,
+      "fcp": 678.875,
+      "speedIndex": 709,
+      "interactive": 678.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:32:09.480Z",
+      "executionTime": 262.5,
+      "fcp": 590.875,
+      "speedIndex": 618,
+      "interactive": 590.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:32:23.266Z",
+      "executionTime": 265.3,
+      "fcp": 658.75,
+      "speedIndex": 682,
+      "interactive": 658.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:32:37.104Z",
+      "executionTime": 264.2,
+      "fcp": 647.875,
+      "speedIndex": 673,
+      "interactive": 647.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:32:50.921Z",
+      "executionTime": 266.9,
+      "fcp": 673.75,
+      "speedIndex": 703,
+      "interactive": 673.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:33:04.763Z",
+      "executionTime": 269.7,
+      "fcp": 670.5,
+      "speedIndex": 694,
+      "interactive": 670.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:33:18.603Z",
+      "executionTime": 266.4,
+      "fcp": 659.75,
+      "speedIndex": 692,
+      "interactive": 659.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:33:32.446Z",
+      "executionTime": 260.6,
+      "fcp": 1156.75,
+      "speedIndex": 1184,
+      "interactive": 1156.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:33:46.788Z",
+      "executionTime": 264.9,
+      "fcp": 642.25,
+      "speedIndex": 670,
+      "interactive": 642.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:34:00.617Z",
+      "executionTime": 265.4,
+      "fcp": 601.75,
+      "speedIndex": 626,
+      "interactive": 601.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:34:14.396Z",
+      "executionTime": 267.6,
+      "fcp": 787.5,
+      "speedIndex": 815,
+      "interactive": 787.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:34:28.374Z",
+      "executionTime": 260.7,
+      "fcp": 577.375,
+      "speedIndex": 604,
+      "interactive": 577.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:34:42.140Z",
+      "executionTime": 264.1,
+      "fcp": 656.125,
+      "speedIndex": 671,
+      "interactive": 656.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:34:55.974Z",
+      "executionTime": 265.2,
+      "fcp": 618.375,
+      "speedIndex": 638,
+      "interactive": 618.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:35:09.775Z",
+      "executionTime": 262.4,
+      "fcp": 646.75,
+      "speedIndex": 679,
+      "interactive": 646.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:35:53.477Z",
+      "executionTime": 262.8,
+      "fcp": 627,
+      "speedIndex": 658,
+      "interactive": 627,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:36:07.283Z",
+      "executionTime": 264.2,
+      "fcp": 631,
+      "speedIndex": 656,
+      "interactive": 631,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:36:21.094Z",
+      "executionTime": 266.7,
+      "fcp": 659.75,
+      "speedIndex": 684,
+      "interactive": 659.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:36:34.927Z",
+      "executionTime": 261.8,
+      "fcp": 597.125,
+      "speedIndex": 612,
+      "interactive": 597.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:36:48.690Z",
+      "executionTime": 268.5,
+      "fcp": 676.25,
+      "speedIndex": 693,
+      "interactive": 676.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:37:02.555Z",
+      "executionTime": 261.9,
+      "fcp": 586,
+      "speedIndex": 614,
+      "interactive": 586,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:37:16.313Z",
+      "executionTime": 265.6,
+      "fcp": 660.5,
+      "speedIndex": 686,
+      "interactive": 660.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:37:30.157Z",
+      "executionTime": 260.2,
+      "fcp": 555.125,
+      "speedIndex": 577,
+      "interactive": 555.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:37:43.893Z",
+      "executionTime": 262.3,
+      "fcp": 645.875,
+      "speedIndex": 672,
+      "interactive": 645.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:37:57.730Z",
+      "executionTime": 263.3,
+      "fcp": 587.75,
+      "speedIndex": 613,
+      "interactive": 587.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:38:11.506Z",
+      "executionTime": 265.3,
+      "fcp": 638.375,
+      "speedIndex": 681,
+      "interactive": 638.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:38:25.326Z",
+      "executionTime": 264.2,
+      "fcp": 626.5,
+      "speedIndex": 652,
+      "interactive": 626.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:38:39.141Z",
+      "executionTime": 266.6,
+      "fcp": 688.25,
+      "speedIndex": 709,
+      "interactive": 688.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:38:53.008Z",
+      "executionTime": 266.9,
+      "fcp": 653.375,
+      "speedIndex": 681,
+      "interactive": 653.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:39:06.834Z",
+      "executionTime": 263.3,
+      "fcp": 639.75,
+      "speedIndex": 661,
+      "interactive": 639.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:39:20.653Z",
+      "executionTime": 262,
+      "fcp": 576.75,
+      "speedIndex": 604,
+      "interactive": 576.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:39:34.403Z",
+      "executionTime": 264.2,
+      "fcp": 669.25,
+      "speedIndex": 711,
+      "interactive": 669.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:39:48.262Z",
+      "executionTime": 263.5,
+      "fcp": 617.125,
+      "speedIndex": 654,
+      "interactive": 617.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:40:02.076Z",
+      "executionTime": 261.7,
+      "fcp": 669.375,
+      "speedIndex": 696,
+      "interactive": 669.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:40:15.922Z",
+      "executionTime": 264.2,
+      "fcp": 607.25,
+      "speedIndex": 634,
+      "interactive": 607.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:40:29.720Z",
+      "executionTime": 263.4,
+      "fcp": 617.75,
+      "speedIndex": 651,
+      "interactive": 617.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:40:43.509Z",
+      "executionTime": 263.3,
+      "fcp": 592.25,
+      "speedIndex": 615,
+      "interactive": 592.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:40:57.274Z",
+      "executionTime": 265.9,
+      "fcp": 655,
+      "speedIndex": 675,
+      "interactive": 655,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:41:11.118Z",
+      "executionTime": 261.8,
+      "fcp": 584.625,
+      "speedIndex": 604,
+      "interactive": 584.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:41:24.874Z",
+      "executionTime": 263.9,
+      "fcp": 619.25,
+      "speedIndex": 647,
+      "interactive": 619.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:41:38.658Z",
+      "executionTime": 261.5,
+      "fcp": 579.875,
+      "speedIndex": 607,
+      "interactive": 579.875,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:41:52.414Z",
+      "executionTime": 265.4,
+      "fcp": 635.375,
+      "speedIndex": 659,
+      "interactive": 635.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:42:36.096Z",
+      "executionTime": 262.2,
+      "fcp": 612.75,
+      "speedIndex": 643,
+      "interactive": 612.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:42:49.893Z",
+      "executionTime": 262.2,
+      "fcp": 586.25,
+      "speedIndex": 607,
+      "interactive": 586.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:43:03.654Z",
+      "executionTime": 263.7,
+      "fcp": 653.625,
+      "speedIndex": 677,
+      "interactive": 653.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:43:17.481Z",
+      "executionTime": 261.4,
+      "fcp": 581.125,
+      "speedIndex": 595,
+      "interactive": 581.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:43:31.255Z",
+      "executionTime": 267.3,
+      "fcp": 659.75,
+      "speedIndex": 692,
+      "interactive": 659.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:43:45.075Z",
+      "executionTime": 266.9,
+      "fcp": 637.25,
+      "speedIndex": 672,
+      "interactive": 637.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:43:58.886Z",
+      "executionTime": 264.6,
+      "fcp": 732.75,
+      "speedIndex": 756,
+      "interactive": 732.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:44:12.785Z",
+      "executionTime": 263.3,
+      "fcp": 594.125,
+      "speedIndex": 618,
+      "interactive": 594.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:44:26.561Z",
+      "executionTime": 267.1,
+      "fcp": 693.375,
+      "speedIndex": 722,
+      "interactive": 693.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:44:40.428Z",
+      "executionTime": 273,
+      "fcp": 592.25,
+      "speedIndex": 625,
+      "interactive": 592.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:44:54.167Z",
+      "executionTime": 263.7,
+      "fcp": 615.625,
+      "speedIndex": 638,
+      "interactive": 615.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:45:07.945Z",
+      "executionTime": 264.7,
+      "fcp": 627.125,
+      "speedIndex": 652,
+      "interactive": 627.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:45:21.737Z",
+      "executionTime": 264.5,
+      "fcp": 621.25,
+      "speedIndex": 658,
+      "interactive": 621.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:45:35.519Z",
+      "executionTime": 261,
+      "fcp": 563.25,
+      "speedIndex": 590,
+      "interactive": 563.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:45:49.251Z",
+      "executionTime": 267.2,
+      "fcp": 645.125,
+      "speedIndex": 671,
+      "interactive": 645.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:46:03.038Z",
+      "executionTime": 263.9,
+      "fcp": 589.375,
+      "speedIndex": 609,
+      "interactive": 589.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:46:16.787Z",
+      "executionTime": 267.2,
+      "fcp": 666.5,
+      "speedIndex": 693,
+      "interactive": 666.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:46:30.611Z",
+      "executionTime": 261.6,
+      "fcp": 585,
+      "speedIndex": 609,
+      "interactive": 585,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:46:44.367Z",
+      "executionTime": 262.7,
+      "fcp": 625,
+      "speedIndex": 652,
+      "interactive": 625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:46:58.143Z",
+      "executionTime": 264.7,
+      "fcp": 608.125,
+      "speedIndex": 676,
+      "interactive": 608.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:47:11.915Z",
+      "executionTime": 263.3,
+      "fcp": 645.25,
+      "speedIndex": 678,
+      "interactive": 645.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:47:25.719Z",
+      "executionTime": 262.8,
+      "fcp": 573.125,
+      "speedIndex": 603,
+      "interactive": 573.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:47:39.453Z",
+      "executionTime": 267,
+      "fcp": 665.375,
+      "speedIndex": 689,
+      "interactive": 665.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:47:53.279Z",
+      "executionTime": 261.5,
+      "fcp": 4547.75,
+      "speedIndex": 4568,
+      "interactive": 4547.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:48:10.986Z",
+      "executionTime": 265.1,
+      "fcp": 633.25,
+      "speedIndex": 666,
+      "interactive": 633.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:48:24.788Z",
+      "executionTime": 267.1,
+      "fcp": 675.75,
+      "speedIndex": 702,
+      "interactive": 675.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:48:38.626Z",
+      "executionTime": 265.2,
+      "fcp": 631.375,
+      "speedIndex": 656,
+      "interactive": 631.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:48:52.432Z",
+      "executionTime": 263.1,
+      "fcp": 602.5,
+      "speedIndex": 625,
+      "interactive": 602.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:49:06.186Z",
+      "executionTime": 262.5,
+      "fcp": 611.625,
+      "speedIndex": 632,
+      "interactive": 611.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:49:19.957Z",
+      "executionTime": 262.5,
+      "fcp": 614.625,
+      "speedIndex": 638,
+      "interactive": 614.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:49:33.733Z",
+      "executionTime": 268.8,
+      "fcp": 1979.75,
+      "speedIndex": 2179,
+      "interactive": 1979.75,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:49:48.887Z",
+      "executionTime": 267.9,
+      "fcp": 632.25,
+      "speedIndex": 654,
+      "interactive": 632.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:50:02.688Z",
+      "executionTime": 266.1,
+      "fcp": 663,
+      "speedIndex": 690,
+      "interactive": 663,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:50:16.527Z",
+      "executionTime": 268.1,
+      "fcp": 658.125,
+      "speedIndex": 683,
+      "interactive": 658.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:50:30.371Z",
+      "executionTime": 266.1,
+      "fcp": 659,
+      "speedIndex": 689,
+      "interactive": 659,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:50:44.196Z",
+      "executionTime": 263.6,
+      "fcp": 613.5,
+      "speedIndex": 633,
+      "interactive": 613.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:50:57.984Z",
+      "executionTime": 265.6,
+      "fcp": 624.5,
+      "speedIndex": 662,
+      "interactive": 624.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:51:11.783Z",
+      "executionTime": 265.4,
+      "fcp": 594.375,
+      "speedIndex": 618,
+      "interactive": 594.375,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:51:25.523Z",
+      "executionTime": 263.2,
+      "fcp": 601.625,
+      "speedIndex": 628,
+      "interactive": 601.625,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:51:39.299Z",
+      "executionTime": 267.7,
+      "fcp": 630,
+      "speedIndex": 659,
+      "interactive": 630,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:51:53.131Z",
+      "executionTime": 267.3,
+      "fcp": 676,
+      "speedIndex": 696,
+      "interactive": 676,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:52:06.984Z",
+      "executionTime": 263.1,
+      "fcp": 583,
+      "speedIndex": 616,
+      "interactive": 583,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:52:20.739Z",
+      "executionTime": 268.2,
+      "fcp": 686.25,
+      "speedIndex": 710,
+      "interactive": 686.25,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:52:34.601Z",
+      "executionTime": 264,
+      "fcp": 595.5,
+      "speedIndex": 627,
+      "interactive": 595.5,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:52:48.365Z",
+      "executionTime": 266.1,
+      "fcp": 661.125,
+      "speedIndex": 689,
+      "interactive": 661.125,
+      "tbt": 0,
+      "domSize": 669
+    },
+    {
+      "timestamp": "2021-10-18T20:53:02.217Z",
+      "executionTime": 262.3,
+      "fcp": 576.875,
+      "speedIndex": 606,
+      "interactive": 576.875,
+      "tbt": 0,
+      "domSize": 669
+    }
+  ]
+}

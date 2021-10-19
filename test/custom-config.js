@@ -1,14 +1,7 @@
 module.exports = {
   extends: 'lighthouse:default',
   settings: {
-    onlyAudits: [
-      'custom-audit',
-      'dom-size',
-      'speed-index',
-      'first-contentful-paint',
-      'interactive',
-      'total-blocking-time',
-    ],
+    onlyAudits: ['custom-audit', 'dom-size', 'total-blocking-time'],
     throttlingMethod: 'devtools',
     // desktop config, no throtteling (default mobile, 4x throtteling)
     formFactor: 'desktop',

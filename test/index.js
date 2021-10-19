@@ -32,9 +32,6 @@ if (argv.url) {
     const newReportData = {
       timestamp: results.fetchTime,
       executionTime: results.audits['custom-audit'].numericValue,
-      fcp: results.audits['first-contentful-paint'].numericValue,
-      speedIndex: results.audits['speed-index'].numericValue,
-      interactive: results.audits['interactive'].numericValue,
       tbt: results.audits['total-blocking-time'].numericValue,
       domSize: results.audits['dom-size'].numericValue,
     };
