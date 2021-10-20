@@ -30,6 +30,15 @@ node multiple-tests.js --runs <number> --url <url>
 node index.js --url <url>
 ```
 
+Tests auswerten
+
+```
+cd results
+
+node calcResults.js --path <pathToFolderWithResults>
+```
+
+
 ## Projekt Struktur
 
 ### public
