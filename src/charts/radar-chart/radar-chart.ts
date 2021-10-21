@@ -20,6 +20,10 @@ import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tool
 // worklets
 const gridRadarWorklet = new URL('../../worklets/grid-radar.js', import.meta.url);
 const pathRadarWorklet = new URL('../../worklets/path-radar.js', import.meta.url);
+// @ts-ignore
+CSS.paintWorklet.addModule(gridRadarWorklet.href);
+// @ts-ignore
+CSS.paintWorklet.addModule(pathRadarWorklet.href);
 
 class RadarChart {
   constructor(private readonly root: HTMLElement, private readonly config: Config) {
@@ -89,18 +93,10 @@ class RadarChart {
   };
 
   private init = () => {
-    this.worklets();
     this.render();
     this.styles();
     this.events();
     if (this.accessible) this.accessibility();
-  };
-
-  private worklets = () => {
-    // @ts-ignore
-    CSS.paintWorklet.addModule(gridRadarWorklet.href);
-    // @ts-ignore
-    CSS.paintWorklet.addModule(pathRadarWorklet.href);
   };
 
   private render = () => {
