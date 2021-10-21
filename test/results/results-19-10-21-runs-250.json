@@ -11,8 +11,8 @@
       "domeSize": 49
     },
     "radarChart": {
-      "executionTime": { "average": 149.71800000000002, "max": 202.1, "min": 137.9 },
-      "tbt": { "average": 0.5359639999952347, "max": 20.7059999995231, "min": 0 },
+      "executionTime": { "average": 32.33039999999999, "max": 60.8, "min": 21.6 },
+      "tbt": { "average": 0.025, "max": 6.25, "min": 0 },
       "domeSize": 671
     },
     "radarChartMin": {
@@ -23,8 +23,8 @@
   },
   "chartjs": {
     "lineChart": {
-      "executionTime": { "average": 1033.2332, "max": 1232.9, "min": 894.2 },
-      "tbt": { "average": 0.16083999997711, "max": 5.5479999999997744, "min": 0 },
+      "executionTime": { "average": 54.44839999999996, "max": 59.2, "min": 49.7 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
       "domeSize": 6
     },
     "lineChartMin": {
@@ -33,8 +33,8 @@
       "domeSize": 6
     },
     "radarChart": {
-      "executionTime": { "average": 1320.4232, "max": 1579.8, "min": 1213.1 },
-      "tbt": { "average": 0.004575999984741429, "max": 0.5029999961852809, "min": 0 },
+      "executionTime": { "average": 86.06560000000002, "max": 105.2, "min": 69.6 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
       "domeSize": 5
     },
     "radarChartMin": {
@@ -45,12 +45,12 @@
   },
   "highcharts": {
     "lineChart": {
-      "executionTime": { "average": 759.9155999999997, "max": 904.8, "min": 612.7 },
+      "executionTime": { "average": 55.72479999999999, "max": 62.6, "min": 51.2 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
       "domeSize": 186
     },
     "lineChartMin": {
-      "executionTime": { "average": 271.6200000000002, "max": 315.1, "min": 262.8 },
+      "executionTime": { "average": 47.85999999999999, "max": 61.3, "min": 37.7 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
       "domeSize": 112
     },
