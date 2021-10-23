@@ -139,7 +139,7 @@
     { "timestamp": "2021-10-22T13:36:02.072Z", "executionTime": 28.7, "tbt": 0, "domSize": 41 },
     { "timestamp": "2021-10-22T13:36:17.008Z", "executionTime": 28.2, "tbt": 0, "domSize": 41 },
     { "timestamp": "2021-10-22T13:36:31.958Z", "executionTime": 30.2, "tbt": 0, "domSize": 41 },
-    { "timestamp": "2021-10-22T13:36:46.889Z" },
+    { "timestamp": "2021-10-22T13:36:46.889Z", "executionTime": 28.7, "tbt": 0, "domSize": 41 },
     { "timestamp": "2021-10-22T13:37:18.963Z", "executionTime": 27, "tbt": 0, "domSize": 41 },
     { "timestamp": "2021-10-22T13:37:33.926Z", "executionTime": 29.9, "tbt": 0, "domSize": 41 },
     { "timestamp": "2021-10-22T13:37:48.838Z", "executionTime": 26.6, "tbt": 0, "domSize": 41 },

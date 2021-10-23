@@ -16,8 +16,8 @@
       "domeSize": 671
     },
     "radarChartMin": {
-      "executionTime": { "average": null, "max": null, "min": null },
-      "tbt": { "average": null, "max": null, "min": null },
+      "executionTime": { "average": 29.963600000000007, "max": 33.6, "min": 25.6 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
       "domeSize": 41
     }
   },
@@ -38,8 +38,8 @@
       "domeSize": 5
     },
     "radarChartMin": {
-      "executionTime": { "average": null, "max": null, "min": null },
-      "tbt": { "average": null, "max": null, "min": null },
+      "executionTime": { "average": 101.346, "max": 127.4, "min": 93 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
       "domeSize": 5
     }
   },
