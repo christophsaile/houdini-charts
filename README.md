@@ -36,8 +36,8 @@ Tests auswerten
 cd results
 
 node calcResults.js --path <pathToFolderWithResults>
+node calcDifference.js --path <pathToFolderWithResults>
 ```
-
 
 ## Projekt Struktur
 
