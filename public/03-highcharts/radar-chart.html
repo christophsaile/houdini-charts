@@ -68,7 +68,7 @@
           ('00' + (~~(b * 255)).toString(16)).slice(-2);
         return c;
       }
-      fetchData('../mock/local-test-data-radar.json').then((result) => {
+      fetchData('https://api.corona-zahlen.org/states/age-groups').then((result) => {
         const apiData = Object.values(result.data);
         const ageGroups = Object.keys(apiData[0]).sort();
         const stateNames = Object.keys(result.data);

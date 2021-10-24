@@ -24,7 +24,7 @@
           console.log(error);
         }
       }
-      fetchData('../mock/local-test-data-line.json').then((apiData) => {
+      fetchData('https://api.corona-zahlen.org/germany/history/cases').then((apiData) => {
         let labels = apiData.data.map((elem) => {
           return DateTime.fromISO(elem.date).toFormat('yyyy LLL dd');
         });
