@@ -3,66 +3,66 @@
     "lineChart": {
       "executionTime": { "average": 264.5593625498007, "max": 271, "min": 257.4 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 669
+      "domSize": 669
     },
     "lineChartMin": {
       "executionTime": { "average": 21.820400000000014, "max": 29.2, "min": 15.2 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 49
+      "domSize": 49
     },
     "radarChart": {
       "executionTime": { "average": 32.33039999999999, "max": 60.8, "min": 21.6 },
       "tbt": { "average": 0.025, "max": 6.25, "min": 0 },
-      "domeSize": 671
+      "domSize": 671
     },
     "radarChartMin": {
       "executionTime": { "average": 14.686799999999996, "max": 29.2, "min": 8.9 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 41
+      "domSize": 41
     }
   },
   "chartjs": {
     "lineChart": {
       "executionTime": { "average": 54.44839999999996, "max": 59.2, "min": 49.7 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 6
+      "domSize": 6
     },
     "lineChartMin": {
       "executionTime": { "average": 40.221199999999975, "max": 47, "min": 30 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 6
+      "domSize": 6
     },
     "radarChart": {
       "executionTime": { "average": 86.06560000000002, "max": 105.2, "min": 69.6 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 5
+      "domSize": 5
     },
     "radarChartMin": {
       "executionTime": { "average": 52.28799999999999, "max": 66.6, "min": 38.4 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 5
+      "domSize": 5
     }
   },
   "highcharts": {
     "lineChart": {
       "executionTime": { "average": 55.72479999999999, "max": 62.6, "min": 51.2 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 186
+      "domSize": 186
     },
     "lineChartMin": {
       "executionTime": { "average": 47.85999999999999, "max": 61.3, "min": 37.7 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 112
+      "domSize": 112
     },
     "radarChart": {
       "executionTime": { "average": 95.01359999999995, "max": 118.2, "min": 83.3 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 1085
+      "domSize": 1085
     },
     "radarChartMin": {
       "executionTime": { "average": 51.10120000000001, "max": 69.3, "min": 34.8 },
       "tbt": { "average": 0, "max": 0, "min": 0 },
-      "domeSize": 83
+      "domSize": 83
     }
   }
 }

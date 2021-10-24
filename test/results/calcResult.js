@@ -43,7 +43,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(houdiniLineChart)),
         min: calcLowest(flattenMapTbt(houdiniLineChart)),
       },
-      domeSize: houdiniLineChart[0].domSize,
+      domSize: houdiniLineChart[0].domSize,
     },
     lineChartMin: {
       executionTime: {
@@ -56,7 +56,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(houdiniLineChartMin)),
         min: calcLowest(flattenMapTbt(houdiniLineChartMin)),
       },
-      domeSize: houdiniLineChartMin[0].domSize,
+      domSize: houdiniLineChartMin[0].domSize,
     },
     radarChart: {
       executionTime: {
@@ -69,7 +69,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(houdiniRadarChart)),
         min: calcLowest(flattenMapTbt(houdiniRadarChart)),
       },
-      domeSize: houdiniRadarChart[0].domSize,
+      domSize: houdiniRadarChart[0].domSize,
     },
     radarChartMin: {
       executionTime: {
@@ -82,7 +82,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(houdiniRadarChartMin)),
         min: calcLowest(flattenMapTbt(houdiniRadarChartMin)),
       },
-      domeSize: houdiniRadarChartMin[0].domSize,
+      domSize: houdiniRadarChartMin[0].domSize,
     },
   };
 
@@ -98,7 +98,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(chartjsLineChart)),
         min: calcLowest(flattenMapTbt(chartjsLineChart)),
       },
-      domeSize: chartjsLineChart[0].domSize,
+      domSize: chartjsLineChart[0].domSize,
     },
     lineChartMin: {
       executionTime: {
@@ -111,7 +111,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(chartjsLineChartMin)),
         min: calcLowest(flattenMapTbt(chartjsLineChartMin)),
       },
-      domeSize: chartjsLineChartMin[0].domSize,
+      domSize: chartjsLineChartMin[0].domSize,
     },
     radarChart: {
       executionTime: {
@@ -124,7 +124,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(chartjsRadarChart)),
         min: calcLowest(flattenMapTbt(chartjsRadarChart)),
       },
-      domeSize: chartjsRadarChart[0].domSize,
+      domSize: chartjsRadarChart[0].domSize,
     },
     radarChartMin: {
       executionTime: {
@@ -137,7 +137,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(chartjsRadarChartMin)),
         min: calcLowest(flattenMapTbt(chartjsRadarChartMin)),
       },
-      domeSize: chartjsRadarChartMin[0].domSize,
+      domSize: chartjsRadarChartMin[0].domSize,
     },
   };
 
@@ -153,7 +153,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(highchartsLineChart)),
         min: calcLowest(flattenMapTbt(highchartsLineChart)),
       },
-      domeSize: highchartsLineChart[0].domSize,
+      domSize: highchartsLineChart[0].domSize,
     },
     lineChartMin: {
       executionTime: {
@@ -166,7 +166,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(highchartsLineChartMin)),
         min: calcLowest(flattenMapTbt(highchartsLineChartMin)),
       },
-      domeSize: highchartsLineChartMin[0].domSize,
+      domSize: highchartsLineChartMin[0].domSize,
     },
     radarChart: {
       executionTime: {
@@ -179,7 +179,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(highchartsRadarChart)),
         min: calcLowest(flattenMapTbt(highchartsRadarChart)),
       },
-      domeSize: highchartsRadarChart[0].domSize,
+      domSize: highchartsRadarChart[0].domSize,
     },
     radarChartMin: {
       executionTime: {
@@ -192,7 +192,7 @@ if (argv.path) {
         max: calcHighest(flattenMapTbt(highchartsRadarChartMin)),
         min: calcLowest(flattenMapTbt(highchartsRadarChartMin)),
       },
-      domeSize: highchartsRadarChartMin[0].domSize,
+      domSize: highchartsRadarChartMin[0].domSize,
     },
   };
 
