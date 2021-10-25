@@ -6,19 +6,7 @@ export interface Config {
     datasets: Datasets[];
     scale: Scale;
   };
-  options?: {
-    accessibility?: {
-      description?: string;
-    };
-
-    fill?: boolean;
-    legend?: boolean;
-    titleAxis?: {
-      x?: string;
-      y?: string;
-    };
-    gridColor?: string;
-  };
+  options?: Options;
 }
 
 export interface Datasets {
@@ -31,4 +19,18 @@ export interface Scale {
   auto: boolean;
   min?: number;
   max?: number;
+}
+
+export interface Options {
+  accessibility?: {
+    description?: string;
+  };
+
+  fill?: boolean;
+  legend?: boolean;
+  titleAxis?: {
+    x?: string;
+    y?: string;
+  };
+  gridColor?: string;
 }

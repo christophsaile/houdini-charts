@@ -14,7 +14,7 @@ import { Config } from '../../config';
 import { Coordinates, Range } from '../charts';
 
 // classes
-import { Header, headerEvents } from '../../elements/header/header';
+import { Header, eventsHeader } from '../../elements/header/header';
 import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
 
 // worklets
@@ -30,19 +30,20 @@ class RadarChart {
     this.init();
   }
 
-  private scaleSettings = this.config.data.scale;
-  private datasets = this.config.data.datasets;
-  private xaxis = this.config.data.xaxis;
-  private options = this.config.options;
-  private autoScale = this.scaleSettings.auto;
-  private accessible = this.options?.accessibility;
-
-  private min = this.autoScale
-    ? getMinValue(flattenDataset(this.datasets))
-    : this.scaleSettings.min!;
-  private max = this.autoScale
-    ? getMaxValue(flattenDataset(this.datasets))
-    : this.scaleSettings.max!;
+  private configScale = this.config.data.scale;
+  private configDatasets = this.config.data.datasets;
+  private configXaxis = this.config.data.xaxis;
+  private configOptions = this.config.options;
+  private configAutoScale = this.configScale.auto;
+  private configAccessibility = this.configOptions?.accessibility;
+  private configPathFill = this.configOptions?.fill ? true : false;
+  private configGridColor = this.configOptions?.gridColor ? this.configOptions.gridColor : '#ccc';
+  private min = this.configAutoScale
+    ? getMinValue(flattenDataset(this.configDatasets))
+    : this.configScale.min!;
+  private max = this.configAutoScale
+    ? getMaxValue(flattenDataset(this.configDatasets))
+    : this.configScale.max!;
   private niceNumbers = niceScale(this.min, this.max);
   private range: Range = {
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
@@ -51,40 +52,39 @@ class RadarChart {
   private segments =
     (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing +
     1;
-  private numberOfAxis = () => {
-    let length;
-    if (this.xaxis.length < 3) {
-      length = 3;
-    } else if (this.xaxis.length > 10) {
-      length = 10;
-    } else {
-      length = this.xaxis.length;
-    }
-    return length;
-  };
-  private pathFill = this.options?.fill ? true : false;
-  private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
-
   private elemChart!: HTMLElement;
   private elemDatsets!: HTMLElement;
-
   private chartSize: Coordinates = {
     x: 0,
     y: 0,
   };
+  private datapointCoordinates: Coordinates[][] = [];
+  private labelCoordinates: Coordinates[] = [];
+
+  private numberOfAxis = () => {
+    let length;
+    if (this.configXaxis.length < 3) {
+      length = 3;
+    } else if (this.configXaxis.length > 10) {
+      length = 10;
+    } else {
+      length = this.configXaxis.length;
+    }
+    return length;
+  };
+
   private setChartSize = () => {
     this.chartSize.x = this.elemDatsets.clientWidth;
     this.chartSize.y = this.elemDatsets.clientHeight;
   };
 
-  private datapointCoordinates: Coordinates[][] = [];
   private getDatapointCoordinates = () => {
-    const datapoints = this.datasets.map((set) => {
+    const datapoints = this.configDatasets.map((set) => {
       return getRadarPoints(set.values, this.chartSize, this.range);
     });
     return datapoints;
   };
-  private labelCoordinates: Coordinates[] = [];
+
   private getLabelsCoordinates = () => {
     const maxDataset = new Array(this.numberOfAxis()).fill(
       this.niceNumbers.niceMaximum + this.niceNumbers.tickSpacing / 2
@@ -93,13 +93,13 @@ class RadarChart {
   };
 
   private init = () => {
-    this.render();
-    this.styles();
-    this.events();
-    if (this.accessible) this.accessibility();
+    this.initRender();
+    this.initStyles();
+    this.initEvents();
+    if (this.configAccessibility) this.initAccessibility();
   };
 
-  private render = () => {
+  private initRender = () => {
     this.renderWrapper();
     this.renderHeader();
     this.renderChart();
@@ -126,7 +126,7 @@ class RadarChart {
   };
 
   private renderXaxis = () => {
-    const template = this.xaxis
+    const template = this.configXaxis
       .map((label) => {
         return `<span class='houdini__xlabel'>${label}</span>`;
       })
@@ -150,7 +150,7 @@ class RadarChart {
   };
 
   private renderDatasets = () => {
-    const template = this.datasets
+    const template = this.configDatasets
       .map((set) => {
         return `<div id='${set.name}' class='houdini__dataset'></div>`;
       })
@@ -165,9 +165,9 @@ class RadarChart {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
 
     datasets.forEach((datasetElem, index) => {
-      this.datasets[index].values.forEach(
+      this.configDatasets[index].values.forEach(
         (value, innerIndex) =>
-          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.xaxis[innerIndex]}' />`)
+          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.configXaxis[innerIndex]}' />`)
       );
     });
   };
@@ -177,16 +177,16 @@ class RadarChart {
     this.root.querySelector('.houdini__datasets')!.innerHTML += template;
   };
 
-  private styles = () => {
+  private initStyles = () => {
     this.datapointCoordinates = this.getDatapointCoordinates();
     this.labelCoordinates = this.getLabelsCoordinates();
-    this.setAxisLabels();
-    this.setGrid();
-    this.setPath();
-    this.setDatapoints();
+    this.stylesAxisLabels();
+    this.stylesGrid();
+    this.stylesPath();
+    this.stylesDatapoints();
   };
 
-  private setAxisLabels() {
+  private stylesAxisLabels() {
     const elems = this.root.querySelectorAll('.houdini__xlabel');
     const centerX = this.chartSize.x / 2;
     const centerY = this.chartSize.y / 2;
@@ -201,7 +201,7 @@ class RadarChart {
     });
   }
 
-  private setGrid = () => {
+  private stylesGrid = () => {
     // @ts-ignore
     this.elemDatsets.attributeStyleMap.set('background', 'paint(grid-radar)');
     // @ts-ignore
@@ -209,10 +209,10 @@ class RadarChart {
     // @ts-ignore
     this.elemDatsets.attributeStyleMap.set('--grid-xaxis', this.numberOfAxis());
     // @ts-ignore
-    this.elemDatsets.attributeStyleMap.set('--grid-color', this.gridColor);
+    this.elemDatsets.attributeStyleMap.set('--grid-color', this.configGridColor);
   };
 
-  private setPath = () => {
+  private stylesPath = () => {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
     datasets.forEach((elem, index) => {
       // @ts-ignore
@@ -220,16 +220,16 @@ class RadarChart {
       // @ts-ignore
       elem.attributeStyleMap.set('--path-points', JSON.stringify(this.datapointCoordinates[index]));
       // @ts-ignore
-      elem.attributeStyleMap.set('--path-fill', this.pathFill);
+      elem.attributeStyleMap.set('--path-fill', this.configPathFill);
       // @ts-ignore
-      elem.attributeStyleMap.set('--path-color', this.datasets[index].color);
+      elem.attributeStyleMap.set('--path-color', this.configDatasets[index].color);
     });
   };
 
-  private setDatapoints = () => {
+  private stylesDatapoints = () => {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
     datasets.forEach((elem, index) => {
-      const color = this.datasets[index].color;
+      const color = this.configDatasets[index].color;
 
       elem.querySelectorAll('button').forEach((datapoint, innerIndex) => {
         // -4px because dotSize = 8 / 2
@@ -245,13 +245,13 @@ class RadarChart {
     });
   };
 
-  private events = () => {
-    this.highlightDatapoint();
-    this.resize();
-    headerEvents(this.root);
+  private initEvents = () => {
+    this.eventsDatapoint();
+    this.eventsResize();
+    eventsHeader(this.root);
   };
 
-  private highlightDatapoint = () => {
+  private eventsDatapoint = () => {
     const datapoints: HTMLElement[] = [].slice.call(
       document.querySelectorAll('.houdini__dataset button')
     );
@@ -264,7 +264,7 @@ class RadarChart {
     // this.elemDatasets.addEventListener('click', () => this.hideHighlight());
   };
 
-  private resize = () => {
+  private eventsResize = () => {
     window.addEventListener(
       'resize',
       debounce(() => {
@@ -272,16 +272,18 @@ class RadarChart {
         this.setChartSize();
         this.datapointCoordinates = this.getDatapointCoordinates();
         this.labelCoordinates = this.getLabelsCoordinates();
-        this.setAxisLabels();
-        this.setPath();
-        this.setDatapoints();
+        this.stylesAxisLabels();
+        this.stylesPath();
+        this.stylesDatapoints();
       }, 250)
     );
   };
 
-  private accessibility = () => {
-    if (this.accessible?.description)
-      this.root.querySelector('.houdini')?.setAttribute('aria-label', this.accessible.description);
+  private initAccessibility = () => {
+    if (this.configAccessibility?.description)
+      this.root
+        .querySelector('.houdini')
+        ?.setAttribute('aria-label', this.configAccessibility.description);
 
     const yAxis = this.root.querySelector('.houdini__yaxis');
     const xAxis = this.root.querySelector('.houdini__xaxis');

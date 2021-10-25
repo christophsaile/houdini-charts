@@ -16,7 +16,7 @@ import { Config } from '../../config';
 import { Coordinates, Range } from '../charts';
 
 // classes
-import { Header, headerEvents } from '../../elements/header/header';
+import { Header, eventsHeader } from '../../elements/header/header';
 import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
 
 // worklets
@@ -32,20 +32,24 @@ class LineChart {
     this.init();
   }
 
-  private scaleSettings = this.config.data.scale;
-  private datasets = this.config.data.datasets;
-  private xaxis = this.config.data.xaxis;
-  private options = this.config.options;
-  private autoScale = this.scaleSettings.auto;
-  private accessible = this.options?.accessibility;
-
-  private min = {
+  private configScale = this.config.data.scale;
+  private configDatasets = this.config.data.datasets;
+  private configXaxis = this.config.data.xaxis;
+  private configOptions = this.config.options;
+  private configAutoScale = this.configScale.auto;
+  private configAccessibility = this.configOptions?.accessibility;
+  private configGridColor = this.configOptions?.gridColor ? this.configOptions.gridColor : '#ccc';
+  private min: Coordinates = {
     x: 0,
-    y: this.autoScale ? getMinValue(flattenDataset(this.datasets)) : this.scaleSettings.min!,
+    y: this.configAutoScale
+      ? getMinValue(flattenDataset(this.configDatasets))
+      : this.configScale.min!,
   };
-  private max = {
-    x: this.xaxis.length - 1,
-    y: this.autoScale ? getMaxValue(flattenDataset(this.datasets)) : this.scaleSettings.max!,
+  private max: Coordinates = {
+    x: this.configXaxis.length - 1,
+    y: this.configAutoScale
+      ? getMaxValue(flattenDataset(this.configDatasets))
+      : this.configScale.max!,
   };
   private niceNumbers = niceScale(this.min.y, this.max.y);
   private range: Range = {
@@ -53,26 +57,27 @@ class LineChart {
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
     zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
   };
-  private segments = {
+  private segments: Coordinates = {
     x: this.max.x,
     y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
   };
-
   private elemDatasets!: HTMLElement;
   private chartSize: Coordinates = {
     x: 0,
     y: 0,
   };
+  private datapointCoordinates: Coordinates[][] = [];
+  private dateScaleLabels: string[] = [];
+
   private setChartSize = () => {
     this.chartSize.x = this.elemDatasets.clientWidth;
     this.chartSize.y = this.elemDatasets.clientHeight;
   };
 
-  private datapointCoordinates: Coordinates[][] = [];
   private getDatapointCoordinates = () => {
-    const datapoints = this.datasets.map((set) => {
-      if (checkXAxisType(this.xaxis[0]) === 'date') {
-        return getLinePointsDate(set.values, this.xaxis, this.chartSize, this.range);
+    const datapoints = this.configDatasets.map((set) => {
+      if (checkXAxisType(this.configXaxis[0]) === 'date') {
+        return getLinePointsDate(set.values, this.configXaxis, this.chartSize, this.range);
       } else {
         return getLinePoints(set.values, this.chartSize, this.range);
       }
@@ -80,11 +85,9 @@ class LineChart {
     return datapoints;
   };
 
-  private dateScaleLabels: string[] = [];
-
-  private xaxisFormat = () => {
-    if (checkXAxisType(this.xaxis[0]) === 'date') {
-      const scale = getDateScaleLabels(this.xaxis);
+  private initXaxisFormat = () => {
+    if (checkXAxisType(this.configXaxis[0]) === 'date') {
+      const scale = getDateScaleLabels(this.configXaxis);
       this.max.x = scale.maxValue;
       this.range.x = this.max.x - this.min.x;
       this.range.tickInterval = scale.tickInterval;
@@ -93,17 +96,15 @@ class LineChart {
     }
   };
 
-  private gridColor = this.options?.gridColor ? this.options.gridColor : '#ccc';
-
   private init = () => {
-    this.xaxisFormat();
-    this.render();
-    this.styles();
-    this.events();
-    if (this.accessible) this.accessibility();
+    this.initXaxisFormat();
+    this.initRender();
+    this.initStyles();
+    this.initEvents();
+    if (this.configAccessibility) this.initAccessibility();
   };
 
-  private render = () => {
+  private initRender = () => {
     this.renderWrapper();
     this.renderHeader();
     this.renderAxisTitle();
@@ -167,7 +168,7 @@ class LineChart {
 
   private renderXAxis = () => {
     let template;
-    if (checkXAxisType(this.xaxis[0]) === 'date') {
+    if (checkXAxisType(this.configXaxis[0]) === 'date') {
       template = this.renderDateXAxis();
     } else {
       template = this.renderDefaultXaxis();
@@ -186,7 +187,7 @@ class LineChart {
     for (let i = this.min.x; i <= this.max.x; i++) {
       const segmentWidth = 100 / this.segments.x;
       const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
-      template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.xaxis[i]}</span>`; // -8px because fontSize = 16px / 2
+      template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.configXaxis[i]}</span>`; // -8px because fontSize = 16px / 2
     }
 
     return template;
@@ -204,7 +205,7 @@ class LineChart {
   };
 
   private renderDatasets = () => {
-    const template = this.datasets
+    const template = this.configDatasets
       .map((set) => {
         return `<div id='${set.name}' class='houdini__dataset'></div>`;
       })
@@ -221,9 +222,9 @@ class LineChart {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
 
     datasets.forEach((datasetElem, index) => {
-      this.datasets[index].values.forEach(
+      this.configDatasets[index].values.forEach(
         (value, innerIndex) =>
-          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.xaxis[innerIndex]}' />`)
+          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.configXaxis[innerIndex]}' />`)
       );
     });
   };
@@ -233,14 +234,14 @@ class LineChart {
     this.root.querySelector('.houdini__datasets')!.innerHTML += template;
   };
 
-  private styles = () => {
+  private initStyles = () => {
     this.datapointCoordinates = this.getDatapointCoordinates();
-    this.setGrid();
-    this.setPath();
-    this.setDatapoints();
+    this.stylesGrid();
+    this.stylesPath();
+    this.stylesDatapoints();
   };
 
-  private setGrid = () => {
+  private stylesGrid = () => {
     const elem = this.root.querySelector('.houdini__datasets')!;
     // @ts-ignore
     elem.attributeStyleMap.set('background', 'paint(grid-basic)');
@@ -249,10 +250,10 @@ class LineChart {
     // @ts-ignore
     elem.attributeStyleMap.set('--grid-segmentsY', this.segments.y);
     // @ts-ignore
-    elem.attributeStyleMap.set('--grid-color', this.gridColor);
+    elem.attributeStyleMap.set('--grid-color', this.configGridColor);
   };
 
-  private setPath = () => {
+  private stylesPath = () => {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
     datasets.forEach((elem, index) => {
       // @ts-ignore
@@ -260,14 +261,14 @@ class LineChart {
       // @ts-ignore
       elem.attributeStyleMap.set('--path-points', JSON.stringify(this.datapointCoordinates[index]));
       // @ts-ignore
-      elem.attributeStyleMap.set('--path-color', this.datasets[index].color);
+      elem.attributeStyleMap.set('--path-color', this.configDatasets[index].color);
     });
   };
 
-  private setDatapoints = () => {
+  private stylesDatapoints = () => {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
     datasets.forEach((elem, index) => {
-      const color = this.datasets[index].color;
+      const color = this.configDatasets[index].color;
 
       elem.querySelectorAll('button').forEach((datapoint, innerIndex) => {
         // -4px because dotSize = 8 / 2
@@ -284,13 +285,13 @@ class LineChart {
     });
   };
 
-  private events = () => {
-    this.highlightDatapoint();
-    this.resize();
-    headerEvents(this.root);
+  private initEvents = () => {
+    this.eventsDatapoint();
+    this.eventsResize();
+    eventsHeader(this.root);
   };
 
-  private highlightDatapoint = () => {
+  private eventsDatapoint = () => {
     const datapoints: HTMLElement[] = [].slice.call(
       document.querySelectorAll('.houdini__dataset button')
     );
@@ -319,22 +320,24 @@ class LineChart {
     hideTooltip(this.root);
   };
 
-  private resize = () => {
+  private eventsResize = () => {
     window.addEventListener(
       'resize',
       debounce(() => {
         this.hideHighlight();
         this.setChartSize();
         this.datapointCoordinates = this.getDatapointCoordinates();
-        this.setPath();
-        this.setDatapoints();
+        this.stylesPath();
+        this.stylesDatapoints();
       }, 250)
     );
   };
 
-  private accessibility = () => {
-    if (this.accessible?.description)
-      this.root.querySelector('.houdini')?.setAttribute('aria-label', this.accessible.description);
+  private initAccessibility = () => {
+    if (this.configAccessibility?.description)
+      this.root
+        .querySelector('.houdini')
+        ?.setAttribute('aria-label', this.configAccessibility.description);
 
     const yAxis = this.root.querySelector('.houdini__yaxis');
     const xAxis = this.root.querySelector('.houdini__xaxis');

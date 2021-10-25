@@ -34,7 +34,7 @@ export function Header(config: Config): string {
   `;
 }
 
-export function headerEvents(root: HTMLElement) {
+export function eventsHeader(root: HTMLElement) {
   const legendItems: HTMLElement[] = [].slice.call(root.querySelectorAll('.houdini__legend-item'));
   if (legendItems) {
     legendItems.forEach((elem) => {
