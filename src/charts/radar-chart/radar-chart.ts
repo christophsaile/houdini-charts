@@ -11,7 +11,7 @@ import './radar-chart.css';
 
 // interfaces
 import { Config } from '../../config';
-import { Coordinates, Range } from '../charts';
+import { Coordinates, NiceNumbers, Range } from '../charts';
 
 // classes
 import { Header, eventsHeader } from '../../elements/header/header';
@@ -44,7 +44,7 @@ class RadarChart {
   private max = this.configAutoScale
     ? getMaxValue(flattenDataset(this.configDatasets))
     : this.configScale.max!;
-  private niceNumbers = niceScale(this.min, this.max);
+  private niceNumbers: NiceNumbers = niceScale(this.min, this.max);
   private range: Range = {
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
     zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),

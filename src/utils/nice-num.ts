@@ -1,6 +1,8 @@
 // "nice number" algorithm.
 // See https://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
 
+import { NiceNumbers } from '../charts/charts';
+
 var minPoint: number;
 var maxPoint: number;
 var maxTicks = 10;
@@ -15,7 +17,7 @@ var niceMax: number;
  *  min the minimum data point on the axis
  *  max the maximum data point on the axis
  */
-export function niceScale(min: number, max: number) {
+export function niceScale(min: number, max: number): NiceNumbers {
   minPoint = min;
   maxPoint = max;
   calculate();

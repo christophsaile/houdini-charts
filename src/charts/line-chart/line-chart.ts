@@ -13,7 +13,7 @@ import './line-chart.css';
 
 // interfaces
 import { Config } from '../../config';
-import { Coordinates, Range } from '../charts';
+import { Coordinates, NiceNumbers, Range } from '../charts';
 
 // classes
 import { Header, eventsHeader } from '../../elements/header/header';
@@ -51,7 +51,7 @@ class LineChart {
       ? getMaxValue(flattenDataset(this.configDatasets))
       : this.configScale.max!,
   };
-  private niceNumbers = niceScale(this.min.y, this.max.y);
+  private niceNumbers: NiceNumbers = niceScale(this.min.y, this.max.y);
   private range: Range = {
     x: this.max.x - this.min.x,
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,

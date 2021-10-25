@@ -9,3 +9,9 @@ export interface Coordinates {
   x: number;
   y: number;
 }
+
+export interface NiceNumbers {
+  tickSpacing: number;
+  niceMinimum: number;
+  niceMaximum: number;
+}
