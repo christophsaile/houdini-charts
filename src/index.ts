@@ -9,16 +9,16 @@ import RadarChart from './charts/radar-chart/radar-chart';
 import { Config } from './config';
 
 class HoudiniChart {
-  constructor(private readonly container: HTMLElement, private readonly config: Config) {
+  constructor(private readonly root: HTMLElement, private readonly config: Config) {
     this.init();
   }
-  public init = () => {
+  private init = () => {
     switch (this.config.chartType.toLowerCase()) {
       case 'line':
-        const LINECHART = new LineChart(this.container, this.config);
+        const LINECHART = new LineChart(this.root, this.config);
         break;
       case 'radar':
-        const RADARCHART = new RadarChart(this.container, this.config);
+        const RADARCHART = new RadarChart(this.root, this.config);
         break;
     }
   };
