@@ -18,6 +18,7 @@ import { Coordinates, NiceNumbers, Range } from '../charts';
 // classes
 import Header from '../../elements/header/header';
 import Tooltip from '../../elements/tooltip/tooltip';
+import Accessibility from '../../elements/accessibility/accessibility';
 
 // worklets
 const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
@@ -101,7 +102,7 @@ class LineChart {
     this.initRender();
     this.initStyles();
     this.initEvents();
-    if (this.configAccessibility) this.initAccessibility();
+    this.initAccessibility();
   };
 
   private initRender = () => {
@@ -336,36 +337,8 @@ class LineChart {
   };
 
   private initAccessibility = () => {
-    if (this.configAccessibility?.description)
-      this.root
-        .querySelector('.houdini')
-        ?.setAttribute('aria-label', this.configAccessibility.description);
-
-    const yAxis = this.root.querySelector('.houdini__yaxis');
-    const xAxis = this.root.querySelector('.houdini__xaxis');
-
-    xAxis?.setAttribute('aria-hidden', 'true');
-    yAxis?.setAttribute('aria-hidden', 'true');
-
-    const datasets = this.root.querySelectorAll('.houdini__dataset');
-
-    datasets.forEach((set, index) => {
-      const datapoints = set.querySelectorAll('span');
-
-      set.setAttribute(
-        'aria-label',
-        `${set.id}, line ${index + 1} of ${datasets.length} with ${datapoints.length} data points.`
-      );
-
-      datapoints.forEach((item) => {
-        const xLabel = item.getAttribute('data-x');
-        const yLabel = item.getAttribute('data-y');
-        const dataset = item.parentElement?.id;
-
-        item.setAttribute('tabindex', '0');
-        item.setAttribute('aria-label', `X axis: ${xLabel}, Y axis: ${yLabel}, ${dataset}`);
-      });
-    });
+    if (this.configAccessibility)
+      Accessibility.init(this.root, this.configAccessibility, this.config.chartType);
   };
 }
 

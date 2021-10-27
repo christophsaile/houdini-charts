@@ -22,7 +22,7 @@ export interface Scale {
 }
 
 export interface Options {
-  accessibility?: Accessibility;
+  accessibility?: Access;
   fill?: boolean;
   legend?: boolean;
   titleAxis?: {
@@ -32,6 +32,6 @@ export interface Options {
   gridColor?: string;
 }
 
-export interface Accessibility {
+export interface Access {
   description?: string;
 }

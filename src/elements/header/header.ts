@@ -2,12 +2,12 @@
 import './header.css';
 
 // Interfaces
-import { Accessibility, Config, Datasets } from '../../config';
+import { Access, Config, Datasets } from '../../config';
 
 class Header {
   private title: string | undefined;
   private legend: boolean | undefined;
-  private accessibility: Accessibility | undefined;
+  private accessibility: Access | undefined;
   private datasets!: Datasets[];
 
   public renderHeader = (config: Config): string => {
@@ -24,7 +24,7 @@ class Header {
   `;
   };
 
-  private renderLegend = () => {
+  private renderLegend = (): string => {
     return `
       <section class='houdini__legend'>
         ${this.datasets
