@@ -14,8 +14,8 @@ import { Config } from '../../config';
 import { Coordinates, NiceNumbers, Range } from '../charts';
 
 // classes
-import { Header, eventsHeader } from '../../elements/header/header';
-import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
+import Header from '../../elements/header/header';
+import Tooltip from '../../elements/tooltip/tooltip';
 
 // worklets
 const gridRadarWorklet = new URL('../../worklets/grid-radar.js', import.meta.url);
@@ -116,7 +116,7 @@ class RadarChart {
   };
 
   private renderHeader = () => {
-    this.root.querySelector('.houdini')!.innerHTML += Header(this.config);
+    this.root.querySelector('.houdini')!.innerHTML += Header.renderHeader(this.config);
   };
 
   private renderChart = () => {
@@ -173,7 +173,7 @@ class RadarChart {
   };
 
   private renderTooltip = () => {
-    const template = Tooltip();
+    const template = Tooltip.renderTooltip();
     this.root.querySelector('.houdini__datasets')!.innerHTML += template;
   };
 
@@ -248,7 +248,7 @@ class RadarChart {
   private initEvents = () => {
     this.eventsDatapoint();
     this.eventsResize();
-    eventsHeader(this.root);
+    Header.eventsHeader(this.root);
   };
 
   private eventsDatapoint = () => {
@@ -257,9 +257,13 @@ class RadarChart {
     );
 
     datapoints.forEach((elem: HTMLElement) => {
-      elem.addEventListener('click', (event: MouseEvent) => updateTooltip(event, this.root));
-      elem.addEventListener('mouseover', (event: MouseEvent) => updateTooltip(event, this.root));
-      elem.addEventListener('mouseout', () => hideTooltip(this.root));
+      elem.addEventListener('click', (event: MouseEvent) =>
+        Tooltip.updateTooltip(event, this.root)
+      );
+      elem.addEventListener('mouseover', (event: MouseEvent) =>
+        Tooltip.updateTooltip(event, this.root)
+      );
+      elem.addEventListener('mouseout', () => Tooltip.hideTooltip(this.root));
     });
     // this.elemDatasets.addEventListener('click', () => this.hideHighlight());
   };
@@ -268,7 +272,7 @@ class RadarChart {
     window.addEventListener(
       'resize',
       debounce(() => {
-        hideTooltip(this.root);
+        Tooltip.hideTooltip(this.root);
         this.setChartSize();
         this.datapointCoordinates = this.getDatapointCoordinates();
         this.labelCoordinates = this.getLabelsCoordinates();

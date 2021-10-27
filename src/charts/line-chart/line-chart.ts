@@ -16,8 +16,8 @@ import { Config } from '../../config';
 import { Coordinates, NiceNumbers, Range } from '../charts';
 
 // classes
-import { Header, eventsHeader } from '../../elements/header/header';
-import { hideTooltip, Tooltip, updateTooltip } from '../../elements/tooltip/tooltip';
+import Header from '../../elements/header/header';
+import Tooltip from '../../elements/tooltip/tooltip';
 
 // worklets
 const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
@@ -125,7 +125,7 @@ class LineChart {
   };
 
   private renderHeader = () => {
-    this.root.querySelector('.houdini')!.innerHTML += Header(this.config);
+    this.root.querySelector('.houdini')!.innerHTML += Header.renderHeader(this.config);
   };
 
   private renderAxisTitle = () => {
@@ -230,7 +230,7 @@ class LineChart {
   };
 
   private renderTooltip = () => {
-    const template = Tooltip();
+    const template = Tooltip.renderTooltip();
     this.root.querySelector('.houdini__datasets')!.innerHTML += template;
   };
 
@@ -288,7 +288,7 @@ class LineChart {
   private initEvents = () => {
     this.eventsDatapoint();
     this.eventsResize();
-    eventsHeader(this.root);
+    Header.eventsHeader(this.root);
   };
 
   private eventsDatapoint = () => {
@@ -298,8 +298,10 @@ class LineChart {
 
     datapoints.forEach((elem: HTMLElement) => {
       elem.addEventListener('click', (event: MouseEvent) => this.handleDatapointClick(event));
-      elem.addEventListener('mouseover', (event: MouseEvent) => updateTooltip(event, this.root));
-      elem.addEventListener('mouseout', () => hideTooltip(this.root));
+      elem.addEventListener('mouseover', (event: MouseEvent) =>
+        Tooltip.updateTooltip(event, this.root)
+      );
+      elem.addEventListener('mouseout', () => Tooltip.hideTooltip(this.root));
     });
     this.elemDatasets.addEventListener('click', () => this.hideHighlight());
   };
@@ -309,7 +311,7 @@ class LineChart {
     const leftValue = event.target.attributeStyleMap.get('left').value;
     // @ts-ignore
     this.elemDatasets.attributeStyleMap.set('--grid-highlight', leftValue);
-    updateTooltip(event, this.root);
+    Tooltip.updateTooltip(event, this.root);
 
     event.stopPropagation();
   };
@@ -317,7 +319,7 @@ class LineChart {
   private hideHighlight = () => {
     // @ts-ignore
     this.elemDatasets.attributeStyleMap.set('--grid-highlight', 0);
-    hideTooltip(this.root);
+    Tooltip.hideTooltip(this.root);
   };
 
   private eventsResize = () => {

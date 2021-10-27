@@ -2,47 +2,61 @@
 import './header.css';
 
 // Interfaces
-import { Config } from '../../config';
+import { Accessibility, Config, Datasets } from '../../config';
 
-export function Header(config: Config): string {
-  const title = config.title;
-  const legend = config.options?.legend;
-  const accessibility = config.options?.accessibility;
+class Header {
+  private title: string | undefined;
+  private legend: boolean | undefined;
+  private accessibility: Accessibility | undefined;
+  private datasets!: Datasets[];
 
-  const renderLegend = () => {
+  public renderHeader = (config: Config): string => {
+    this.title = config.title;
+    this.legend = config.options?.legend;
+    this.accessibility = config.options?.accessibility;
+    this.datasets = config.data.datasets;
+
+    return `
+    <section class='houdini__header'>
+      <h2 class='houdini__title'>${this.title}</h2>
+      ${this.legend ? this.renderLegend() : ''}
+    </section>
+  `;
+  };
+
+  private renderLegend = () => {
     return `
       <section class='houdini__legend'>
-        ${config.data.datasets
+        ${this.datasets
           .map(
             (elem) =>
-              `<button ${accessibility ? `aria-label='Show ${elem.name}'` : ''} data-set='${
+              `<button ${this.accessibility ? `aria-label='Show ${elem.name}'` : ''} data-set='${
                 elem.name
               }'class='houdini__legend-item'><span style='background-color: ${
                 elem.color
-              }'></span><p ${accessibility ? `aria-hidden='true'` : ''}>${elem.name}</p></button>`
+              }'></span><p ${this.accessibility ? `aria-hidden='true'` : ''}>${
+                elem.name
+              }</p></button>`
           )
           .join('')}
       </section>
     `;
   };
 
-  return `
-    <section class='houdini__header'>
-      <h2 class='houdini__title'>${title}</h2>
-      ${legend ? renderLegend() : ''}
-    </section>
-  `;
+  public eventsHeader = (root: HTMLElement) => {
+    const legendItems: HTMLElement[] = [].slice.call(
+      root.querySelectorAll('.houdini__legend-item')
+    );
+    if (legendItems) {
+      legendItems.forEach((elem) => {
+        elem.addEventListener('click', () => {
+          const attribute = elem.getAttribute('data-set');
+          const dataset = root.querySelector('#' + attribute);
+          dataset?.classList.toggle('houdini__dataset--hide');
+        });
+      });
+    }
+  };
 }
 
-export function eventsHeader(root: HTMLElement) {
-  const legendItems: HTMLElement[] = [].slice.call(root.querySelectorAll('.houdini__legend-item'));
-  if (legendItems) {
-    legendItems.forEach((elem) => {
-      elem.addEventListener('click', () => {
-        const attribute = elem.getAttribute('data-set');
-        const dataset = root.querySelector('#' + attribute);
-        dataset?.classList.toggle('houdini__dataset--hide');
-      });
-    });
-  }
-}
+export default new Header();
