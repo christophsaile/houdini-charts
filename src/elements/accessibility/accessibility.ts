@@ -6,7 +6,7 @@ class Accessibility {
   private datasets!: HTMLElement[];
   private chartType!: string;
 
-  public init = (root: HTMLElement, configAccessibility: Access | undefined, chartType: string) => {
+  public init = (root: HTMLElement, configAccessibility: Access, chartType: string) => {
     this.root = root;
     this.configAccessibility = configAccessibility;
     this.chartType = chartType;
