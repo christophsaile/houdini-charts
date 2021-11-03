@@ -23,7 +23,7 @@ npm run build
 ### Test
 
 ```
-cd test
+cd ./test
 
 npm run houdini line
 node multiple-tests.js --runs <number> --url <url>
@@ -33,7 +33,7 @@ node index.js --url <url>
 Tests auswerten
 
 ```
-cd results
+cd ./test/results
 
 node calcResults.js --path <pathToFolderWithResults>
 node calcDifference.js --path <pathToFolderWithResults>
