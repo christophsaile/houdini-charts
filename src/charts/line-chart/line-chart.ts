@@ -23,14 +23,17 @@ import Accessibility from '../../elements/accessibility/accessibility';
 // worklets
 const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
 const pathLineWorklet = new URL('../../worklets/path-line.js', import.meta.url);
-// @ts-ignore
-CSS.paintWorklet.addModule(gridBasicWorklet.href);
-// @ts-ignore
-CSS.paintWorklet.addModule(pathLineWorklet.href);
 
 class LineChart {
   constructor(private readonly root: HTMLElement, private readonly config: Config) {
-    this.init();
+    Promise.all([
+      // @ts-ignore
+      CSS.paintWorklet.addModule(gridBasicWorklet.href),
+      // @ts-ignore
+      CSS.paintWorklet.addModule(pathLineWorklet.href),
+    ]).then(() => {
+      this.init();
+    });
   }
 
   private configScale = this.config.data.scale;

@@ -21,14 +21,17 @@ import Accessibility from '../../elements/accessibility/accessibility';
 // worklets
 const gridRadarWorklet = new URL('../../worklets/grid-radar.js', import.meta.url);
 const pathRadarWorklet = new URL('../../worklets/path-radar.js', import.meta.url);
-// @ts-ignore
-CSS.paintWorklet.addModule(gridRadarWorklet.href);
-// @ts-ignore
-CSS.paintWorklet.addModule(pathRadarWorklet.href);
 
 class RadarChart {
   constructor(private readonly root: HTMLElement, private readonly config: Config) {
-    this.init();
+    Promise.all([
+      // @ts-ignore
+      CSS.paintWorklet.addModule(gridRadarWorklet.href),
+      // @ts-ignore
+      CSS.paintWorklet.addModule(pathRadarWorklet.href),
+    ]).then(() => {
+      this.init();
+    });
   }
 
   private configScale = this.config.data.scale;
