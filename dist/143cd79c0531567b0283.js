@@ -1,0 +1,1 @@
+if("undefined"!=typeof registerPaint){class t{static get inputProperties(){return["--path-points","--path-color"]}paint(t,e,i){const n=JSON.parse(String(i.get("--path-points"))),r=String(i.get("--path-color"))||"#000",o=e.height;t.lineWidth=2,t.strokeStyle=r,t.beginPath();for(let e=0;e<n.length;e++){const i=n[e].x,r=o-n[e].y;t.lineTo(i,r)}t.stroke()}}registerPaint("path-line",t)}

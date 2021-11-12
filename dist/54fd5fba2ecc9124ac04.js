@@ -1,0 +1,1 @@
+if("undefined"!=typeof registerPaint){class t{static get inputProperties(){return["background-color"]}paint(t,e,i){const o=String(i.get("background-color")),n=25*e.width/100;t.beginPath(),t.moveTo(n-10,0),t.lineTo(n+10,0),t.lineTo(n,e.height),t.closePath(),t.fillStyle=o,t.fill()}}registerPaint("tooltip",t)}
