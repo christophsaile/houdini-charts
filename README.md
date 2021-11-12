@@ -18,6 +18,7 @@ npm start
 
 ```
 npm run build
+npm run build-web
 ```
 
 ### Test
@@ -43,10 +44,11 @@ node calcDifference.js --path <pathToFolderWithResults>
 
 ### public
 
-Entählt alle Daten die nicht von Webpack gebundelt werden.
+Entählt alle Daten die für die Web-Anwendung benötigt werden.
 Aktuell sind das die folgenden Dateien:
 
 - .html
+- .css
 - mock-data
 - test libraries
 
