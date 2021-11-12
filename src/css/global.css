@@ -1,0 +1,33 @@
+:root {
+  --datapoint-size: 8px;
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 40px;
+  --font-xs: 10px;
+  --font-sm: 12px;
+  --font-md: 16px;
+  --color-purple: #cab8ff;
+  --color-green: #c1ffd7;
+  --color-blue: #b5deff;
+  --color-yellow: #fcffa6;
+  --color-grey: #d4d4d4;
+  --color-black: #1c1c1ccc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  padding: var(--spacing-md) 0;
+}

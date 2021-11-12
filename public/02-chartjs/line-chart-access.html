@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chartjs - Line Chart</title>
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
     <main>
-      <div style="display: flex; width: 90%; margin: auto">
-        <canvas aria-label='Line Chart that shows 4 Lines. The chart has 1 X axis displaying Date and 1 Y axis displaying Corona Cases' id="myChart"></canvas>
+      <div class="container--lineChart">
+        <canvas
+          aria-label="Line Chart that shows 4 Lines. The chart has 1 X axis displaying Date and 1 Y axis displaying Corona Cases"
+          id="myChart"
+        ></canvas>
       </div>
     </main>
     <script src="./chart.js"></script>
@@ -60,6 +64,8 @@
             animation: {
               duration: 0,
             },
+            responsive: true,
+            maintainAspectRatio: false,
             plugins: {
               title: {
                 display: true,

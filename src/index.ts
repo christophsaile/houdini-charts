@@ -1,6 +1,5 @@
 // styles
-import './css/main.css';
-
+import './css/global.css';
 // charts
 import LineChart from './charts/line-chart/line-chart';
 import RadarChart from './charts/radar-chart/radar-chart';

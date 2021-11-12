@@ -5,15 +5,6 @@
   --spacing-md: 20px;
   --spacing-lg: 30px;
   --spacing-xl: 40px;
-  --font-xs: 10px;
-  --font-sm: 12px;
-  --font-md: 16px;
-  --color-purple: #cab8ff;
-  --color-green: #c1ffd7;
-  --color-blue: #b5deff;
-  --color-yellow: #fcffa6;
-  --color-grey: #d4d4d4;
-  --color-black: #1c1c1ccc;
 }
 
 * {
@@ -25,6 +16,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 
 h1 {
@@ -62,7 +54,7 @@ h1 {
 }
 
 .charttyp p {
-  padding: var(--spacing-md) 0 0;
+  padding: var(--spacing-xs) 0 0;
 }
 
 .dataset {
@@ -85,7 +77,7 @@ h1 {
   line-height: 1;
 }
 .library * {
-  padding: var(--spacing-sm);
+  padding: var(--spacing-xs);
 }
 
 .content {
@@ -107,7 +99,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-sm);
+  padding: var(--spacing-xs);
 }
 
 a {
@@ -122,14 +114,27 @@ a {
   padding: var(--spacing-xs);
 }
 
-@media screen and (min-width: 768px) {
-  .fullpage {
-    padding: var(--spacing-sm);
-  }
-}
-
 .fullpage--center {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+main {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .fullpage {
+    padding: var(--spacing-sm);
+  }
+
+  main {
+    width: 1200px;
+    margin: auto;
+  }
+
+  .charttyp p {
+    padding: var(--spacing-md) 0 0;
+  }
 }

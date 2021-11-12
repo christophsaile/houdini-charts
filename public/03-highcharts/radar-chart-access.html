@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Highcharts - Radar Chart</title>
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
     <main>
-      <div style="display: flex; width: 90%; margin: auto">
-        <section style="width: 100%" id="myChart"></section>
+      <div class="container--radarChart">
+        <section id="myChart"></section>
       </div>
     </main>
     <script src="./highcharts.js"></script>
@@ -69,7 +70,7 @@
       //     ('00' + (~~(b * 255)).toString(16)).slice(-2);
       //   return c;
       // }
-      
+
       fetchData('../mock/basic-test-data.json').then((result) => {
         // const apiData = Object.values(result.data);
         // const ageGroups = Object.keys(apiData[0]).sort();
@@ -97,8 +98,8 @@
         // }
         const config = {
           accessibility: {
-              description: 'Radar Chart that shows 5 Categorys',
-            },
+            description: 'Radar Chart that shows 5 Categorys',
+          },
           chart: {
             polar: true,
             type: 'area',

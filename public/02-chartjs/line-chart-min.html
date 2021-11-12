@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chartjs - Line Chart</title>
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
     <main>
-      <div style="display: flex; width: 90%; margin: auto">
+      <div class="container--lineChart">
         <canvas id="myChart"></canvas>
       </div>
     </main>
@@ -50,6 +51,8 @@
             animation: {
               duration: 0,
             },
+            responsive: true,
+            maintainAspectRatio: false,
             plugins: {
               title: {
                 display: true,

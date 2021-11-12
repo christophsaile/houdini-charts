@@ -1,0 +1,31 @@
+:root {
+  --desktopLine: 1000px;
+  --mobileLine: 300px;
+  --desktopRadar: 700px;
+  --mobileRadar: 300px;
+}
+
+.container--lineChart {
+  margin: auto;
+  width: var(--mobileLine);
+  aspect-ratio: 1;
+}
+
+.container--radarChart {
+  margin: auto;
+  width: var(--mobileRadar);
+  aspect-ratio: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .container--lineChart {
+    margin: auto;
+    width: var(--desktopLine);
+    aspect-ratio: 16/9;
+  }
+  .container--radarChart {
+    margin: auto;
+    width: var(--desktopRadar);
+    aspect-ratio: 1;
+  }
+}
