@@ -11,6 +11,7 @@
 
 # production
 /dist
+/dist-web
 /build
 /.cache
 

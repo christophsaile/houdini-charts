@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -7,7 +8,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const config = {
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist-web'),
     filename: 'index.js',
     library: 'HoudiniChart',
     libraryTarget: 'umd',
@@ -29,7 +30,16 @@ const config = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
-  plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin()],
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: 'public' }],
+    }),
+    new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin(),
+  ],
+  devServer: {
+    open: true,
+  },
   optimization: {
     minimizer: [`...`, new CssMinimizerPlugin()],
   },
