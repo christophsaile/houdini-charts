@@ -19,6 +19,9 @@ class HoudiniChart {
       case 'radar':
         const RADARCHART = new RadarChart(this.root, this.config);
         break;
+      default:
+        console.log('the following chart type does not exists: ' + this.config.chartType);
+        break;
     }
   };
 }
