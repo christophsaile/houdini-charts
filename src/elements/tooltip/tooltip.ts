@@ -3,10 +3,17 @@ import './tooltip.css';
 
 // worklets
 const tooltipWorklet = new URL('../../worklets/tooltip.js', import.meta.url);
-// @ts-ignore
-CSS.paintWorklet.addModule(tooltipWorklet.href);
 
 class Tooltip {
+  constructor() {
+    this.loadWorklets();
+  }
+
+  private loadWorklets = () => {
+    // @ts-ignore
+    CSS.paintWorklet.addModule(tooltipWorklet.href);
+  };
+
   public renderTooltip = (): string => {
     return `<div class='houdini__tooltip houdini__tooltip--hide'><p class='houdini__headline'></p><p class='houdini__subline'></p></div>`;
   };

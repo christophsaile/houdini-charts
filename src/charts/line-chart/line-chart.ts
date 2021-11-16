@@ -26,14 +26,8 @@ const pathLineWorklet = new URL('../../worklets/path-line.js', import.meta.url);
 
 class LineChart {
   constructor(private readonly root: HTMLElement, private readonly config: Config) {
-    Promise.all([
-      // @ts-ignore
-      CSS.paintWorklet.addModule(gridBasicWorklet.href),
-      // @ts-ignore
-      CSS.paintWorklet.addModule(pathLineWorklet.href),
-    ]).then(() => {
-      this.init();
-    });
+    this.loadWorklets();
+    this.init();
   }
 
   private configScale = this.config.data.scale;
@@ -98,6 +92,13 @@ class LineChart {
       this.segments.x = scale.labels.length - 1;
       this.dateScaleLabels = scale.labels;
     }
+  };
+
+  private loadWorklets = () => {
+    // @ts-ignore
+    CSS.paintWorklet.addModule(gridBasicWorklet.href);
+    // @ts-ignore
+    CSS.paintWorklet.addModule(pathLineWorklet.href);
   };
 
   private init = () => {

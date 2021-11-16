@@ -24,14 +24,8 @@ const pathRadarWorklet = new URL('../../worklets/path-radar.js', import.meta.url
 
 class RadarChart {
   constructor(private readonly root: HTMLElement, private readonly config: Config) {
-    Promise.all([
-      // @ts-ignore
-      CSS.paintWorklet.addModule(gridRadarWorklet.href),
-      // @ts-ignore
-      CSS.paintWorklet.addModule(pathRadarWorklet.href),
-    ]).then(() => {
-      this.init();
-    });
+    this.loadWorklets();
+    this.init();
   }
 
   private configScale = this.config.data.scale;
@@ -94,6 +88,13 @@ class RadarChart {
       this.niceNumbers.niceMaximum + this.niceNumbers.tickSpacing / 2
     );
     return getRadarPoints(maxDataset, this.chartSize, this.range);
+  };
+
+  private loadWorklets = () => {
+    // @ts-ignore
+    CSS.paintWorklet.addModule(gridRadarWorklet.href);
+    // @ts-ignore
+    CSS.paintWorklet.addModule(pathRadarWorklet.href);
   };
 
   private init = () => {
