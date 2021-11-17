@@ -1,4 +1,4 @@
-import { niceScale } from '../../utils/nice-num';
+import { calculateNiceScale } from '../../utils/nice-num';
 import { getMinValue } from '../../utils/get-min-value';
 import { getMaxValue } from '../../utils/get-max-value';
 import { flattenDataset } from '../../utils/flatten-dataset';
@@ -42,7 +42,7 @@ class RadarChart {
   private max = this.configAutoScale
     ? getMaxValue(flattenDataset(this.configDatasets))
     : this.configScale.max!;
-  private niceNumbers: NiceNumbers = niceScale(this.min, this.max);
+  private niceNumbers: NiceNumbers = calculateNiceScale(this.min, this.max);
   private range: Range = {
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
     zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),

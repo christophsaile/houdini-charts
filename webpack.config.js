@@ -11,7 +11,7 @@ const config = {
     filename: 'index.js',
     library: 'HoudiniChart',
     libraryTarget: 'umd',
-    libraryExport: 'default',
+    export: 'default',
   },
   module: {
     rules: [

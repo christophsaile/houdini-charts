@@ -1,4 +1,4 @@
-import { niceScale } from '../../utils/nice-num';
+import { calculateNiceScale } from '../../utils/nice-num';
 import { getMinValue } from '../../utils/get-min-value';
 import { getMaxValue } from '../../utils/get-max-value';
 import { flattenDataset } from '../../utils/flatten-dataset';
@@ -49,7 +49,7 @@ class LineChart {
       ? getMaxValue(flattenDataset(this.configDatasets))
       : this.configScale.max!,
   };
-  private niceNumbers: NiceNumbers = niceScale(this.min.y, this.max.y);
+  private niceNumbers: NiceNumbers = calculateNiceScale(this.min.y, this.max.y);
   private range: Range = {
     x: this.max.x - this.min.x,
     y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,

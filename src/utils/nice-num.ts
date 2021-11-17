@@ -17,7 +17,7 @@ var niceMax: number;
  *  min the minimum data point on the axis
  *  max the maximum data point on the axis
  */
-export function niceScale(min: number, max: number): NiceNumbers {
+export function calculateNiceScale(min: number, max: number): NiceNumbers {
   minPoint = min;
   maxPoint = max;
   calculate();
