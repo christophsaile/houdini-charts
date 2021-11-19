@@ -36,19 +36,11 @@ class Accessibility {
           datapoints.length
         } data points.`
       );
-    });
-  };
-
-  private renderTabIndexes = () => {
-    this.datasets.forEach((set) => {
-      const datapoints = set.querySelectorAll('button');
 
       datapoints.forEach((item) => {
         const xLabel = item.getAttribute('data-x');
         const yLabel = item.getAttribute('data-y');
         const dataset = item.parentElement?.id;
-
-        item.setAttribute('tabindex', '0');
 
         switch (this.chartType.toLowerCase()) {
           case 'line': {
@@ -60,6 +52,16 @@ class Accessibility {
             break;
           }
         }
+      });
+    });
+  };
+
+  private renderTabIndexes = () => {
+    this.datasets.forEach((set) => {
+      const datapoints = set.querySelectorAll('button');
+
+      datapoints.forEach((item) => {
+        item.setAttribute('tabindex', '0');
       });
     });
   };
