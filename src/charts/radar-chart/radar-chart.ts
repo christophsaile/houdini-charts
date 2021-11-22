@@ -185,26 +185,11 @@ class RadarChart {
   private initStyles = () => {
     this.datapointCoordinates = this.getDatapointCoordinates();
     this.labelCoordinates = this.getLabelsCoordinates();
-    this.stylesAxisLabels();
     this.stylesGrid();
     this.stylesPath();
+    this.stylesAxisLabels();
     this.stylesDatapoints();
   };
-
-  private stylesAxisLabels() {
-    const elems = this.root.querySelectorAll('.houdini__xlabel');
-    const centerX = this.chartSize.x / 2;
-    const centerY = this.chartSize.y / 2;
-
-    elems.forEach((label, index) => {
-      const x = this.labelCoordinates[index].x + centerX - label.clientWidth / 2;
-      const y = this.labelCoordinates[index].y + centerY - label.clientHeight / 2;
-      // @ts-ignore
-      label.attributeStyleMap.set('left', CSS.px(x));
-      // @ts-ignore
-      label.attributeStyleMap.set('bottom', CSS.px(y));
-    });
-  }
 
   private stylesGrid = () => {
     // @ts-ignore
@@ -231,15 +216,33 @@ class RadarChart {
     });
   };
 
+  private stylesAxisLabels() {
+    const elems = this.root.querySelectorAll('.houdini__xlabel');
+    const centerX = this.chartSize.x / 2;
+    const centerY = this.chartSize.y / 2;
+
+    elems.forEach((label, index) => {
+      const x = this.labelCoordinates[index].x + centerX - label.clientWidth / 2;
+      const y = this.labelCoordinates[index].y + centerY - label.clientHeight / 2;
+      // @ts-ignore
+      label.attributeStyleMap.set('left', CSS.px(x));
+      // @ts-ignore
+      label.attributeStyleMap.set('bottom', CSS.px(y));
+    });
+  }
+
   private stylesDatapoints = () => {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
+    const centerX = this.chartSize.x / 2;
+    const centerY = this.chartSize.y / 2;
+
     datasets.forEach((elem, index) => {
       const color = this.configDatasets[index].color;
 
       elem.querySelectorAll('button').forEach((datapoint, innerIndex) => {
         // -4px because dotSize = 8 / 2
-        const x = this.datapointCoordinates[index][innerIndex].x + this.chartSize.x / 2 - 4;
-        const y = this.datapointCoordinates[index][innerIndex].y + this.chartSize.y / 2 - 4;
+        const x = this.datapointCoordinates[index][innerIndex].x + centerX - 4;
+        const y = this.datapointCoordinates[index][innerIndex].y + centerY - 4;
         // @ts-ignore
         datapoint.attributeStyleMap.set('background-color', color);
         // @ts-ignore
