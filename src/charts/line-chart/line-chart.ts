@@ -21,7 +21,7 @@ import Tooltip from '../../elements/tooltip/tooltip';
 import Accessibility from '../../elements/accessibility/accessibility';
 
 // worklets
-const gridBasicWorklet = new URL('../../worklets/grid-basic.js', import.meta.url);
+const gridLineWorklet = new URL('../../worklets/grid-line.js', import.meta.url);
 const pathLineWorklet = new URL('../../worklets/path-line.js', import.meta.url);
 
 class LineChart {
@@ -96,7 +96,7 @@ class LineChart {
 
   private loadWorklets = () => {
     // @ts-ignore
-    CSS.paintWorklet.addModule(gridBasicWorklet.href);
+    CSS.paintWorklet.addModule(gridLineWorklet.href);
     // @ts-ignore
     CSS.paintWorklet.addModule(pathLineWorklet.href);
   };
@@ -249,7 +249,7 @@ class LineChart {
   private stylesGrid = () => {
     const elem = this.root.querySelector('.houdini__datasets')!;
     // @ts-ignore
-    elem.attributeStyleMap.set('background', 'paint(grid-basic)');
+    elem.attributeStyleMap.set('background', 'paint(grid-line)');
     // @ts-ignore
     elem.attributeStyleMap.set('--grid-segmentsX', this.segments.x);
     // @ts-ignore

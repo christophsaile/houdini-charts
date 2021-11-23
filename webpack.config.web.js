@@ -10,9 +10,11 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist-web'),
     filename: 'index.js',
-    library: 'HoudiniChart',
-    libraryTarget: 'umd',
-    libraryExport: 'default',
+    library: {
+      name: 'HoudiniChart',
+      type: 'umd',
+      export: 'default',
+    },
   },
   module: {
     rules: [

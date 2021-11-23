@@ -85,7 +85,7 @@ class RadarChart {
 
   private getLabelsCoordinates = () => {
     const maxDataset = new Array(this.numberOfAxis()).fill(
-      this.niceNumbers.niceMaximum + this.niceNumbers.tickSpacing / 2
+      this.niceNumbers.niceMaximum + this.niceNumbers.tickSpacing / 1.5
     );
     return getRadarPoints(maxDataset, this.chartSize, this.range);
   };
