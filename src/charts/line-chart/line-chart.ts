@@ -98,7 +98,6 @@ class LineChart {
 
     this.niceNumbers = calculateNiceScale(this.min.y, this.max.y);
     this.range = {
-      x: this.max.x - this.min.x,
       y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
       zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
     };
@@ -112,12 +111,12 @@ class LineChart {
     if (this.configScale?.xAxis?.type === 'date') {
       const scale = getDateScaleLabels(this.configXaxis);
       this.max.x = scale.maxValue;
-      this.range.x = this.max.x - this.min.x;
       this.range.tickInterval = scale.tickInterval;
       this.segments.x = scale.labels.length - 1;
       this.dateScaleLabels = scale.labels;
-      console.log(scale);
     }
+
+    this.range.x = this.max.x - this.min.x;
   };
 
   private initRender = () => {

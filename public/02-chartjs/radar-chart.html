@@ -73,11 +73,15 @@
         const ageGroups = Object.keys(apiData[0]).sort();
         const stateNames = Object.keys(result.data);
         const groups = ['casesMale', 'casesFemale', 'deathsMale', 'deathsFemale'];
-        const filtered = Object.values(apiData).map((sets) =>
-          Object.values(sets).map((set) =>
-            Object.assign({}, ...groups.map((key) => ({ [key]: set[key] })))
-          )
-        );
+        const filtered = Object.values(apiData).map((sets) => {
+          const sortObject = (o) =>
+            Object.keys(o)
+              .sort()
+              .reduce((r, k) => ((r[k] = o[k]), r), {});
+          return Object.values(sortObject(sets)).map((set) => {
+            return Object.assign({}, ...groups.map((key) => ({ [key]: set[key] })));
+          });
+        });
         const values = (name, index) => filtered[index].map((setItem) => setItem[name]);
 
         const datasets = [];
