@@ -4,7 +4,6 @@ export interface Config {
   data: {
     xaxis: string[];
     datasets: Datasets[];
-    scale: Scale;
   };
   options?: Options;
 }
@@ -15,13 +14,8 @@ export interface Datasets {
   color?: string;
 }
 
-export interface Scale {
-  auto: boolean;
-  min?: number;
-  max?: number;
-}
-
 export interface Options {
+  scales?: Scale;
   accessibility?: Access;
   fill?: boolean;
   legend?: boolean;
@@ -30,6 +24,17 @@ export interface Options {
     y?: string;
   };
   gridColor?: string;
+}
+
+export interface Scale {
+  xAxis?: {
+    type?: string;
+  };
+  yAxis?: {
+    type?: string;
+    min?: number;
+    max?: number;
+  };
 }
 
 export interface Access {

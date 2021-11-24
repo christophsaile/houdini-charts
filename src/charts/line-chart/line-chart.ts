@@ -30,35 +30,19 @@ class LineChart {
     this.init();
   }
 
-  private configScale = this.config.data.scale;
+  private configScale = this.config.options?.scales;
   private configDatasets = this.config.data.datasets;
   private configXaxis = this.config.data.xaxis;
   private configOptions = this.config.options;
-  private configAutoScale = this.configScale.auto;
+  private configAutoScale =
+    this.configScale?.yAxis?.min || this.configScale?.yAxis?.max ? false : true;
   private configAccessibility = this.configOptions?.accessibility;
   private configGridColor = this.configOptions?.gridColor ? this.configOptions.gridColor : '#ccc';
-  private min: Coordinates = {
-    x: 0,
-    y: this.configAutoScale
-      ? getMinValue(flattenDataset(this.configDatasets))
-      : this.configScale.min!,
-  };
-  private max: Coordinates = {
-    x: this.configXaxis.length - 1,
-    y: this.configAutoScale
-      ? getMaxValue(flattenDataset(this.configDatasets))
-      : this.configScale.max!,
-  };
-  private niceNumbers: NiceNumbers = calculateNiceScale(this.min.y, this.max.y);
-  private range: Range = {
-    x: this.max.x - this.min.x,
-    y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
-    zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
-  };
-  private segments: Coordinates = {
-    x: this.max.x,
-    y: (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing,
-  };
+  private min!: Coordinates;
+  private max!: Coordinates;
+  private niceNumbers!: NiceNumbers;
+  private range!: Range;
+  private segments!: Coordinates;
   private elemDatasets!: HTMLElement;
   private chartSize: Coordinates = {
     x: 0,
@@ -83,17 +67,6 @@ class LineChart {
     return datapoints;
   };
 
-  private initXaxisFormat = () => {
-    if (checkXAxisType(this.configXaxis[0]) === 'date') {
-      const scale = getDateScaleLabels(this.configXaxis);
-      this.max.x = scale.maxValue;
-      this.range.x = this.max.x - this.min.x;
-      this.range.tickInterval = scale.tickInterval;
-      this.segments.x = scale.labels.length - 1;
-      this.dateScaleLabels = scale.labels;
-    }
-  };
-
   private loadWorklets = () => {
     // @ts-ignore
     CSS.paintWorklet.addModule(gridLineWorklet.href);
@@ -102,11 +75,49 @@ class LineChart {
   };
 
   private init = () => {
-    this.initXaxisFormat();
+    this.initScale();
     this.initRender();
     this.initStyles();
     this.initEvents();
     this.initAccessibility();
+  };
+
+  private initScale = () => {
+    this.min = {
+      x: 0,
+      y: this.configAutoScale
+        ? getMinValue(flattenDataset(this.configDatasets))
+        : this.configScale?.yAxis?.min!,
+    };
+    this.max = {
+      x: this.configXaxis.length - 1,
+      y: this.configAutoScale
+        ? getMaxValue(flattenDataset(this.configDatasets))
+        : this.configScale?.yAxis?.max!,
+    };
+
+    this.niceNumbers = calculateNiceScale(this.min.y, this.max.y);
+    this.range = {
+      x: this.max.x - this.min.x,
+      y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
+      zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
+    };
+    this.segments = {
+      x: this.max.x,
+      y:
+        (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) /
+        this.niceNumbers.tickSpacing,
+    };
+
+    if (this.configScale?.xAxis?.type === 'date') {
+      const scale = getDateScaleLabels(this.configXaxis);
+      this.max.x = scale.maxValue;
+      this.range.x = this.max.x - this.min.x;
+      this.range.tickInterval = scale.tickInterval;
+      this.segments.x = scale.labels.length - 1;
+      this.dateScaleLabels = scale.labels;
+      console.log(scale);
+    }
   };
 
   private initRender = () => {
@@ -173,7 +184,7 @@ class LineChart {
 
   private renderXAxis = () => {
     let template;
-    if (checkXAxisType(this.configXaxis[0]) === 'date') {
+    if (this.configScale?.xAxis?.type === 'date') {
       template = this.renderDateXAxis();
     } else {
       template = this.renderDefaultXaxis();

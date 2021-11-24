@@ -28,28 +28,20 @@ class RadarChart {
     this.init();
   }
 
-  private configScale = this.config.data.scale;
+  private configScale = this.config.options?.scales;
   private configDatasets = this.config.data.datasets;
   private configXaxis = this.config.data.xaxis;
   private configOptions = this.config.options;
-  private configAutoScale = this.configScale.auto;
+  private configAutoScale =
+    this.configScale?.yAxis?.min || this.configScale?.yAxis?.max ? false : true;
   private configAccessibility = this.configOptions?.accessibility;
   private configPathFill = this.configOptions?.fill ? true : false;
   private configGridColor = this.configOptions?.gridColor ? this.configOptions.gridColor : '#ccc';
-  private min = this.configAutoScale
-    ? getMinValue(flattenDataset(this.configDatasets))
-    : this.configScale.min!;
-  private max = this.configAutoScale
-    ? getMaxValue(flattenDataset(this.configDatasets))
-    : this.configScale.max!;
-  private niceNumbers: NiceNumbers = calculateNiceScale(this.min, this.max);
-  private range: Range = {
-    y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
-    zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
-  };
-  private segments =
-    (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing +
-    1;
+  private min!: number;
+  private max!: number;
+  private niceNumbers!: NiceNumbers;
+  private range!: Range;
+  private segments!: number;
   private elemChart!: HTMLElement;
   private elemDatsets!: HTMLElement;
   private chartSize: Coordinates = {
@@ -98,10 +90,28 @@ class RadarChart {
   };
 
   private init = () => {
+    this.initScale();
     this.initRender();
     this.initStyles();
     this.initEvents();
     this.initAccessibility();
+  };
+
+  private initScale = () => {
+    this.min = this.configAutoScale
+      ? getMinValue(flattenDataset(this.configDatasets))
+      : this.configScale?.yAxis?.min!;
+    this.max = this.configAutoScale
+      ? getMaxValue(flattenDataset(this.configDatasets))
+      : this.configScale?.yAxis?.max!;
+    this.niceNumbers = calculateNiceScale(this.min, this.max);
+    this.range = {
+      y: this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum,
+      zeroY: setMinToZero(this.niceNumbers.niceMinimum, this.niceNumbers.niceMaximum),
+    };
+    this.segments =
+      (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) / this.niceNumbers.tickSpacing +
+      1;
   };
 
   private initRender = () => {

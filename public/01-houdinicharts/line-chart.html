@@ -42,15 +42,17 @@
               color: '#cab8ff',
             },
           ],
-          scale: {
-            auto: true,
-          },
         };
         const config = {
           title: 'Line Chart',
           chartType: 'Line',
           data: data,
           options: {
+            scales: {
+              xAxis: {
+                type: 'date',
+              },
+            },
             legend: true,
             titleAxis: {
               x: 'Date',
