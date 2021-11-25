@@ -127,16 +127,18 @@ class RadarChart {
 
   private renderWrapper = () => {
     const template = `<div class='houdini houdini--radar'></div>`;
-    this.root.innerHTML = template;
+    this.root.insertAdjacentHTML('afterbegin', template);
   };
 
   private renderHeader = () => {
-    this.root.querySelector('.houdini')!.innerHTML += Header.renderHeader(this.config);
+    this.root
+      .querySelector('.houdini')!
+      .insertAdjacentHTML('beforeend', Header.renderHeader(this.config));
   };
 
   private renderChart = () => {
     const template = `<section class='houdini__chart'></section>`;
-    this.root.querySelector('.houdini')!.innerHTML += template;
+    this.root.querySelector('.houdini')!.insertAdjacentHTML('beforeend', template);
     this.elemChart = this.root.querySelector('.houdini__chart')!;
   };
 
@@ -147,7 +149,7 @@ class RadarChart {
       })
       .join('');
 
-    this.elemChart.innerHTML += `<div class='houdini__xaxis'>${template}</div>`;
+    this.elemChart.insertAdjacentHTML('beforeend', `<div class='houdini__xaxis'>${template}</div>`);
   };
 
   private renderYaxis = () => {
@@ -161,7 +163,7 @@ class RadarChart {
       j = j + 1;
     }
 
-    this.elemChart.innerHTML += `<div class='houdini__yaxis'>${template}</div>`;
+    this.elemChart.insertAdjacentHTML('beforeend', `<div class='houdini__yaxis'>${template}</div>`);
   };
 
   private renderDatasets = () => {
@@ -171,7 +173,10 @@ class RadarChart {
       })
       .join('');
 
-    this.elemChart.innerHTML += `<div class='houdini__datasets'>${template}</div>`;
+    this.elemChart.insertAdjacentHTML(
+      'beforeend',
+      `<div class='houdini__datasets'>${template}</div>`
+    );
     this.elemDatsets = this.root.querySelector('.houdini__datasets')!;
     this.setChartSize();
   };
@@ -180,16 +185,18 @@ class RadarChart {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
 
     datasets.forEach((datasetElem, index) => {
-      this.configDatasets[index].values.forEach(
-        (value, innerIndex) =>
-          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.configXaxis[innerIndex]}' />`)
+      this.configDatasets[index].values.forEach((value, innerIndex) =>
+        datasetElem.insertAdjacentHTML(
+          'beforeend',
+          `<button data-y='${value}' data-x='${this.configXaxis[innerIndex]}' />`
+        )
       );
     });
   };
 
   private renderTooltip = () => {
     const template = Tooltip.renderTooltip();
-    this.root.querySelector('.houdini__datasets')!.innerHTML += template;
+    this.root.querySelector('.houdini__datasets')!.insertAdjacentHTML('beforeend', template);
   };
 
   private initStyles = () => {

@@ -138,7 +138,9 @@ class LineChart {
   };
 
   private renderHeader = () => {
-    this.root.querySelector('.houdini')!.innerHTML += Header.renderHeader(this.config);
+    this.root
+      .querySelector('.houdini')!
+      .insertAdjacentHTML('afterbegin', Header.renderHeader(this.config));
   };
 
   private renderAxisTitle = () => {
@@ -148,17 +150,17 @@ class LineChart {
 
   private renderTitleY = () => {
     const template = `<h3 class='houdini__ytitle'>${this.config.options?.titleAxis?.y}</h3>`;
-    this.root.querySelector('.houdini')!.innerHTML += template;
+    this.root.querySelector('.houdini')!.insertAdjacentHTML('beforeend', template);
   };
 
   private renderTitleX = () => {
     const template = `<h3 class='houdini__xtitle'>${this.config.options?.titleAxis?.x}</h3>`;
-    this.root.querySelector('.houdini')!.innerHTML += template;
+    this.root.querySelector('.houdini')!.insertAdjacentHTML('beforeend', template);
   };
 
   private renderChart = () => {
     const template = `<section class='houdini__chart'></section>`;
-    this.root.querySelector('.houdini')!.innerHTML += template;
+    this.root.querySelector('.houdini')!.insertAdjacentHTML('beforeend', template);
   };
 
   private renderYaxis = () => {
@@ -174,9 +176,9 @@ class LineChart {
       j = j + 1;
     }
 
-    this.root.querySelector(
-      '.houdini__chart'
-    )!.innerHTML += `<section class='houdini__yaxis'>${template}</section>`;
+    this.root
+      .querySelector('.houdini__chart')!
+      .insertAdjacentHTML('beforeend', `<section class='houdini__yaxis'>${template}</section>`);
   };
 
   private renderXAxis = () => {
@@ -187,11 +189,14 @@ class LineChart {
       template = this.renderDefaultXaxis();
     }
 
-    this.root.querySelector('.houdini__chart')!.innerHTML += `
+    this.root.querySelector('.houdini__chart')!.insertAdjacentHTML(
+      'beforeend',
+      `
       <section class='houdini__xaxis'>
         ${template}
       </section>
-    `;
+    `
+    );
   };
 
   private renderDefaultXaxis = () => {
@@ -224,9 +229,9 @@ class LineChart {
       })
       .join('');
 
-    this.root.querySelector(
-      '.houdini__chart'
-    )!.innerHTML += `<section class='houdini__datasets'>${template}</section>`;
+    this.root
+      .querySelector('.houdini__chart')!
+      .insertAdjacentHTML('beforeend', `<section class='houdini__datasets'>${template}</section>`);
     this.elemDatasets = this.root.querySelector('.houdini__datasets')!;
     this.setChartSize();
   };
@@ -235,16 +240,18 @@ class LineChart {
     const datasets = this.root.querySelectorAll('.houdini__dataset');
 
     datasets.forEach((datasetElem, index) => {
-      this.configDatasets[index].values.forEach(
-        (value, innerIndex) =>
-          (datasetElem.innerHTML += `<button data-y='${value}' data-x='${this.configXaxis[innerIndex]}' />`)
+      this.configDatasets[index].values.forEach((value, innerIndex) =>
+        datasetElem.insertAdjacentHTML(
+          'beforeend',
+          `<button data-y='${value}' data-x='${this.configXaxis[innerIndex]}' />`
+        )
       );
     });
   };
 
   private renderTooltip = () => {
     const template = Tooltip.renderTooltip();
-    this.root.querySelector('.houdini__datasets')!.innerHTML += template;
+    this.root.querySelector('.houdini__datasets')!.insertAdjacentHTML('beforeend', template);
   };
 
   private initStyles = () => {
