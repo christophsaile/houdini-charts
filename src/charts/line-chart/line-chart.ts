@@ -103,9 +103,7 @@ class LineChart {
     };
     this.segments = {
       x: this.max.x,
-      y:
-        (this.niceNumbers.niceMaximum - this.niceNumbers.niceMinimum) /
-        this.niceNumbers.tickSpacing,
+      y: this.range.y! / this.niceNumbers.tickSpacing,
     };
 
     if (this.configScale?.xAxis?.type === 'date') {

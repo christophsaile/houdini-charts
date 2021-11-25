@@ -14,7 +14,7 @@ if (typeof registerPaint !== 'undefined') {
       const width = size.width;
       const segments = {
         width: width / segmentsX,
-        height: Math.round((height / segmentsY) * 100) / 100,
+        height: height / segmentsY,
       };
 
       ctx.strokeStyle = color;
