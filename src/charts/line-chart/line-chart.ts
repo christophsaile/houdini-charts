@@ -138,7 +138,7 @@ class LineChart {
       <div class='houdini houdini--line'></div>
     `;
 
-    this.root.innerHTML = template;
+    this.root.insertAdjacentHTML('afterbegin', template);
   };
 
   private renderHeader = () => {
