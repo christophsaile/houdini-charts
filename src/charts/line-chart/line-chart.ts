@@ -186,11 +186,14 @@ class LineChart {
   };
 
   private renderXAxis = () => {
-    let template;
-    if (this.configScale?.xAxis?.type === 'date') {
-      template = this.renderDateXAxis();
-    } else {
-      template = this.renderDefaultXaxis();
+    let template: string = '';
+
+    for (let i = this.min.x, n = this.segments.x; i <= n; i++) {
+      const segmentWidth = 100 / this.segments.x;
+      const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
+      template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${
+        this.configScale?.xAxis?.type === 'date' ? this.dateScaleLabels[i] : this.configXaxis[i]
+      }</span>`;
     }
 
     this.root.querySelector('.houdini__chart')!.insertAdjacentHTML(
@@ -201,29 +204,6 @@ class LineChart {
       </section>
     `
     );
-  };
-
-  private renderDefaultXaxis = () => {
-    let template: string = '';
-
-    for (let i = this.min.x; i <= this.max.x; i++) {
-      const segmentWidth = 100 / this.segments.x;
-      const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
-      template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.configXaxis[i]}</span>`; // -8px because fontSize = 16px / 2
-    }
-
-    return template;
-  };
-
-  private renderDateXAxis = () => {
-    let template: string = '';
-    for (let i = this.min.x, n = this.segments.x; i <= n; i++) {
-      const segmentWidth = 100 / this.segments.x;
-      const percantage = (i / this.segments.x) * 100 - segmentWidth / 2;
-      template += `<span class='houdini__xlabel' style='left: ${percantage}%; width: ${segmentWidth}%'>${this.dateScaleLabels[i]}</span>`; // -8px because fontSize = 16px / 2
-    }
-
-    return template;
   };
 
   private renderDatasets = () => {
