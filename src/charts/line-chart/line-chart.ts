@@ -23,6 +23,7 @@ import Accessibility from '../../elements/accessibility/accessibility';
 // worklets
 const gridLineWorklet = new URL('../../worklets/grid-line.js', import.meta.url);
 const pathLineWorklet = new URL('../../worklets/path-line.js', import.meta.url);
+
 // @ts-ignore
 CSS.paintWorklet.addModule(gridLineWorklet.href);
 // @ts-ignore
