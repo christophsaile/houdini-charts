@@ -1,0 +1,68 @@
+{
+  "houdini": {
+    "lineChart": {
+      "executionTime": { "average": 65.0664, "max": 76.2, "min": 60.6 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 669
+    },
+    "lineChartMin": {
+      "executionTime": { "average": 19.443199999999997, "max": 26.8, "min": 13.4 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 49
+    },
+    "radarChart": {
+      "executionTime": { "average": 34.4252, "max": 51.8, "min": 20 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 671
+    },
+    "radarChartMin": {
+      "executionTime": { "average": 15.389999999999997, "max": 28.7, "min": 9.1 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 41
+    }
+  },
+  "chartjs": {
+    "lineChart": {
+      "executionTime": { "average": 54.44839999999996, "max": 59.2, "min": 49.7 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 6
+    },
+    "lineChartMin": {
+      "executionTime": { "average": 40.221199999999975, "max": 47, "min": 30 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 6
+    },
+    "radarChart": {
+      "executionTime": { "average": 86.06560000000002, "max": 105.2, "min": 69.6 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 5
+    },
+    "radarChartMin": {
+      "executionTime": { "average": 52.28799999999999, "max": 66.6, "min": 38.4 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 5
+    }
+  },
+  "highcharts": {
+    "lineChart": {
+      "executionTime": { "average": 55.72479999999999, "max": 62.6, "min": 51.2 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 186
+    },
+    "lineChartMin": {
+      "executionTime": { "average": 47.85999999999999, "max": 61.3, "min": 37.7 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 112
+    },
+    "radarChart": {
+      "executionTime": { "average": 95.01359999999995, "max": 118.2, "min": 83.3 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 1085
+    },
+    "radarChartMin": {
+      "executionTime": { "average": 51.10120000000001, "max": 69.3, "min": 34.8 },
+      "tbt": { "average": 0, "max": 0, "min": 0 },
+      "domSize": 83
+    }
+  }
+}
