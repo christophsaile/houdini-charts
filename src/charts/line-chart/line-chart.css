@@ -3,6 +3,7 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
   width: 100%;
+  padding: 1rem;
 }
 
 .houdini--line .houdini__header {

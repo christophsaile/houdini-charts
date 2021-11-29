@@ -1,5 +1,6 @@
 .houdini--radar {
   width: 100%;
+  padding: 1rem;
 }
 
 .houdini--radar .houdini__chart {

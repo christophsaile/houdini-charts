@@ -29,6 +29,8 @@ export interface Options {
 export interface Scale {
   xAxis?: {
     type?: string;
+    min?: number;
+    max?: number;
   };
   yAxis?: {
     type?: string;

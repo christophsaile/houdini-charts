@@ -38,6 +38,20 @@
           chart: {
             height: (9 / 16) * 100 + '%', // 16:9 ratio
           },
+          responsive: {
+            rules: [
+              {
+                condition: {
+                  maxWidth: 500,
+                },
+                chartOptions: {
+                  chart: {
+                    height: '100%',
+                  },
+                },
+              },
+            ],
+          },
           legend: {
             layout: 'vertical',
             align: 'center',
