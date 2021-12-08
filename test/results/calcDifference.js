@@ -15,10 +15,12 @@ if (argv.path) {
 
   for (let i = 0, n = 4; i < n; i++) {
     let chartjs = Math.round((filter[0][i] / filter[1][i]) * 100 * 100) / 100;
-    chartjs <= 100 ? (chartjs = `-${chartjs}%`) : (chartjs = `+${chartjs}%`);
+    chartjs <= 100 ? (chartjs = `-${100 - chartjs}%`) : (chartjs = `+${chartjs - 100}%`);
     arrayChartjs.push(chartjs);
     let highcharts = Math.round((filter[0][i] / filter[2][i]) * 100 * 100) / 100;
-    highcharts <= 100 ? (highcharts = `-${highcharts}%`) : (highcharts = `+${highcharts}%`);
+    highcharts <= 100
+      ? (highcharts = `-${100 - highcharts}%`)
+      : (highcharts = `+${highcharts - 100}%`);
     arrayHighcharts.push(highcharts);
   }
 
