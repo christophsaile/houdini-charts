@@ -6,6 +6,9 @@
 
 ```
 npm install
+
+cd ./test
+npm install
 ```
 
 ### Serve
