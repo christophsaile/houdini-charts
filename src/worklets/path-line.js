@@ -1,4 +1,4 @@
-if (typeof registerPaint !== 'undefined') {
+if (typeof registerPaint !== undefined) {
   class PathLine {
     static get inputProperties() {
       return ['--path-points', '--path-color'];

@@ -1,4 +1,4 @@
-if (typeof registerPaint !== 'undefined') {
+if (typeof registerPaint !== undefined) {
   class Tooltip {
     static get inputProperties() {
       return ['background-color'];

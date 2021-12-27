@@ -1,4 +1,4 @@
-if (typeof registerPaint !== 'undefined') {
+if (typeof registerPaint !== undefined) {
   class GridRadar {
     static get inputProperties() {
       return ['--grid-xaxis', '--grid-segments', '--grid-color'];

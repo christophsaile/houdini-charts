@@ -1,4 +1,4 @@
-if (typeof registerPaint !== 'undefined') {
+if (typeof registerPaint !== undefined) {
   class GridLine {
     static get inputProperties() {
       return ['--grid-color', '--grid-segmentsY', '--grid-segmentsX', '--grid-highlight'];

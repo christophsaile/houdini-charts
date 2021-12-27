@@ -1,4 +1,4 @@
-if (typeof registerPaint !== 'undefined') {
+if (typeof registerPaint !== undefined) {
   class pathRadar {
     static get inputProperties() {
       return ['--path-points', '--path-fill', '--path-color'];
